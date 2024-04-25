@@ -11,18 +11,19 @@ export type Route = {
 	name?: string;
 	children?: Route[];
 	hide?: boolean;
-	index?: boolean;
 };
 
 const routes: Route[] = [
 	{
 		path: "/",
 		element: <HomeLayout />,
+		name: "Home",
 		hide: true,
 		children: [
-			{
-				path: "dashboard", name: 'Dashboard', element: <Dashboard />
-			},
+			{ path: "dashboard", name: 'Dashboard', element: <Dashboard />, children: [
+				{ path: "subscription", hide: true, name: 'Subscriptions', element: <Subscription /> },
+				{ path: "revenue", hide: true, name: 'Revenue', element: <Revenue/> },
+			] },
 			{ path: "post-management", name: 'Post Management', element: <PostManagement /> },
 			{ path: "settings", name: 'Settings', element: <Settings /> },
 		],
