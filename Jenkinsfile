@@ -8,7 +8,7 @@ pipeline {
 				sh 'pnpm run build'
             }
         }
-		state('deploy') {
+		stage('deploy') {
 			steps {
 				sh 'pm2 serve public 5678 --spa --name "xipat"'
 			}
