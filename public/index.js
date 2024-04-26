@@ -125,38 +125,38 @@
             ReactSharedInternals.ReactDebugCurrentFrame = ReactDebugCurrentFrame;
             ReactSharedInternals.ReactCurrentActQueue = ReactCurrentActQueue;
           }
-          function warn(format2) {
+          function warn(format3) {
             {
               {
                 for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
                   args[_key - 1] = arguments[_key];
                 }
-                printWarning("warn", format2, args);
+                printWarning("warn", format3, args);
               }
             }
           }
-          function error(format2) {
+          function error(format3) {
             {
               {
                 for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
                   args[_key2 - 1] = arguments[_key2];
                 }
-                printWarning("error", format2, args);
+                printWarning("error", format3, args);
               }
             }
           }
-          function printWarning(level, format2, args) {
+          function printWarning(level, format3, args) {
             {
               var ReactDebugCurrentFrame2 = ReactSharedInternals.ReactDebugCurrentFrame;
               var stack = ReactDebugCurrentFrame2.getStackAddendum();
               if (stack !== "") {
-                format2 += "%s";
+                format3 += "%s";
                 args = args.concat([stack]);
               }
               var argsWithFormat = args.map(function(item) {
                 return String(item);
               });
-              argsWithFormat.unshift("Warning: " + format2);
+              argsWithFormat.unshift("Warning: " + format3);
               Function.prototype.apply.call(console[level], console, argsWithFormat);
             }
           }
@@ -638,8 +638,8 @@
               "=": "=0",
               ":": "=2"
             };
-            var escapedString = key.replace(escapeRegex, function(match) {
-              return escaperLookup[match];
+            var escapedString = key.replace(escapeRegex, function(match2) {
+              return escaperLookup[match2];
             });
             return "$" + escapedString;
           }
@@ -785,7 +785,7 @@
             }
             return children;
           }
-          function createContext3(defaultValue) {
+          function createContext4(defaultValue) {
             var context = {
               $$typeof: REACT_CONTEXT_TYPE,
               // As a workaround to support multiple concurrent renderers, we categorize
@@ -972,7 +972,7 @@
             }
             return lazyType;
           }
-          function forwardRef2(render) {
+          function forwardRef3(render) {
             {
               if (render != null && render.$$typeof === REACT_MEMO_TYPE) {
                 error("forwardRef requires a render function but received a `memo` component. Instead of forwardRef(memo(...)), use memo(forwardRef(...)).");
@@ -1071,7 +1071,7 @@
             }
             return dispatcher;
           }
-          function useContext3(Context) {
+          function useContext4(Context) {
             var dispatcher = resolveDispatcher();
             {
               if (Context._context !== void 0) {
@@ -1085,7 +1085,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState8(initialState) {
+          function useState11(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1093,11 +1093,11 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer, initialArg, init);
           }
-          function useRef3(initialValue) {
+          function useRef5(initialValue) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect6(create, deps) {
+          function useEffect8(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1105,7 +1105,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useInsertionEffect(create, deps);
           }
-          function useLayoutEffect3(create, deps) {
+          function useLayoutEffect4(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useLayoutEffect(create, deps);
           }
@@ -1113,7 +1113,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
-          function useMemo6(create, deps) {
+          function useMemo7(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useMemo(create, deps);
           }
@@ -1135,7 +1135,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useDeferredValue(value);
           }
-          function useId() {
+          function useId2() {
             var dispatcher = resolveDispatcher();
             return dispatcher.useId();
           }
@@ -1229,8 +1229,8 @@
                 try {
                   throw Error();
                 } catch (x) {
-                  var match = x.stack.trim().match(/\n( *(at )?)/);
-                  prefix = match && match[1] || "";
+                  var match2 = x.stack.trim().match(/\n( *(at )?)/);
+                  prefix = match2 && match2[1] || "";
                 }
               }
               return "\n" + prefix + name;
@@ -1865,29 +1865,29 @@
           exports.Suspense = REACT_SUSPENSE_TYPE;
           exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals;
           exports.cloneElement = cloneElement$1;
-          exports.createContext = createContext3;
+          exports.createContext = createContext4;
           exports.createElement = createElement$1;
           exports.createFactory = createFactory;
           exports.createRef = createRef;
-          exports.forwardRef = forwardRef2;
+          exports.forwardRef = forwardRef3;
           exports.isValidElement = isValidElement2;
           exports.lazy = lazy;
           exports.memo = memo2;
           exports.startTransition = startTransition;
           exports.unstable_act = act;
           exports.useCallback = useCallback4;
-          exports.useContext = useContext3;
+          exports.useContext = useContext4;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect6;
-          exports.useId = useId;
+          exports.useEffect = useEffect8;
+          exports.useId = useId2;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
-          exports.useLayoutEffect = useLayoutEffect3;
-          exports.useMemo = useMemo6;
+          exports.useLayoutEffect = useLayoutEffect4;
+          exports.useMemo = useMemo7;
           exports.useReducer = useReducer;
-          exports.useRef = useRef3;
-          exports.useState = useState8;
+          exports.useRef = useRef5;
+          exports.useState = useState11;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -2383,47 +2383,47 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React17 = require_react();
+          var React19 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React19.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
               suppressWarning = newSuppressWarning;
             }
           }
-          function warn(format2) {
+          function warn(format3) {
             {
               if (!suppressWarning) {
                 for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
                   args[_key - 1] = arguments[_key];
                 }
-                printWarning("warn", format2, args);
+                printWarning("warn", format3, args);
               }
             }
           }
-          function error(format2) {
+          function error(format3) {
             {
               if (!suppressWarning) {
                 for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
                   args[_key2 - 1] = arguments[_key2];
                 }
-                printWarning("error", format2, args);
+                printWarning("error", format3, args);
               }
             }
           }
-          function printWarning(level, format2, args) {
+          function printWarning(level, format3, args) {
             {
               var ReactDebugCurrentFrame2 = ReactSharedInternals.ReactDebugCurrentFrame;
               var stack = ReactDebugCurrentFrame2.getStackAddendum();
               if (stack !== "") {
-                format2 += "%s";
+                format3 += "%s";
                 args = args.concat([stack]);
               }
               var argsWithFormat = args.map(function(item) {
                 return String(item);
               });
-              argsWithFormat.unshift("Warning: " + format2);
+              argsWithFormat.unshift("Warning: " + format3);
               Function.prototype.apply.call(console[level], console, argsWithFormat);
             }
           }
@@ -2434,7 +2434,7 @@
           var HostPortal = 4;
           var HostComponent = 5;
           var HostText = 6;
-          var Fragment3 = 7;
+          var Fragment5 = 7;
           var Mode = 8;
           var ContextConsumer = 9;
           var ContextProvider = 10;
@@ -2488,7 +2488,7 @@
               allNativeEvents.add(dependencies[i]);
             }
           }
-          var canUseDOM = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
+          var canUseDOM2 = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
           var hasOwnProperty = Object.prototype.hasOwnProperty;
           function typeName(value) {
             {
@@ -3294,8 +3294,8 @@
                 try {
                   throw Error();
                 } catch (x) {
-                  var match = x.stack.trim().match(/\n( *(at )?)/);
-                  prefix = match && match[1] || "";
+                  var match2 = x.stack.trim().match(/\n( *(at )?)/);
+                  prefix = match2 && match2[1] || "";
                 }
               }
               return "\n" + prefix + name;
@@ -3590,7 +3590,7 @@
                 return "DehydratedFragment";
               case ForwardRef:
                 return getWrappedName$1(type, type.render, "ForwardRef");
-              case Fragment3:
+              case Fragment5:
                 return "Fragment";
               case HostComponent:
                 return type;
@@ -3990,7 +3990,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React17.Children.forEach(props.children, function(child) {
+                  React19.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -5219,8 +5219,8 @@
             {
               var invalidProps = [];
               for (var key in props) {
-                var isValid = validateProperty(type, key);
-                if (!isValid) {
+                var isValid2 = validateProperty(type, key);
+                if (!isValid2) {
                   invalidProps.push(key);
                 }
               }
@@ -5362,8 +5362,8 @@
             {
               var unknownProps = [];
               for (var key in props) {
-                var isValid = validateProperty$1(type, key, props[key], eventRegistry);
-                if (!isValid) {
+                var isValid2 = validateProperty$1(type, key, props[key], eventRegistry);
+                if (!isValid2) {
                   unknownProps.push(key);
                 }
               }
@@ -5532,7 +5532,7 @@
             return listener;
           }
           var passiveBrowserEventsSupported = false;
-          if (canUseDOM) {
+          if (canUseDOM2) {
             try {
               var options = {};
               Object.defineProperty(options, "passive", {
@@ -5963,9 +5963,9 @@
             }
             var child = node.child;
             while (child !== null) {
-              var match = findCurrentHostFiberImpl(child);
-              if (match !== null) {
-                return match;
+              var match2 = findCurrentHostFiberImpl(child);
+              if (match2 !== null) {
+                return match2;
               }
               child = child.sibling;
             }
@@ -5982,9 +5982,9 @@
             var child = node.child;
             while (child !== null) {
               if (child.tag !== HostPortal) {
-                var match = findCurrentHostFiberWithNoPortalsImpl(child);
-                if (match !== null) {
-                  return match;
+                var match2 = findCurrentHostFiberWithNoPortalsImpl(child);
+                if (match2 !== null) {
+                  return match2;
                 }
               }
               child = child.sibling;
@@ -7964,13 +7964,13 @@
           var SyntheticWheelEvent = createSyntheticEvent(WheelEventInterface);
           var END_KEYCODES = [9, 13, 27, 32];
           var START_KEYCODE = 229;
-          var canUseCompositionEvent = canUseDOM && "CompositionEvent" in window;
+          var canUseCompositionEvent = canUseDOM2 && "CompositionEvent" in window;
           var documentMode = null;
-          if (canUseDOM && "documentMode" in document) {
+          if (canUseDOM2 && "documentMode" in document) {
             documentMode = document.documentMode;
           }
-          var canUseTextInputEvent = canUseDOM && "TextEvent" in window && !documentMode;
-          var useFallbackCompositionData = canUseDOM && (!canUseCompositionEvent || documentMode && documentMode > 8 && documentMode <= 11);
+          var canUseTextInputEvent = canUseDOM2 && "TextEvent" in window && !documentMode;
+          var useFallbackCompositionData = canUseDOM2 && (!canUseCompositionEvent || documentMode && documentMode > 8 && documentMode <= 11);
           var SPACEBAR_CODE = 32;
           var SPACEBAR_CHAR = String.fromCharCode(SPACEBAR_CODE);
           function registerEvents() {
@@ -8164,7 +8164,7 @@
             return false;
           }
           function isEventSupported(eventNameSuffix) {
-            if (!canUseDOM) {
+            if (!canUseDOM2) {
               return false;
             }
             var eventName = "on" + eventNameSuffix;
@@ -8216,7 +8216,7 @@
             }
           }
           var isInputEventSupported = false;
-          if (canUseDOM) {
+          if (canUseDOM2) {
             isInputEventSupported = isEventSupported("input") && (!document.documentMode || document.documentMode > 9);
           }
           function startWatchingForValueChange(target, targetInst) {
@@ -8649,7 +8649,7 @@
               setOffsets(input, offsets);
             }
           }
-          var skipSelectionChangeEvent = canUseDOM && "documentMode" in document && document.documentMode <= 11;
+          var skipSelectionChangeEvent = canUseDOM2 && "documentMode" in document && document.documentMode <= 11;
           function registerEvents$3() {
             registerTwoPhaseEvent("onSelect", ["focusout", "contextmenu", "dragend", "focusin", "keydown", "keyup", "mousedown", "mouseup", "selectionchange"]);
           }
@@ -8744,7 +8744,7 @@
           };
           var prefixedEventNames = {};
           var style = {};
-          if (canUseDOM) {
+          if (canUseDOM2) {
             style = document.createElement("div").style;
             if (!("AnimationEvent" in window)) {
               delete vendorPrefixes.animationend.animation;
@@ -9257,7 +9257,7 @@
                 possibleRegistrationNames
               });
             };
-            canDiffStyleForHydrationWarning = canUseDOM && !document.documentMode;
+            canDiffStyleForHydrationWarning = canUseDOM2 && !document.documentMode;
             warnForPropDifference = function(propName, serverValue, clientValue) {
               if (didWarnInvalidHydration) {
                 return;
@@ -10467,17 +10467,17 @@
           }
           function getSuspenseInstanceFallbackErrorDetails(instance) {
             var dataset = instance.nextSibling && instance.nextSibling.dataset;
-            var digest, message, stack;
+            var digest, message2, stack;
             if (dataset) {
               digest = dataset.dgst;
               {
-                message = dataset.msg;
+                message2 = dataset.msg;
                 stack = dataset.stck;
               }
             }
             {
               return {
-                message,
+                message: message2,
                 digest,
                 stack
               };
@@ -11076,8 +11076,8 @@
           function getTreeId() {
             var overflow = treeContextOverflow;
             var idWithLeadingBit = treeContextId;
-            var id = idWithLeadingBit & ~getLeadingBit(idWithLeadingBit);
-            return id.toString(32) + overflow;
+            var id2 = idWithLeadingBit & ~getLeadingBit(idWithLeadingBit);
+            return id2.toString(32) + overflow;
           }
           function pushTreeFork(workInProgress2, totalChildren) {
             warnIfNotHydrating();
@@ -11106,9 +11106,9 @@
               var restOfBaseLength = baseLength - numberOfOverflowBits;
               var restOfLength = getBitLength(totalChildren) + restOfBaseLength;
               var restOfNewBits = slot << restOfBaseLength;
-              var id = restOfNewBits | restOfBaseId;
+              var id2 = restOfNewBits | restOfBaseId;
               var overflow = newOverflow + baseOverflow;
-              treeContextId = 1 << restOfLength | id;
+              treeContextId = 1 << restOfLength | id2;
               treeContextOverflow = overflow;
             } else {
               var newBits = slot << baseLength;
@@ -11131,8 +11131,8 @@
           function getBitLength(number4) {
             return 32 - clz32(number4);
           }
-          function getLeadingBit(id) {
-            return 1 << getBitLength(id) - 1;
+          function getLeadingBit(id2) {
+            return 1 << getBitLength(id2) - 1;
           }
           function popTreeContext(workInProgress2) {
             while (workInProgress2 === treeForkProvider) {
@@ -12437,7 +12437,7 @@
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React17.Component().refs;
+          var emptyRefsObject = new React19.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -12692,11 +12692,11 @@
             var contextType = ctor.contextType;
             {
               if ("contextType" in ctor) {
-                var isValid = (
+                var isValid2 = (
                   // Allow null for conditional declaration
                   contextType === null || contextType !== void 0 && contextType.$$typeof === REACT_CONTEXT_TYPE && contextType._context === void 0
                 );
-                if (!isValid && !didWarnAboutInvalidateContextType.has(ctor)) {
+                if (!isValid2 && !didWarnAboutInvalidateContextType.has(ctor)) {
                   didWarnAboutInvalidateContextType.add(ctor);
                   var addendum = "";
                   if (contextType === void 0) {
@@ -13261,7 +13261,7 @@
               }
             }
             function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-              if (current2 === null || current2.tag !== Fragment3) {
+              if (current2 === null || current2.tag !== Fragment5) {
                 var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
                 created.return = returnFiber;
                 return created;
@@ -13664,7 +13664,7 @@
                 if (child.key === key) {
                   var elementType = element.type;
                   if (elementType === REACT_FRAGMENT_TYPE) {
-                    if (child.tag === Fragment3) {
+                    if (child.tag === Fragment5) {
                       deleteRemainingChildren(returnFiber, child.sibling);
                       var existing = useFiber(child, element.props.children);
                       existing.return = returnFiber;
@@ -14836,26 +14836,26 @@
             var hook = mountWorkInProgressHook();
             var root3 = getWorkInProgressRoot();
             var identifierPrefix = root3.identifierPrefix;
-            var id;
+            var id2;
             if (getIsHydrating()) {
               var treeId = getTreeId();
-              id = ":" + identifierPrefix + "R" + treeId;
+              id2 = ":" + identifierPrefix + "R" + treeId;
               var localId = localIdCounter++;
               if (localId > 0) {
-                id += "H" + localId.toString(32);
+                id2 += "H" + localId.toString(32);
               }
-              id += ":";
+              id2 += ":";
             } else {
               var globalClientId = globalClientIdCounter++;
-              id = ":" + identifierPrefix + "r" + globalClientId.toString(32) + ":";
+              id2 = ":" + identifierPrefix + "r" + globalClientId.toString(32) + ":";
             }
-            hook.memoizedState = id;
-            return id;
+            hook.memoizedState = id2;
+            return id2;
           }
           function updateId() {
             var hook = updateWorkInProgressHook();
-            var id = hook.memoizedState;
-            return id;
+            var id2 = hook.memoizedState;
+            return id2;
           }
           function dispatchReducerAction(fiber, queue, action) {
             {
@@ -17207,16 +17207,16 @@
                 );
               }
               if (isSuspenseInstanceFallback(suspenseInstance)) {
-                var digest, message, stack;
+                var digest, message2, stack;
                 {
                   var _getSuspenseInstanceF = getSuspenseInstanceFallbackErrorDetails(suspenseInstance);
                   digest = _getSuspenseInstanceF.digest;
-                  message = _getSuspenseInstanceF.message;
+                  message2 = _getSuspenseInstanceF.message;
                   stack = _getSuspenseInstanceF.stack;
                 }
                 var error2;
-                if (message) {
-                  error2 = new Error(message);
+                if (message2) {
+                  error2 = new Error(message2);
                 } else {
                   error2 = new Error("The server could not finish this Suspense boundary, likely due to an error during server rendering. Switched to client rendering.");
                 }
@@ -17839,7 +17839,7 @@
                 var _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
                 return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
               }
-              case Fragment3:
+              case Fragment5:
                 return updateFragment(current2, workInProgress2, renderLanes2);
               case Mode:
                 return updateMode(current2, workInProgress2, renderLanes2);
@@ -18112,7 +18112,7 @@
               case SimpleMemoComponent:
               case FunctionComponent:
               case ForwardRef:
-              case Fragment3:
+              case Fragment5:
               case Mode:
               case Profiler:
               case ContextConsumer:
@@ -18853,7 +18853,7 @@
                 switch (finishedWork.tag) {
                   case Profiler: {
                     var passiveEffectDuration = finishedWork.stateNode.passiveEffectDuration;
-                    var _finishedWork$memoize = finishedWork.memoizedProps, id = _finishedWork$memoize.id, onPostCommit = _finishedWork$memoize.onPostCommit;
+                    var _finishedWork$memoize = finishedWork.memoizedProps, id2 = _finishedWork$memoize.id, onPostCommit = _finishedWork$memoize.onPostCommit;
                     var commitTime2 = getCommitTime();
                     var phase = finishedWork.alternate === null ? "mount" : "update";
                     {
@@ -18862,7 +18862,7 @@
                       }
                     }
                     if (typeof onPostCommit === "function") {
-                      onPostCommit(id, phase, passiveEffectDuration, commitTime2);
+                      onPostCommit(id2, phase, passiveEffectDuration, commitTime2);
                     }
                     var parentFiber = finishedWork.return;
                     outer:
@@ -22371,7 +22371,7 @@
             return fiber;
           }
           function createFiberFromFragment(elements, mode, lanes, key) {
-            var fiber = createFiber(Fragment3, elements, key, mode);
+            var fiber = createFiber(Fragment5, elements, key, mode);
             fiber.lanes = lanes;
             return fiber;
           }
@@ -22848,16 +22848,16 @@
             var copyWithSet = function(obj, path, value) {
               return copyWithSetImpl(obj, path, 0, value);
             };
-            var findHook = function(fiber, id) {
+            var findHook = function(fiber, id2) {
               var currentHook2 = fiber.memoizedState;
-              while (currentHook2 !== null && id > 0) {
+              while (currentHook2 !== null && id2 > 0) {
                 currentHook2 = currentHook2.next;
-                id--;
+                id2--;
               }
               return currentHook2;
             };
-            overrideHookState = function(fiber, id, path, value) {
-              var hook = findHook(fiber, id);
+            overrideHookState = function(fiber, id2, path, value) {
+              var hook = findHook(fiber, id2);
               if (hook !== null) {
                 var newState = copyWithSet(hook.memoizedState, path, value);
                 hook.memoizedState = newState;
@@ -22869,8 +22869,8 @@
                 }
               }
             };
-            overrideHookStateDeletePath = function(fiber, id, path) {
-              var hook = findHook(fiber, id);
+            overrideHookStateDeletePath = function(fiber, id2, path) {
+              var hook = findHook(fiber, id2);
               if (hook !== null) {
                 var newState = copyWithDelete(hook.memoizedState, path);
                 hook.memoizedState = newState;
@@ -22882,8 +22882,8 @@
                 }
               }
             };
-            overrideHookStateRenamePath = function(fiber, id, oldPath, newPath) {
-              var hook = findHook(fiber, id);
+            overrideHookStateRenamePath = function(fiber, id2, oldPath, newPath) {
+              var hook = findHook(fiber, id2);
               if (hook !== null) {
                 var newState = copyWithRename(hook.memoizedState, oldPath, newPath);
                 hook.memoizedState = newState;
@@ -23435,7 +23435,7 @@
             rendererPackageName: "react-dom"
           });
           {
-            if (!foundDevTools && canUseDOM && window.top === window.self) {
+            if (!foundDevTools && canUseDOM2 && window.top === window.self) {
               if (navigator.userAgent.indexOf("Chrome") > -1 && navigator.userAgent.indexOf("Edge") === -1 || navigator.userAgent.indexOf("Firefox") > -1) {
                 var protocol = window.location.protocol;
                 if (/^(https?|file):$/.test(protocol)) {
@@ -23515,7 +23515,7 @@
       if (true) {
         (function() {
           "use strict";
-          var React17 = require_react();
+          var React19 = require_react();
           var REACT_ELEMENT_TYPE = Symbol.for("react.element");
           var REACT_PORTAL_TYPE = Symbol.for("react.portal");
           var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
@@ -23541,29 +23541,29 @@
             }
             return null;
           }
-          var ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-          function error(format2) {
+          var ReactSharedInternals = React19.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          function error(format3) {
             {
               {
                 for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
                   args[_key2 - 1] = arguments[_key2];
                 }
-                printWarning("error", format2, args);
+                printWarning("error", format3, args);
               }
             }
           }
-          function printWarning(level, format2, args) {
+          function printWarning(level, format3, args) {
             {
               var ReactDebugCurrentFrame2 = ReactSharedInternals.ReactDebugCurrentFrame;
               var stack = ReactDebugCurrentFrame2.getStackAddendum();
               if (stack !== "") {
-                format2 += "%s";
+                format3 += "%s";
                 args = args.concat([stack]);
               }
               var argsWithFormat = args.map(function(item) {
                 return String(item);
               });
-              argsWithFormat.unshift("Warning: " + format2);
+              argsWithFormat.unshift("Warning: " + format3);
               Function.prototype.apply.call(console[level], console, argsWithFormat);
             }
           }
@@ -23751,8 +23751,8 @@
                 try {
                   throw Error();
                 } catch (x) {
-                  var match = x.stack.trim().match(/\n( *(at )?)/);
-                  prefix = match && match[1] || "";
+                  var match2 = x.stack.trim().match(/\n( *(at )?)/);
+                  prefix = match2 && match2[1] || "";
                 }
               }
               return "\n" + prefix + name;
@@ -24376,11 +24376,11 @@
               return jsxWithValidation(type, props, key, false);
             }
           }
-          var jsx17 = jsxWithValidationDynamic;
-          var jsxs11 = jsxWithValidationStatic;
+          var jsx21 = jsxWithValidationDynamic;
+          var jsxs14 = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
-          exports.jsx = jsx17;
-          exports.jsxs = jsxs11;
+          exports.jsx = jsx21;
+          exports.jsxs = jsxs14;
         })();
       }
     }
@@ -24467,7 +24467,7 @@
           var ContextProvider = REACT_PROVIDER_TYPE;
           var Element = REACT_ELEMENT_TYPE;
           var ForwardRef = REACT_FORWARD_REF_TYPE;
-          var Fragment3 = REACT_FRAGMENT_TYPE;
+          var Fragment5 = REACT_FRAGMENT_TYPE;
           var Lazy = REACT_LAZY_TYPE;
           var Memo = REACT_MEMO_TYPE;
           var Portal = REACT_PORTAL_TYPE;
@@ -24526,7 +24526,7 @@
           exports.ContextProvider = ContextProvider;
           exports.Element = Element;
           exports.ForwardRef = ForwardRef;
-          exports.Fragment = Fragment3;
+          exports.Fragment = Fragment5;
           exports.Lazy = Lazy;
           exports.Memo = Memo;
           exports.Portal = Portal;
@@ -24662,12 +24662,12 @@
         loggedTypeFailures = {};
         has = require_has();
         printWarning = function(text2) {
-          var message = "Warning: " + text2;
+          var message2 = "Warning: " + text2;
           if (typeof console !== "undefined") {
-            console.error(message);
+            console.error(message2);
           }
           try {
-            throw new Error(message);
+            throw new Error(message2);
           } catch (x) {
           }
         };
@@ -24730,12 +24730,12 @@
       };
       if (true) {
         printWarning = function(text2) {
-          var message = "Warning: " + text2;
+          var message2 = "Warning: " + text2;
           if (typeof console !== "undefined") {
-            console.error(message);
+            console.error(message2);
           }
           try {
-            throw new Error(message);
+            throw new Error(message2);
           } catch (x) {
           }
         };
@@ -24781,8 +24781,8 @@
             return x !== x && y !== y;
           }
         }
-        function PropTypeError(message, data) {
-          this.message = message;
+        function PropTypeError(message2, data) {
+          this.message = message2;
           this.data = data && typeof data === "object" ? data : {};
           this.stack = "";
         }
@@ -25338,8 +25338,8 @@
         var abs = Math.abs;
         var atan2 = Math.atan2;
         var cos = Math.cos;
-        var max2 = Math.max;
-        var min2 = Math.min;
+        var max3 = Math.max;
+        var min3 = Math.min;
         var sin = Math.sin;
         var sqrt = Math.sqrt;
         var epsilon = 1e-12;
@@ -25375,7 +25375,7 @@
           return [x0 + t * x10, y0 + t * y10];
         }
         function cornerTangents(x0, y0, x1, y1, r1, rc, cw) {
-          var x01 = x0 - x1, y01 = y0 - y1, lo = (cw ? rc : -rc) / sqrt(x01 * x01 + y01 * y01), ox = lo * y01, oy = -lo * x01, x11 = x0 + ox, y11 = y0 + oy, x10 = x1 + ox, y10 = y1 + oy, x00 = (x11 + x10) / 2, y00 = (y11 + y10) / 2, dx = x10 - x11, dy = y10 - y11, d2 = dx * dx + dy * dy, r = r1 - rc, D2 = x11 * y10 - x10 * y11, d = (dy < 0 ? -1 : 1) * sqrt(max2(0, r * r * d2 - D2 * D2)), cx0 = (D2 * dy - dx * d) / d2, cy0 = (-D2 * dx - dy * d) / d2, cx1 = (D2 * dy + dx * d) / d2, cy1 = (-D2 * dx + dy * d) / d2, dx0 = cx0 - x00, dy0 = cy0 - y00, dx1 = cx1 - x00, dy1 = cy1 - y00;
+          var x01 = x0 - x1, y01 = y0 - y1, lo = (cw ? rc : -rc) / sqrt(x01 * x01 + y01 * y01), ox = lo * y01, oy = -lo * x01, x11 = x0 + ox, y11 = y0 + oy, x10 = x1 + ox, y10 = y1 + oy, x00 = (x11 + x10) / 2, y00 = (y11 + y10) / 2, dx = x10 - x11, dy = y10 - y11, d2 = dx * dx + dy * dy, r = r1 - rc, D2 = x11 * y10 - x10 * y11, d = (dy < 0 ? -1 : 1) * sqrt(max3(0, r * r * d2 - D2 * D2)), cx0 = (D2 * dy - dx * d) / d2, cy0 = (-D2 * dx - dy * d) / d2, cx1 = (D2 * dy + dx * d) / d2, cy1 = (-D2 * dx + dy * d) / d2, dx0 = cx0 - x00, dy0 = cy0 - y00, dx1 = cx1 - x00, dy1 = cy1 - y00;
           if (dx0 * dx0 + dy0 * dy0 > dx1 * dx1 + dy1 * dy1)
             cx0 = cx1, cy0 = cy1;
           return {
@@ -25405,7 +25405,7 @@
                 context.arc(0, 0, r0, a1, a0, cw);
               }
             } else {
-              var a01 = a0, a11 = a1, a00 = a0, a10 = a1, da0 = da, da1 = da, ap = padAngle.apply(this, arguments) / 2, rp = ap > epsilon && (padRadius ? +padRadius.apply(this, arguments) : sqrt(r0 * r0 + r1 * r1)), rc = min2(abs(r1 - r0) / 2, +cornerRadius.apply(this, arguments)), rc0 = rc, rc1 = rc, t03, t13;
+              var a01 = a0, a11 = a1, a00 = a0, a10 = a1, da0 = da, da1 = da, ap = padAngle.apply(this, arguments) / 2, rp = ap > epsilon && (padRadius ? +padRadius.apply(this, arguments) : sqrt(r0 * r0 + r1 * r1)), rc = min3(abs(r1 - r0) / 2, +cornerRadius.apply(this, arguments)), rc0 = rc, rc1 = rc, t03, t13;
               if (rp > epsilon) {
                 var p0 = asin(rp / r0 * sin(ap)), p1 = asin(rp / r1 * sin(ap));
                 if ((da0 -= p0 * 2) > epsilon)
@@ -25422,8 +25422,8 @@
                 var x11 = r1 * cos(a11), y11 = r1 * sin(a11), x00 = r0 * cos(a00), y00 = r0 * sin(a00), oc;
                 if (da < pi && (oc = intersect(x01, y01, x00, y00, x11, y11, x10, y10))) {
                   var ax = x01 - oc[0], ay = y01 - oc[1], bx = x11 - oc[0], by = y11 - oc[1], kc = 1 / sin(acos((ax * bx + ay * by) / (sqrt(ax * ax + ay * ay) * sqrt(bx * bx + by * by))) / 2), lc = sqrt(oc[0] * oc[0] + oc[1] * oc[1]);
-                  rc0 = min2(rc, (r0 - lc) / (kc - 1));
-                  rc1 = min2(rc, (r1 - lc) / (kc + 1));
+                  rc0 = min3(rc, (r0 - lc) / (kc - 1));
+                  rc1 = min3(rc, (r1 - lc) / (kc + 1));
                 }
               }
               if (!(da1 > epsilon))
@@ -27259,8 +27259,8 @@
           return a & b;
         }
       };
-      Mexp.Exception = function(message) {
-        this.message = message;
+      Mexp.Exception = function(message2) {
+        this.message = message2;
       };
       module.exports = Mexp;
     }
@@ -27438,7 +27438,7 @@
         ["asin", "acos", "atan", "cosh", "root", "tanh", "sinh"],
         ["acosh", "atanh", "asinh", "Sigma"]
       ];
-      function match(str1, str2, i2, x) {
+      function match2(str1, str2, i2, x) {
         for (var f = 0; f < x; f++) {
           if (str1[i2 + f] !== str2[f]) {
             return false;
@@ -27510,7 +27510,7 @@
             if (newAr[x] === void 0)
               continue;
             for (y = 0; y < newAr[x].length; y++) {
-              if (match(string, newAr[x][y], i2, x)) {
+              if (match2(string, newAr[x][y], i2, x)) {
                 key = newAr[x][y];
                 y = newAr[x].length;
                 x = 0;
@@ -28634,12 +28634,12 @@
       exports.default = Line3;
       var _react = _interopRequireDefault(require_react());
       var _classnames = _interopRequireDefault(require_classnames());
-      var _excluded16 = ["from", "to", "fill", "className", "innerRef"];
+      var _excluded17 = ["from", "to", "fill", "className", "innerRef"];
       function _interopRequireDefault(obj) {
         return obj && obj.__esModule ? obj : { default: obj };
       }
-      function _extends18() {
-        _extends18 = Object.assign ? Object.assign.bind() : function(target) {
+      function _extends20() {
+        _extends20 = Object.assign ? Object.assign.bind() : function(target) {
           for (var i = 1; i < arguments.length; i++) {
             var source = arguments[i];
             for (var key in source) {
@@ -28650,9 +28650,9 @@
           }
           return target;
         };
-        return _extends18.apply(this, arguments);
+        return _extends20.apply(this, arguments);
       }
-      function _objectWithoutPropertiesLoose14(source, excluded) {
+      function _objectWithoutPropertiesLoose15(source, excluded) {
         if (source == null)
           return {};
         var target = {};
@@ -28673,9 +28673,9 @@
         } : _ref$from, _ref$to = _ref.to, to = _ref$to === void 0 ? {
           x: 1,
           y: 1
-        } : _ref$to, _ref$fill = _ref.fill, fill = _ref$fill === void 0 ? "transparent" : _ref$fill, className = _ref.className, innerRef = _ref.innerRef, restProps = _objectWithoutPropertiesLoose14(_ref, _excluded16);
+        } : _ref$to, _ref$fill = _ref.fill, fill = _ref$fill === void 0 ? "transparent" : _ref$fill, className = _ref.className, innerRef = _ref.innerRef, restProps = _objectWithoutPropertiesLoose15(_ref, _excluded17);
         var isRectilinear = from.x === to.x || from.y === to.y;
-        return /* @__PURE__ */ _react.default.createElement("line", _extends18({
+        return /* @__PURE__ */ _react.default.createElement("line", _extends20({
           ref: innerRef,
           className: (0, _classnames.default)("visx-line", className),
           x1: from.x,
@@ -28686,6 +28686,193 @@
           shapeRendering: isRectilinear ? "crispEdges" : "auto"
         }, restProps));
       }
+    }
+  });
+
+  // node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/now.js
+  var require_now = __commonJS({
+    "node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/now.js"(exports, module) {
+      var root2 = require_root();
+      var now = function() {
+        return root2.Date.now();
+      };
+      module.exports = now;
+    }
+  });
+
+  // node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/_trimmedEndIndex.js
+  var require_trimmedEndIndex = __commonJS({
+    "node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/_trimmedEndIndex.js"(exports, module) {
+      var reWhitespace = /\s/;
+      function trimmedEndIndex(string) {
+        var index = string.length;
+        while (index-- && reWhitespace.test(string.charAt(index))) {
+        }
+        return index;
+      }
+      module.exports = trimmedEndIndex;
+    }
+  });
+
+  // node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/_baseTrim.js
+  var require_baseTrim = __commonJS({
+    "node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/_baseTrim.js"(exports, module) {
+      var trimmedEndIndex = require_trimmedEndIndex();
+      var reTrimStart = /^\s+/;
+      function baseTrim(string) {
+        return string ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, "") : string;
+      }
+      module.exports = baseTrim;
+    }
+  });
+
+  // node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/isObjectLike.js
+  var require_isObjectLike = __commonJS({
+    "node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/isObjectLike.js"(exports, module) {
+      function isObjectLike(value) {
+        return value != null && typeof value == "object";
+      }
+      module.exports = isObjectLike;
+    }
+  });
+
+  // node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/isSymbol.js
+  var require_isSymbol = __commonJS({
+    "node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/isSymbol.js"(exports, module) {
+      var baseGetTag = require_baseGetTag();
+      var isObjectLike = require_isObjectLike();
+      var symbolTag = "[object Symbol]";
+      function isSymbol(value) {
+        return typeof value == "symbol" || isObjectLike(value) && baseGetTag(value) == symbolTag;
+      }
+      module.exports = isSymbol;
+    }
+  });
+
+  // node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/toNumber.js
+  var require_toNumber = __commonJS({
+    "node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/toNumber.js"(exports, module) {
+      var baseTrim = require_baseTrim();
+      var isObject = require_isObject();
+      var isSymbol = require_isSymbol();
+      var NAN = 0 / 0;
+      var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+      var reIsBinary = /^0b[01]+$/i;
+      var reIsOctal = /^0o[0-7]+$/i;
+      var freeParseInt = parseInt;
+      function toNumber(value) {
+        if (typeof value == "number") {
+          return value;
+        }
+        if (isSymbol(value)) {
+          return NAN;
+        }
+        if (isObject(value)) {
+          var other = typeof value.valueOf == "function" ? value.valueOf() : value;
+          value = isObject(other) ? other + "" : other;
+        }
+        if (typeof value != "string") {
+          return value === 0 ? value : +value;
+        }
+        value = baseTrim(value);
+        var isBinary = reIsBinary.test(value);
+        return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+      }
+      module.exports = toNumber;
+    }
+  });
+
+  // node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/debounce.js
+  var require_debounce = __commonJS({
+    "node_modules/.pnpm/lodash@4.17.21/node_modules/lodash/debounce.js"(exports, module) {
+      var isObject = require_isObject();
+      var now = require_now();
+      var toNumber = require_toNumber();
+      var FUNC_ERROR_TEXT = "Expected a function";
+      var nativeMax = Math.max;
+      var nativeMin = Math.min;
+      function debounce2(func, wait, options) {
+        var lastArgs, lastThis, maxWait, result, timerId, lastCallTime, lastInvokeTime = 0, leading = false, maxing = false, trailing = true;
+        if (typeof func != "function") {
+          throw new TypeError(FUNC_ERROR_TEXT);
+        }
+        wait = toNumber(wait) || 0;
+        if (isObject(options)) {
+          leading = !!options.leading;
+          maxing = "maxWait" in options;
+          maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+          trailing = "trailing" in options ? !!options.trailing : trailing;
+        }
+        function invokeFunc(time2) {
+          var args = lastArgs, thisArg = lastThis;
+          lastArgs = lastThis = void 0;
+          lastInvokeTime = time2;
+          result = func.apply(thisArg, args);
+          return result;
+        }
+        function leadingEdge(time2) {
+          lastInvokeTime = time2;
+          timerId = setTimeout(timerExpired, wait);
+          return leading ? invokeFunc(time2) : result;
+        }
+        function remainingWait(time2) {
+          var timeSinceLastCall = time2 - lastCallTime, timeSinceLastInvoke = time2 - lastInvokeTime, timeWaiting = wait - timeSinceLastCall;
+          return maxing ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke) : timeWaiting;
+        }
+        function shouldInvoke(time2) {
+          var timeSinceLastCall = time2 - lastCallTime, timeSinceLastInvoke = time2 - lastInvokeTime;
+          return lastCallTime === void 0 || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
+        }
+        function timerExpired() {
+          var time2 = now();
+          if (shouldInvoke(time2)) {
+            return trailingEdge(time2);
+          }
+          timerId = setTimeout(timerExpired, remainingWait(time2));
+        }
+        function trailingEdge(time2) {
+          timerId = void 0;
+          if (trailing && lastArgs) {
+            return invokeFunc(time2);
+          }
+          lastArgs = lastThis = void 0;
+          return result;
+        }
+        function cancel() {
+          if (timerId !== void 0) {
+            clearTimeout(timerId);
+          }
+          lastInvokeTime = 0;
+          lastArgs = lastCallTime = lastThis = timerId = void 0;
+        }
+        function flush() {
+          return timerId === void 0 ? result : trailingEdge(now());
+        }
+        function debounced() {
+          var time2 = now(), isInvoking = shouldInvoke(time2);
+          lastArgs = arguments;
+          lastThis = this;
+          lastCallTime = time2;
+          if (isInvoking) {
+            if (timerId === void 0) {
+              return leadingEdge(lastCallTime);
+            }
+            if (maxing) {
+              clearTimeout(timerId);
+              timerId = setTimeout(timerExpired, wait);
+              return invokeFunc(lastCallTime);
+            }
+          }
+          if (timerId === void 0) {
+            timerId = setTimeout(timerExpired, wait);
+          }
+          return result;
+        }
+        debounced.cancel = cancel;
+        debounced.flush = flush;
+        return debounced;
+      }
+      module.exports = debounce2;
     }
   });
 
@@ -28748,17 +28935,17 @@
     }
     return getUrlBasedHistory(createBrowserLocation, createBrowserHref, null, options);
   }
-  function invariant(value, message) {
+  function invariant(value, message2) {
     if (value === false || value === null || typeof value === "undefined") {
-      throw new Error(message);
+      throw new Error(message2);
     }
   }
-  function warning(cond, message) {
+  function warning(cond, message2) {
     if (!cond) {
       if (typeof console !== "undefined")
-        console.warn(message);
+        console.warn(message2);
       try {
-        throw new Error(message);
+        throw new Error(message2);
       } catch (e) {
       }
     }
@@ -28965,21 +29152,21 @@
     }
     return routes2.map((route, index) => {
       let treePath = [...parentPath, index];
-      let id = typeof route.id === "string" ? route.id : treePath.join("-");
+      let id2 = typeof route.id === "string" ? route.id : treePath.join("-");
       invariant(route.index !== true || !route.children, "Cannot specify children on an index route");
-      invariant(!manifest[id], 'Found a route id collision on id "' + id + `".  Route id's must be globally unique within Data Router usages`);
+      invariant(!manifest[id2], 'Found a route id collision on id "' + id2 + `".  Route id's must be globally unique within Data Router usages`);
       if (isIndexRoute(route)) {
         let indexRoute = _extends({}, route, mapRouteProperties2(route), {
-          id
+          id: id2
         });
-        manifest[id] = indexRoute;
+        manifest[id2] = indexRoute;
         return indexRoute;
       } else {
         let pathOrLayoutRoute = _extends({}, route, mapRouteProperties2(route), {
-          id,
+          id: id2,
           children: void 0
         });
-        manifest[id] = pathOrLayoutRoute;
+        manifest[id2] = pathOrLayoutRoute;
         if (route.children) {
           pathOrLayoutRoute.children = convertRoutesToDataRoutes(route.children, mapRouteProperties2, treePath, manifest);
         }
@@ -29005,12 +29192,12 @@
     }
     return matches;
   }
-  function convertRouteMatchToUiMatch(match, loaderData) {
+  function convertRouteMatchToUiMatch(match2, loaderData) {
     let {
       route,
       pathname,
       params
-    } = match;
+    } = match2;
     return {
       id: route.id,
       pathname,
@@ -29136,24 +29323,24 @@
       let meta = routesMeta[i];
       let end = i === routesMeta.length - 1;
       let remainingPathname = matchedPathname === "/" ? pathname : pathname.slice(matchedPathname.length) || "/";
-      let match = matchPath({
+      let match2 = matchPath({
         path: meta.relativePath,
         caseSensitive: meta.caseSensitive,
         end
       }, remainingPathname);
-      if (!match)
+      if (!match2)
         return null;
-      Object.assign(matchedParams, match.params);
+      Object.assign(matchedParams, match2.params);
       let route = meta.route;
       matches.push({
         // TODO: Can this as be avoided?
         params: matchedParams,
-        pathname: joinPaths([matchedPathname, match.pathname]),
-        pathnameBase: normalizePathname(joinPaths([matchedPathname, match.pathnameBase])),
+        pathname: joinPaths([matchedPathname, match2.pathname]),
+        pathnameBase: normalizePathname(joinPaths([matchedPathname, match2.pathnameBase])),
         route
       });
-      if (match.pathnameBase !== "/") {
-        matchedPathname = joinPaths([matchedPathname, match.pathnameBase]);
+      if (match2.pathnameBase !== "/") {
+        matchedPathname = joinPaths([matchedPathname, match2.pathnameBase]);
       }
     }
     return matches;
@@ -29167,12 +29354,12 @@
       };
     }
     let [matcher, compiledParams] = compilePath(pattern.path, pattern.caseSensitive, pattern.end);
-    let match = pathname.match(matcher);
-    if (!match)
+    let match2 = pathname.match(matcher);
+    if (!match2)
       return null;
-    let matchedPathname = match[0];
+    let matchedPathname = match2[0];
     let pathnameBase = matchedPathname.replace(/(.)\/+$/, "$1");
-    let captureGroups = match.slice(1);
+    let captureGroups = match2.slice(1);
     let params = compiledParams.reduce((memo2, _ref, index) => {
       let {
         paramName,
@@ -29281,14 +29468,14 @@
     return "Cannot include a '" + char + "' character in a manually specified " + ("`to." + field + "` field [" + JSON.stringify(path) + "].  Please separate it out to the ") + ("`to." + dest + "` field. Alternatively you may provide the full path as ") + 'a string in <Link to="..."> and the router will parse it for you.';
   }
   function getPathContributingMatches(matches) {
-    return matches.filter((match, index) => index === 0 || match.route.path && match.route.path.length > 0);
+    return matches.filter((match2, index) => index === 0 || match2.route.path && match2.route.path.length > 0);
   }
   function getResolveToMatches(matches, v7_relativeSplatPath) {
     let pathMatches = getPathContributingMatches(matches);
     if (v7_relativeSplatPath) {
-      return pathMatches.map((match, idx) => idx === matches.length - 1 ? match.pathname : match.pathnameBase);
+      return pathMatches.map((match2, idx) => idx === matches.length - 1 ? match2.pathname : match2.pathnameBase);
     }
-    return pathMatches.map((match) => match.pathnameBase);
+    return pathMatches.map((match2) => match2.pathnameBase);
   }
   function resolveTo(toArg, routePathnames, locationPathname, isPathRelative) {
     if (isPathRelative === void 0) {
@@ -30021,8 +30208,8 @@
       });
       if (future.v7_partialHydration && initialHydration && state.errors) {
         Object.entries(state.errors).filter((_ref2) => {
-          let [id] = _ref2;
-          return !matchesToLoad.some((m) => m.route.id === id);
+          let [id2] = _ref2;
+          return !matchesToLoad.some((m) => m.route.id === id2);
         }).forEach((_ref3) => {
           let [routeId, error] = _ref3;
           errors = Object.assign(errors || {}, {
@@ -30069,22 +30256,22 @@
         });
         return;
       }
-      let match = getTargetMatch(matches, path);
+      let match2 = getTargetMatch(matches, path);
       pendingPreventScrollReset = (opts && opts.preventScrollReset) === true;
       if (submission && isMutationMethod(submission.formMethod)) {
-        handleFetcherAction(key, routeId, path, match, matches, flushSync, submission);
+        handleFetcherAction(key, routeId, path, match2, matches, flushSync, submission);
         return;
       }
       fetchLoadMatches.set(key, {
         routeId,
         path
       });
-      handleFetcherLoader(key, routeId, path, match, matches, flushSync, submission);
+      handleFetcherLoader(key, routeId, path, match2, matches, flushSync, submission);
     }
-    async function handleFetcherAction(key, routeId, path, match, requestMatches, flushSync, submission) {
+    async function handleFetcherAction(key, routeId, path, match2, requestMatches, flushSync, submission) {
       interruptActiveLoads();
       fetchLoadMatches.delete(key);
-      if (!match.route.action && !match.route.lazy) {
+      if (!match2.route.action && !match2.route.lazy) {
         let error = getInternalRouterError(405, {
           method: submission.formMethod,
           pathname: path,
@@ -30103,7 +30290,7 @@
       let fetchRequest = createClientSideRequest(init.history, path, abortController.signal, submission);
       fetchControllers.set(key, abortController);
       let originatingLoadId = incrementingLoadId;
-      let actionResults = await callDataStrategy("action", fetchRequest, [match], requestMatches);
+      let actionResults = await callDataStrategy("action", fetchRequest, [match2], requestMatches);
       let actionResult = actionResults[0];
       if (fetchRequest.signal.aborted) {
         if (fetchControllers.get(key) === abortController) {
@@ -30149,7 +30336,7 @@
       fetchReloadIds.set(key, loadId);
       let loadFetcher = getLoadingFetcher(submission, actionResult.data);
       state.fetchers.set(key, loadFetcher);
-      let [matchesToLoad, revalidatingFetchers] = getMatchesToLoad(init.history, state, matches, submission, nextLocation, false, future.unstable_skipActionErrorRevalidation, isRevalidationRequired, cancelledDeferredRoutes, cancelledFetcherLoads, deletedFetchers, fetchLoadMatches, fetchRedirectIds, routesToUse, basename, [match.route.id, actionResult]);
+      let [matchesToLoad, revalidatingFetchers] = getMatchesToLoad(init.history, state, matches, submission, nextLocation, false, future.unstable_skipActionErrorRevalidation, isRevalidationRequired, cancelledDeferredRoutes, cancelledFetcherLoads, deletedFetchers, fetchLoadMatches, fetchRedirectIds, routesToUse, basename, [match2.route.id, actionResult]);
       revalidatingFetchers.filter((rf) => rf.key !== key).forEach((rf) => {
         let staleKey = rf.key;
         let existingFetcher2 = state.fetchers.get(staleKey);
@@ -30213,7 +30400,7 @@
         isRevalidationRequired = false;
       }
     }
-    async function handleFetcherLoader(key, routeId, path, match, matches, flushSync, submission) {
+    async function handleFetcherLoader(key, routeId, path, match2, matches, flushSync, submission) {
       let existingFetcher = state.fetchers.get(key);
       updateFetcherState(key, getLoadingFetcher(submission, existingFetcher ? existingFetcher.data : void 0), {
         flushSync
@@ -30222,7 +30409,7 @@
       let fetchRequest = createClientSideRequest(init.history, path, abortController.signal);
       fetchControllers.set(key, abortController);
       let originatingLoadId = incrementingLoadId;
-      let results = await callDataStrategy("loader", fetchRequest, [match], matches);
+      let results = await callDataStrategy("loader", fetchRequest, [match2], matches);
       let result = results[0];
       if (isDeferredResult(result)) {
         result = await resolveDeferredData(result, fetchRequest.signal, true) || result;
@@ -30460,8 +30647,8 @@
     }
     function abortStaleFetchLoads(landedId) {
       let yeetedKeys = [];
-      for (let [key, id] of fetchReloadIds) {
-        if (id < landedId) {
+      for (let [key, id2] of fetchReloadIds) {
+        if (id2 < landedId) {
           let fetcher = state.fetchers.get(key);
           invariant(fetcher, "Expected fetcher: " + key);
           if (fetcher.state === "loading") {
@@ -30625,10 +30812,10 @@
     let activeRouteMatch;
     if (fromRouteId) {
       contextualMatches = [];
-      for (let match of matches) {
-        contextualMatches.push(match);
-        if (match.route.id === fromRouteId) {
-          activeRouteMatch = match;
+      for (let match2 of matches) {
+        contextualMatches.push(match2);
+        if (match2.route.id === fromRouteId) {
+          activeRouteMatch = match2;
           break;
         }
       }
@@ -30782,10 +30969,10 @@
     let boundaryMatches = boundaryId ? getLoaderMatchesUntilBoundary(matches, boundaryId) : matches;
     let actionStatus = pendingActionResult ? pendingActionResult[1].statusCode : void 0;
     let shouldSkipRevalidation = skipActionErrorRevalidation && actionStatus && actionStatus >= 400;
-    let navigationMatches = boundaryMatches.filter((match, index) => {
+    let navigationMatches = boundaryMatches.filter((match2, index) => {
       let {
         route
-      } = match;
+      } = match2;
       if (route.lazy) {
         return true;
       }
@@ -30799,12 +30986,12 @@
         return state.loaderData[route.id] === void 0 && // Don't re-run if the loader ran and threw an error
         (!state.errors || state.errors[route.id] === void 0);
       }
-      if (isNewLoader(state.loaderData, state.matches[index], match) || cancelledDeferredRoutes.some((id) => id === match.route.id)) {
+      if (isNewLoader(state.loaderData, state.matches[index], match2) || cancelledDeferredRoutes.some((id2) => id2 === match2.route.id)) {
         return true;
       }
       let currentRouteMatch = state.matches[index];
-      let nextRouteMatch = match;
-      return shouldRevalidateLoader(match, _extends({
+      let nextRouteMatch = match2;
+      return shouldRevalidateLoader(match2, _extends({
         currentUrl,
         currentParams: currentRouteMatch.params,
         nextUrl,
@@ -30870,22 +31057,22 @@
     });
     return [navigationMatches, revalidatingFetchers];
   }
-  function isNewLoader(currentLoaderData, currentMatch, match) {
+  function isNewLoader(currentLoaderData, currentMatch, match2) {
     let isNew = (
       // [a] -> [a, b]
       !currentMatch || // [a, b] -> [a, c]
-      match.route.id !== currentMatch.route.id
+      match2.route.id !== currentMatch.route.id
     );
-    let isMissingData = currentLoaderData[match.route.id] === void 0;
+    let isMissingData = currentLoaderData[match2.route.id] === void 0;
     return isNew || isMissingData;
   }
-  function isNewRouteInstance(currentMatch, match) {
+  function isNewRouteInstance(currentMatch, match2) {
     let currentPath = currentMatch.route.path;
     return (
       // param change for this match, /users/123 -> /users/456
-      currentMatch.pathname !== match.pathname || // splat param changed, which is not present in match.path
+      currentMatch.pathname !== match2.pathname || // splat param changed, which is not present in match.path
       // e.g. /files/images/avatar.jpg -> files/finances.xls
-      currentPath != null && currentPath.endsWith("*") && currentMatch.params["*"] !== match.params["*"]
+      currentPath != null && currentPath.endsWith("*") && currentMatch.params["*"] !== match2.params["*"]
     );
   }
   function shouldRevalidateLoader(loaderMatch, arg) {
@@ -30930,16 +31117,16 @@
     let routeIdsToLoad = matchesToLoad.reduce((acc, m) => acc.add(m.route.id), /* @__PURE__ */ new Set());
     let loadedMatches = /* @__PURE__ */ new Set();
     let results = await dataStrategyImpl({
-      matches: matches.map((match) => {
-        let shouldLoad = routeIdsToLoad.has(match.route.id);
+      matches: matches.map((match2) => {
+        let shouldLoad = routeIdsToLoad.has(match2.route.id);
         let resolve = (handlerOverride) => {
-          loadedMatches.add(match.route.id);
-          return shouldLoad ? callLoaderOrAction(type, request, match, manifest, mapRouteProperties2, handlerOverride, requestContext) : Promise.resolve({
+          loadedMatches.add(match2.route.id);
+          return shouldLoad ? callLoaderOrAction(type, request, match2, manifest, mapRouteProperties2, handlerOverride, requestContext) : Promise.resolve({
             type: ResultType.data,
             result: void 0
           });
         };
-        return _extends({}, match, {
+        return _extends({}, match2, {
           shouldLoad,
           resolve
         });
@@ -30951,7 +31138,7 @@
     matches.forEach((m) => invariant(loadedMatches.has(m.route.id), '`match.resolve()` was not called for route id "' + m.route.id + '". You must call `match.resolve()` on every match passed to `dataStrategy` to ensure all routes are properly loaded.'));
     return results.filter((_, i) => routeIdsToLoad.has(matches[i].route.id));
   }
-  async function callLoaderOrAction(type, request, match, manifest, mapRouteProperties2, handlerOverride, staticContext) {
+  async function callLoaderOrAction(type, request, match2, manifest, mapRouteProperties2, handlerOverride, staticContext) {
     let result;
     let onReject;
     let runHandler = (handler) => {
@@ -30961,11 +31148,11 @@
       request.signal.addEventListener("abort", onReject);
       let actualHandler = (ctx) => {
         if (typeof handler !== "function") {
-          return Promise.reject(new Error("You cannot call the handler for a route which defines a boolean " + ('"' + type + '" [routeId: ' + match.route.id + "]")));
+          return Promise.reject(new Error("You cannot call the handler for a route which defines a boolean " + ('"' + type + '" [routeId: ' + match2.route.id + "]")));
         }
         return handler({
           request,
-          params: match.params,
+          params: match2.params,
           context: staticContext
         }, ...ctx !== void 0 ? [ctx] : []);
       };
@@ -30991,8 +31178,8 @@
       return Promise.race([handlerPromise, abortPromise]);
     };
     try {
-      let handler = match.route[type];
-      if (match.route.lazy) {
+      let handler = match2.route[type];
+      if (match2.route.lazy) {
         if (handler) {
           let handlerError;
           let [value] = await Promise.all([
@@ -31002,15 +31189,15 @@
             runHandler(handler).catch((e) => {
               handlerError = e;
             }),
-            loadLazyRouteModule(match.route, mapRouteProperties2, manifest)
+            loadLazyRouteModule(match2.route, mapRouteProperties2, manifest)
           ]);
           if (handlerError !== void 0) {
             throw handlerError;
           }
           result = value;
         } else {
-          await loadLazyRouteModule(match.route, mapRouteProperties2, manifest);
-          handler = match.route[type];
+          await loadLazyRouteModule(match2.route, mapRouteProperties2, manifest);
+          handler = match2.route[type];
           if (handler) {
             result = await runHandler(handler);
           } else if (type === "action") {
@@ -31019,7 +31206,7 @@
             throw getInternalRouterError(405, {
               method: request.method,
               pathname,
-              routeId: match.route.id
+              routeId: match2.route.id
             });
           } else {
             return {
@@ -31037,7 +31224,7 @@
       } else {
         result = await runHandler(handler);
       }
-      invariant(result.result !== void 0, "You defined " + (type === "action" ? "an action" : "a loader") + " for route " + ('"' + match.route.id + "\" but didn't return anything from your `" + type + "` ") + "function. Please return a value or `null`.");
+      invariant(result.result !== void 0, "You defined " + (type === "action" ? "an action" : "a loader") + " for route " + ('"' + match2.route.id + "\" but didn't return anything from your `" + type + "` ") + "function. Please return a value or `null`.");
     } catch (e) {
       return {
         type: ResultType.error,
@@ -31181,7 +31368,7 @@
     let loaderHeaders = {};
     let pendingError = pendingActionResult && isErrorResult(pendingActionResult[1]) ? pendingActionResult[1].error : void 0;
     results.forEach((result, index) => {
-      let id = matchesToLoad[index].route.id;
+      let id2 = matchesToLoad[index].route.id;
       invariant(!isRedirectResult(result), "Cannot handle redirect results in processLoaderData");
       if (isErrorResult(result)) {
         let error = result.error;
@@ -31191,38 +31378,38 @@
         }
         errors = errors || {};
         if (skipLoaderErrorBubbling) {
-          errors[id] = error;
+          errors[id2] = error;
         } else {
-          let boundaryMatch = findNearestBoundary(matches, id);
+          let boundaryMatch = findNearestBoundary(matches, id2);
           if (errors[boundaryMatch.route.id] == null) {
             errors[boundaryMatch.route.id] = error;
           }
         }
-        loaderData[id] = void 0;
+        loaderData[id2] = void 0;
         if (!foundError) {
           foundError = true;
           statusCode = isRouteErrorResponse(result.error) ? result.error.status : 500;
         }
         if (result.headers) {
-          loaderHeaders[id] = result.headers;
+          loaderHeaders[id2] = result.headers;
         }
       } else {
         if (isDeferredResult(result)) {
-          activeDeferreds.set(id, result.deferredData);
-          loaderData[id] = result.deferredData.data;
+          activeDeferreds.set(id2, result.deferredData);
+          loaderData[id2] = result.deferredData.data;
           if (result.statusCode != null && result.statusCode !== 200 && !foundError) {
             statusCode = result.statusCode;
           }
           if (result.headers) {
-            loaderHeaders[id] = result.headers;
+            loaderHeaders[id2] = result.headers;
           }
         } else {
-          loaderData[id] = result.data;
+          loaderData[id2] = result.data;
           if (result.statusCode && result.statusCode !== 200 && !foundError) {
             statusCode = result.statusCode;
           }
           if (result.headers) {
-            loaderHeaders[id] = result.headers;
+            loaderHeaders[id2] = result.headers;
           }
         }
       }
@@ -31256,7 +31443,7 @@
     for (let index = 0; index < revalidatingFetchers.length; index++) {
       let {
         key,
-        match,
+        match: match2,
         controller
       } = revalidatingFetchers[index];
       invariant(fetcherResults !== void 0 && fetcherResults[index] !== void 0, "Did not find corresponding fetcher result");
@@ -31264,7 +31451,7 @@
       if (controller && controller.signal.aborted) {
         continue;
       } else if (isErrorResult(result)) {
-        let boundaryMatch = findNearestBoundary(state.matches, match == null ? void 0 : match.route.id);
+        let boundaryMatch = findNearestBoundary(state.matches, match2 == null ? void 0 : match2.route.id);
         if (!(errors && errors[boundaryMatch.route.id])) {
           errors = _extends({}, errors, {
             [boundaryMatch.route.id]: result.error
@@ -31287,16 +31474,16 @@
   }
   function mergeLoaderData(loaderData, newLoaderData, matches, errors) {
     let mergedLoaderData = _extends({}, newLoaderData);
-    for (let match of matches) {
-      let id = match.route.id;
-      if (newLoaderData.hasOwnProperty(id)) {
-        if (newLoaderData[id] !== void 0) {
-          mergedLoaderData[id] = newLoaderData[id];
+    for (let match2 of matches) {
+      let id2 = match2.route.id;
+      if (newLoaderData.hasOwnProperty(id2)) {
+        if (newLoaderData[id2] !== void 0) {
+          mergedLoaderData[id2] = newLoaderData[id2];
         }
-      } else if (loaderData[id] !== void 0 && match.route.loader) {
-        mergedLoaderData[id] = loaderData[id];
+      } else if (loaderData[id2] !== void 0 && match2.route.loader) {
+        mergedLoaderData[id2] = loaderData[id2];
       }
-      if (errors && errors.hasOwnProperty(id)) {
+      if (errors && errors.hasOwnProperty(id2)) {
         break;
       }
     }
@@ -31425,12 +31612,12 @@
   async function resolveDeferredResults(currentMatches, matchesToLoad, results, signals, isFetcher, currentLoaderData) {
     for (let index = 0; index < results.length; index++) {
       let result = results[index];
-      let match = matchesToLoad[index];
-      if (!match) {
+      let match2 = matchesToLoad[index];
+      if (!match2) {
         continue;
       }
-      let currentMatch = currentMatches.find((m) => m.route.id === match.route.id);
-      let isRevalidatingLoader = currentMatch != null && !isNewRouteInstance(currentMatch, match) && (currentLoaderData && currentLoaderData[match.route.id]) !== void 0;
+      let currentMatch = currentMatches.find((m) => m.route.id === match2.route.id);
+      let isRevalidatingLoader = currentMatch != null && !isNewRouteInstance(currentMatch, match2) && (currentLoaderData && currentLoaderData[match2.route.id]) !== void 0;
       if (isDeferredResult(result) && (isFetcher || isRevalidatingLoader)) {
         let signal = signals[index];
         invariant(signal, "Expected an AbortSignal for revalidating fetcher deferred result");
@@ -31861,17 +32048,17 @@
       true ? warning(parentRoute || matches != null, 'No routes matched location "' + location.pathname + location.search + location.hash + '" ') : void 0;
       true ? warning(matches == null || matches[matches.length - 1].route.element !== void 0 || matches[matches.length - 1].route.Component !== void 0 || matches[matches.length - 1].route.lazy !== void 0, 'Matched leaf route at location "' + location.pathname + location.search + location.hash + '" does not have an element or Component. This means it will render an <Outlet /> with a null value by default resulting in an "empty" page.') : void 0;
     }
-    let renderedMatches = _renderMatches(matches && matches.map((match) => Object.assign({}, match, {
-      params: Object.assign({}, parentParams, match.params),
+    let renderedMatches = _renderMatches(matches && matches.map((match2) => Object.assign({}, match2, {
+      params: Object.assign({}, parentParams, match2.params),
       pathname: joinPaths([
         parentPathnameBase,
         // Re-encode pathnames that were decoded inside matchRoutes
-        navigator2.encodeLocation ? navigator2.encodeLocation(match.pathname).pathname : match.pathname
+        navigator2.encodeLocation ? navigator2.encodeLocation(match2.pathname).pathname : match2.pathname
       ]),
-      pathnameBase: match.pathnameBase === "/" ? parentPathnameBase : joinPaths([
+      pathnameBase: match2.pathnameBase === "/" ? parentPathnameBase : joinPaths([
         parentPathnameBase,
         // Re-encode pathnames that were decoded inside matchRoutes
-        navigator2.encodeLocation ? navigator2.encodeLocation(match.pathnameBase).pathname : match.pathnameBase
+        navigator2.encodeLocation ? navigator2.encodeLocation(match2.pathnameBase).pathname : match2.pathnameBase
       ])
     })), parentMatches, dataRouterState, future);
     if (locationArg && renderedMatches) {
@@ -31892,7 +32079,7 @@
   }
   function DefaultErrorComponent() {
     let error = useRouteError();
-    let message = isRouteErrorResponse(error) ? error.status + " " + error.statusText : error instanceof Error ? error.message : JSON.stringify(error);
+    let message2 = isRouteErrorResponse(error) ? error.status + " " + error.statusText : error instanceof Error ? error.message : JSON.stringify(error);
     let stack = error instanceof Error ? error.stack : null;
     let lightgrey = "rgba(200,200,200, 0.5)";
     let preStyles = {
@@ -31916,7 +32103,7 @@
       style: {
         fontStyle: "italic"
       }
-    }, message), stack ? /* @__PURE__ */ React.createElement("pre", {
+    }, message2), stack ? /* @__PURE__ */ React.createElement("pre", {
       style: preStyles
     }, stack) : null, devInfo);
   }
@@ -31964,12 +32151,12 @@
   function RenderedRoute(_ref) {
     let {
       routeContext,
-      match,
+      match: match2,
       children
     } = _ref;
     let dataRouterContext = React.useContext(DataRouterContext);
-    if (dataRouterContext && dataRouterContext.static && dataRouterContext.staticContext && (match.route.errorElement || match.route.ErrorBoundary)) {
-      dataRouterContext.staticContext._deepestRenderedBoundaryId = match.route.id;
+    if (dataRouterContext && dataRouterContext.static && dataRouterContext.staticContext && (match2.route.errorElement || match2.route.ErrorBoundary)) {
+      dataRouterContext.staticContext._deepestRenderedBoundaryId = match2.route.id;
     }
     return /* @__PURE__ */ React.createElement(RouteContext.Provider, {
       value: routeContext
@@ -32005,17 +32192,17 @@
     let fallbackIndex = -1;
     if (dataRouterState && future && future.v7_partialHydration) {
       for (let i = 0; i < renderedMatches.length; i++) {
-        let match = renderedMatches[i];
-        if (match.route.HydrateFallback || match.route.hydrateFallbackElement) {
+        let match2 = renderedMatches[i];
+        if (match2.route.HydrateFallback || match2.route.hydrateFallbackElement) {
           fallbackIndex = i;
         }
-        if (match.route.id) {
+        if (match2.route.id) {
           let {
             loaderData,
             errors: errors2
           } = dataRouterState;
-          let needsToRunLoader = match.route.loader && loaderData[match.route.id] === void 0 && (!errors2 || errors2[match.route.id] === void 0);
-          if (match.route.lazy || needsToRunLoader) {
+          let needsToRunLoader = match2.route.loader && loaderData[match2.route.id] === void 0 && (!errors2 || errors2[match2.route.id] === void 0);
+          if (match2.route.lazy || needsToRunLoader) {
             renderFallback = true;
             if (fallbackIndex >= 0) {
               renderedMatches = renderedMatches.slice(0, fallbackIndex + 1);
@@ -32027,14 +32214,14 @@
         }
       }
     }
-    return renderedMatches.reduceRight((outlet, match, index) => {
+    return renderedMatches.reduceRight((outlet, match2, index) => {
       let error;
       let shouldRenderHydrateFallback = false;
       let errorElement = null;
       let hydrateFallbackElement = null;
       if (dataRouterState) {
-        error = errors && match.route.id ? errors[match.route.id] : void 0;
-        errorElement = match.route.errorElement || defaultErrorElement;
+        error = errors && match2.route.id ? errors[match2.route.id] : void 0;
+        errorElement = match2.route.errorElement || defaultErrorElement;
         if (renderFallback) {
           if (fallbackIndex < 0 && index === 0) {
             warningOnce("route-fallback", false, "No `HydrateFallback` element provided to render during initial hydration");
@@ -32042,7 +32229,7 @@
             hydrateFallbackElement = null;
           } else if (fallbackIndex === index) {
             shouldRenderHydrateFallback = true;
-            hydrateFallbackElement = match.route.hydrateFallbackElement || null;
+            hydrateFallbackElement = match2.route.hydrateFallbackElement || null;
           }
         }
       }
@@ -32053,15 +32240,15 @@
           children = errorElement;
         } else if (shouldRenderHydrateFallback) {
           children = hydrateFallbackElement;
-        } else if (match.route.Component) {
-          children = /* @__PURE__ */ React.createElement(match.route.Component, null);
-        } else if (match.route.element) {
-          children = match.route.element;
+        } else if (match2.route.Component) {
+          children = /* @__PURE__ */ React.createElement(match2.route.Component, null);
+        } else if (match2.route.element) {
+          children = match2.route.element;
         } else {
           children = outlet;
         }
         return /* @__PURE__ */ React.createElement(RenderedRoute, {
-          match,
+          match: match2,
           routeContext: {
             outlet,
             matches: matches2,
@@ -32070,7 +32257,7 @@
           children
         });
       };
-      return dataRouterState && (match.route.ErrorBoundary || match.route.errorElement || index === 0) ? /* @__PURE__ */ React.createElement(RenderErrorBoundary, {
+      return dataRouterState && (match2.route.ErrorBoundary || match2.route.errorElement || index === 0) ? /* @__PURE__ */ React.createElement(RenderErrorBoundary, {
         location: dataRouterState.location,
         revalidation: dataRouterState.revalidation,
         component: errorElement,
@@ -32155,7 +32342,7 @@
     let {
       router: router2
     } = useDataRouterContext(DataRouterHook.UseNavigateStable);
-    let id = useCurrentRouteId(DataRouterStateHook.UseNavigateStable);
+    let id2 = useCurrentRouteId(DataRouterStateHook.UseNavigateStable);
     let activeRef = React.useRef(false);
     useIsomorphicLayoutEffect(() => {
       activeRef.current = true;
@@ -32171,17 +32358,17 @@
         router2.navigate(to);
       } else {
         router2.navigate(to, _extends2({
-          fromRouteId: id
+          fromRouteId: id2
         }, options));
       }
-    }, [router2, id]);
+    }, [router2, id2]);
     return navigate;
   }
   var alreadyWarned = {};
-  function warningOnce(key, cond, message) {
+  function warningOnce(key, cond, message2) {
     if (!cond && !alreadyWarned[key]) {
       alreadyWarned[key] = true;
-      true ? warning(false, message) : void 0;
+      true ? warning(false, message2) : void 0;
     }
   }
   var START_TRANSITION = "startTransition";
@@ -33063,7 +33250,7 @@
     } = React2.useContext(NavigationContext);
     let routeContext = React2.useContext(RouteContext);
     !routeContext ? true ? invariant(false, "useFormAction must be used inside a RouteContext") : invariant(false) : void 0;
-    let [match] = routeContext.matches.slice(-1);
+    let [match2] = routeContext.matches.slice(-1);
     let path = _extends3({}, useResolvedPath(action ? action : ".", {
       relative
     }));
@@ -33076,7 +33263,7 @@
         path.search = params.toString() ? "?" + params.toString() : "";
       }
     }
-    if ((!action || action === ".") && match.route.index) {
+    if ((!action || action === ".") && match2.route.index) {
       path.search = path.search ? path.search.replace(/^\?/, "?index&") : "?index";
     }
     if (basename !== "/") {
@@ -33213,34 +33400,34 @@
   var import_jsx_runtime = __toESM(require_jsx_runtime());
   function HomeAside() {
     const menu = getMenu(routes_default);
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", { className: "py-4 flex-grow-1 flex-shrink-0 border-r min-h-screen bg-zinc-50", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: menu.map((menu2) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MenuItem, { menu: menu2 }, menu2.path)) }) }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", { className: "py-2 w-sidebar hidden lg:block left-0 fixed top-0 flex-grow-1 flex-shrink-0 border-r min-h-screen bg-zinc-50", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { className: "space-y-2", children: menu.map((menu2) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MenuItem, { menu: menu2 }, menu2.path)) }) }) });
   }
   var MenuItem = ({ menu }) => {
     if (menu.children) {
       if (menu?.hide)
-        return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: menu.children.map((child) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MenuItem, { menu: child }, child.path)) });
-      return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { className: "mb-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavLink, { className: ({ isActive }) => `${isActive ? "border-l-4 border-zinc-600 text-zinc-900" : "border-l-4 border-transparent text-zinc-600"} px-6 font-semibold text-xl`, to: menu.path, children: menu.name }),
-        menu.children.filter((c) => c.hide).length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: menu.children.map((child) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MenuItem, { menu: child }, child.path)) })
+        return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { className: "space-y-2", children: menu.children.map((child) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MenuItem, { menu: child }, child.path)) });
+      return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { className: "w-full", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavLink, { className: ({ isActive }) => `${isActive ? "border-l-4 border-zinc-600 text-zinc-900 bg-zinc-100" : "border-l-4 border-transparent text-zinc-600"} px-6 w-full py-2 inline-block font-semibold text-xl`, to: menu.path, children: menu.name }),
+        menu.children.filter((c) => c.hide).length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { className: "space-y-2", children: menu.children.map((child) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MenuItem, { menu: child }, child.path)) })
       ] }, menu.path);
     }
     if (menu?.hide)
       return null;
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { className: "mb-4 relative", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavLink, { className: ({ isActive }) => `${isActive ? "border-l-4 border-zinc-600 text-zinc-900" : "border-l-4 border-transparent text-zinc-600"} px-6 font-semibold text-xl`, to: menu.path, children: menu.name }) }, menu.path);
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavLink, { className: ({ isActive }) => `${isActive ? "border-l-4 border-zinc-600 text-zinc-900 bg-zinc-100" : "border-l-4 border-transparent text-zinc-600"} px-6 py-2 w-full font-semibold text-xl inline-block`, to: menu.path, children: menu.name }) }, menu.path);
   };
 
   // src/layouts/home/components/footer.tsx
   var import_jsx_runtime2 = __toESM(require_jsx_runtime());
   function HomeFooter() {
-    return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("footer", { children: "This project is maintained by Le Viet Hoangg" });
+    return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("footer", { className: "p-4 border-t absolute bottom-0 w-full text-neutral-400 text-center", children: "This project is maintained by Le Viet Hoang" });
   }
 
   // src/layouts/home/index.tsx
   var import_jsx_runtime3 = __toESM(require_jsx_runtime());
   function HomeLayout() {
-    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex lg:pl-sidebar min-h-screen", children: [
       /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(HomeAside, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("main", { className: "w-full", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("main", { className: "w-full min-h-screen pb-24 relative", children: [
         /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Outlet, {}),
         /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(HomeFooter, {})
       ] })
@@ -33250,12 +33437,12 @@
   // src/components/PageTitle.tsx
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
   function PageTitle({ title }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("header", { className: "p-4 border-b", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("header", { className: "py-4 px-8 border-b sticky top-0 bg-while backdrop-blur-sm", children: [
       /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("title", { children: [
         title,
         " - Xipat Admin"
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h1", { className: "text-3xl font-bold", children: title })
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h1", { className: "text-2xl text-neutral-700 font-bold", children: title })
     ] });
   }
 
@@ -33264,7 +33451,8 @@
   var tabs = [
     {
       name: "Subscription",
-      id: "subscription"
+      id: "subscription",
+      index: true
     },
     {
       name: "Revenue",
@@ -33274,16 +33462,17 @@
   function Dashboard() {
     return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("section", { children: [
       /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(PageTitle, { title: "Dashboard" }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "container p-4", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Tabs, {}) })
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "p-8", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Tabs, {}) })
     ] });
   }
   function Tabs() {
+    const isIndex = useLocation().pathname === "/dashboard";
     return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "flex gap-2", children: tabs.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(NavLink, { to: `/dashboard/${tab.id}`, className: ({ isActive }) => `${isActive ? "bg-zinc-900 text-white" : "text-zinc-900/70"} text-white font-semibold text-lg px-4 py-2 border rounded-md`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "flex gap-2", children: tabs.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(NavLink, { to: `${tab.id}`, className: ({ isActive }) => `${isActive || tab.index && isIndex ? "bg-zinc-900 text-white" : "text-zinc-900/70"} text-white font-semibold px-4 py-2 border rounded-md`, children: [
         tab.name,
         " "
       ] }, tab.id)) }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Outlet, {}) })
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { className: "bg-gray-50 my-4 border rounded-md", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Outlet, {}) })
     ] });
   }
 
@@ -33522,19 +33711,19 @@
 
   // node_modules/.pnpm/d3-array@3.2.1/node_modules/d3-array/src/extent.js
   function extent(values, valueof) {
-    let min2;
-    let max2;
+    let min3;
+    let max3;
     if (valueof === void 0) {
       for (const value of values) {
         if (value != null) {
-          if (min2 === void 0) {
+          if (min3 === void 0) {
             if (value >= value)
-              min2 = max2 = value;
+              min3 = max3 = value;
           } else {
-            if (min2 > value)
-              min2 = value;
-            if (max2 < value)
-              max2 = value;
+            if (min3 > value)
+              min3 = value;
+            if (max3 < value)
+              max3 = value;
           }
         }
       }
@@ -33542,19 +33731,19 @@
       let index = -1;
       for (let value of values) {
         if ((value = valueof(value, ++index, values)) != null) {
-          if (min2 === void 0) {
+          if (min3 === void 0) {
             if (value >= value)
-              min2 = max2 = value;
+              min3 = max3 = value;
           } else {
-            if (min2 > value)
-              min2 = value;
-            if (max2 < value)
-              max2 = value;
+            if (min3 > value)
+              min3 = value;
+            if (max3 < value)
+              max3 = value;
           }
         }
       }
     }
-    return [min2, max2];
+    return [min3, max3];
   }
 
   // node_modules/.pnpm/d3-array@3.2.1/node_modules/d3-array/src/ticks.js
@@ -33828,10 +34017,10 @@
   function color_formatRgb() {
     return this.rgb().formatRgb();
   }
-  function color(format2) {
+  function color(format3) {
     var m, l;
-    format2 = (format2 + "").trim().toLowerCase();
-    return (m = reHex.exec(format2)) ? (l = m[1].length, m = parseInt(m[1], 16), l === 6 ? rgbn(m) : l === 3 ? new Rgb(m >> 8 & 15 | m >> 4 & 240, m >> 4 & 15 | m & 240, (m & 15) << 4 | m & 15, 1) : l === 8 ? rgba(m >> 24 & 255, m >> 16 & 255, m >> 8 & 255, (m & 255) / 255) : l === 4 ? rgba(m >> 12 & 15 | m >> 8 & 240, m >> 8 & 15 | m >> 4 & 240, m >> 4 & 15 | m & 240, ((m & 15) << 4 | m & 15) / 255) : null) : (m = reRgbInteger.exec(format2)) ? new Rgb(m[1], m[2], m[3], 1) : (m = reRgbPercent.exec(format2)) ? new Rgb(m[1] * 255 / 100, m[2] * 255 / 100, m[3] * 255 / 100, 1) : (m = reRgbaInteger.exec(format2)) ? rgba(m[1], m[2], m[3], m[4]) : (m = reRgbaPercent.exec(format2)) ? rgba(m[1] * 255 / 100, m[2] * 255 / 100, m[3] * 255 / 100, m[4]) : (m = reHslPercent.exec(format2)) ? hsla(m[1], m[2] / 100, m[3] / 100, 1) : (m = reHslaPercent.exec(format2)) ? hsla(m[1], m[2] / 100, m[3] / 100, m[4]) : named.hasOwnProperty(format2) ? rgbn(named[format2]) : format2 === "transparent" ? new Rgb(NaN, NaN, NaN, 0) : null;
+    format3 = (format3 + "").trim().toLowerCase();
+    return (m = reHex.exec(format3)) ? (l = m[1].length, m = parseInt(m[1], 16), l === 6 ? rgbn(m) : l === 3 ? new Rgb(m >> 8 & 15 | m >> 4 & 240, m >> 4 & 15 | m & 240, (m & 15) << 4 | m & 15, 1) : l === 8 ? rgba(m >> 24 & 255, m >> 16 & 255, m >> 8 & 255, (m & 255) / 255) : l === 4 ? rgba(m >> 12 & 15 | m >> 8 & 240, m >> 8 & 15 | m >> 4 & 240, m >> 4 & 15 | m & 240, ((m & 15) << 4 | m & 15) / 255) : null) : (m = reRgbInteger.exec(format3)) ? new Rgb(m[1], m[2], m[3], 1) : (m = reRgbPercent.exec(format3)) ? new Rgb(m[1] * 255 / 100, m[2] * 255 / 100, m[3] * 255 / 100, 1) : (m = reRgbaInteger.exec(format3)) ? rgba(m[1], m[2], m[3], m[4]) : (m = reRgbaPercent.exec(format3)) ? rgba(m[1] * 255 / 100, m[2] * 255 / 100, m[3] * 255 / 100, m[4]) : (m = reHslPercent.exec(format3)) ? hsla(m[1], m[2] / 100, m[3] / 100, 1) : (m = reHslaPercent.exec(format3)) ? hsla(m[1], m[2] / 100, m[3] / 100, m[4]) : named.hasOwnProperty(format3) ? rgbn(named[format3]) : format3 === "transparent" ? new Rgb(NaN, NaN, NaN, 0) : null;
   }
   function rgbn(n) {
     return new Rgb(n >> 16 & 255, n >> 8 & 255, n & 255, 1);
@@ -33922,15 +34111,15 @@
     if (o instanceof Hsl)
       return o;
     o = o.rgb();
-    var r = o.r / 255, g = o.g / 255, b = o.b / 255, min2 = Math.min(r, g, b), max2 = Math.max(r, g, b), h = NaN, s = max2 - min2, l = (max2 + min2) / 2;
+    var r = o.r / 255, g = o.g / 255, b = o.b / 255, min3 = Math.min(r, g, b), max3 = Math.max(r, g, b), h = NaN, s = max3 - min3, l = (max3 + min3) / 2;
     if (s) {
-      if (r === max2)
+      if (r === max3)
         h = (g - b) / s + (g < b) * 6;
-      else if (g === max2)
+      else if (g === max3)
         h = (b - r) / s + 2;
       else
         h = (r - g) / s + 4;
-      s /= l < 0.5 ? max2 + min2 : 2 - max2 - min2;
+      s /= l < 0.5 ? max3 + min3 : 2 - max3 - min3;
       h *= 60;
     } else {
       s = l > 0 && l < 1 ? 0 : h;
@@ -34569,20 +34758,20 @@
   // node_modules/.pnpm/d3-format@3.1.0/node_modules/d3-format/src/formatSpecifier.js
   var re = /^(?:(.)?([<>=^]))?([+\-( ])?([$#])?(0)?(\d+)?(,)?(\.\d+)?(~)?([a-z%])?$/i;
   function formatSpecifier(specifier) {
-    if (!(match = re.exec(specifier)))
+    if (!(match2 = re.exec(specifier)))
       throw new Error("invalid format: " + specifier);
-    var match;
+    var match2;
     return new FormatSpecifier({
-      fill: match[1],
-      align: match[2],
-      sign: match[3],
-      symbol: match[4],
-      zero: match[5],
-      width: match[6],
-      comma: match[7],
-      precision: match[8] && match[8].slice(1),
-      trim: match[9],
-      type: match[10]
+      fill: match2[1],
+      align: match2[2],
+      sign: match2[3],
+      symbol: match2[4],
+      zero: match2[5],
+      width: match2[6],
+      comma: match2[7],
+      precision: match2[8] && match2[8].slice(1),
+      trim: match2[9],
+      type: match2[10]
     });
   }
   formatSpecifier.prototype = FormatSpecifier.prototype;
@@ -34684,7 +34873,7 @@
       var prefix = symbol === "$" ? currencyPrefix : symbol === "#" && /[boxX]/.test(type) ? "0" + type.toLowerCase() : "", suffix = symbol === "$" ? currencySuffix : /[%p]/.test(type) ? percent : "";
       var formatType = formatTypes_default[type], maybeSuffix = /[defgprs%]/.test(type);
       precision = precision === void 0 ? 6 : /[gprs]/.test(type) ? Math.max(1, Math.min(21, precision)) : Math.max(0, Math.min(20, precision));
-      function format2(value) {
+      function format3(value) {
         var valuePrefix = prefix, valueSuffix = suffix, i, n, c;
         if (type === "c") {
           valueSuffix = formatType(value) + valueSuffix;
@@ -34731,10 +34920,10 @@
         }
         return numerals(value);
       }
-      format2.toString = function() {
+      format3.toString = function() {
         return specifier + "";
       };
-      return format2;
+      return format3;
     }
     function formatPrefix2(specifier, value) {
       var f = newFormat((specifier = formatSpecifier(specifier), specifier.type = "f", specifier)), e = Math.max(-8, Math.min(8, Math.floor(exponent_default(value) / 3))) * 3, k = Math.pow(10, -e), prefix = prefixes[8 + e / 3];
@@ -34775,9 +34964,9 @@
   }
 
   // node_modules/.pnpm/d3-format@3.1.0/node_modules/d3-format/src/precisionRound.js
-  function precisionRound_default(step, max2) {
-    step = Math.abs(step), max2 = Math.abs(max2) - step;
-    return Math.max(0, exponent_default(max2) - exponent_default(step)) + 1;
+  function precisionRound_default(step, max3) {
+    step = Math.abs(step), max3 = Math.abs(max3) - step;
+    return Math.max(0, exponent_default(max3) - exponent_default(step)) + 1;
   }
 
   // node_modules/.pnpm/d3-scale@4.0.2/node_modules/d3-scale/src/tickFormat.js
@@ -35356,7 +35545,7 @@
     utcFormats.c = newFormat(locale_dateTime, utcFormats);
     function newFormat(specifier, formats2) {
       return function(date2) {
-        var string = [], i = -1, j = 0, n = specifier.length, c, pad2, format2;
+        var string = [], i = -1, j = 0, n = specifier.length, c, pad2, format3;
         if (!(date2 instanceof Date))
           date2 = /* @__PURE__ */ new Date(+date2);
         while (++i < n) {
@@ -35366,8 +35555,8 @@
               c = specifier.charAt(++i);
             else
               pad2 = c === "e" ? " " : "0";
-            if (format2 = formats2[c])
-              c = format2(date2, pad2);
+            if (format3 = formats2[c])
+              c = format3(date2, pad2);
             string.push(c);
             j = i + 1;
           }
@@ -35427,15 +35616,15 @@
       };
     }
     function parseSpecifier(d, specifier, string, j) {
-      var i = 0, n = specifier.length, m = string.length, c, parse;
+      var i = 0, n = specifier.length, m = string.length, c, parse2;
       while (i < n) {
         if (j >= m)
           return -1;
         c = specifier.charCodeAt(i++);
         if (c === 37) {
           c = specifier.charAt(i++);
-          parse = parses[c in pads ? specifier.charAt(i++) : c];
-          if (!parse || (j = parse(d, string, j)) < 0)
+          parse2 = parses[c in pads ? specifier.charAt(i++) : c];
+          if (!parse2 || (j = parse2(d, string, j)) < 0)
             return -1;
         } else if (c != string.charCodeAt(j++)) {
           return -1;
@@ -35811,11 +36000,11 @@
   function number3(t) {
     return t instanceof Date ? +t : +/* @__PURE__ */ new Date(+t);
   }
-  function calendar(ticks2, tickInterval, year, month, week, day, hour, minute, second2, format2) {
+  function calendar(ticks2, tickInterval, year, month, week, day, hour, minute, second2, format3) {
     var scale = continuous(), invert = scale.invert, domain = scale.domain;
-    var formatMillisecond = format2(".%L"), formatSecond = format2(":%S"), formatMinute = format2("%I:%M"), formatHour = format2("%I %p"), formatDay = format2("%a %d"), formatWeek = format2("%b %d"), formatMonth = format2("%B"), formatYear2 = format2("%Y");
+    var formatMillisecond = format3(".%L"), formatSecond = format3(":%S"), formatMinute = format3("%I:%M"), formatHour = format3("%I %p"), formatDay2 = format3("%a %d"), formatWeek = format3("%b %d"), formatMonth = format3("%B"), formatYear2 = format3("%Y");
     function tickFormat2(date2) {
-      return (second2(date2) < date2 ? formatMillisecond : minute(date2) < date2 ? formatSecond : hour(date2) < date2 ? formatMinute : day(date2) < date2 ? formatHour : month(date2) < date2 ? week(date2) < date2 ? formatDay : formatWeek : year(date2) < date2 ? formatMonth : formatYear2)(date2);
+      return (second2(date2) < date2 ? formatMillisecond : minute(date2) < date2 ? formatSecond : hour(date2) < date2 ? formatMinute : day(date2) < date2 ? formatHour : month(date2) < date2 ? week(date2) < date2 ? formatDay2 : formatWeek : year(date2) < date2 ? formatMonth : formatYear2)(date2);
     }
     scale.invert = function(y) {
       return new Date(invert(y));
@@ -35828,7 +36017,7 @@
       return ticks2(d[0], d[d.length - 1], interval == null ? 10 : interval);
     };
     scale.tickFormat = function(count2, specifier) {
-      return specifier == null ? tickFormat2 : format2(specifier);
+      return specifier == null ? tickFormat2 : format3(specifier);
     };
     scale.nice = function(interval) {
       var d = domain();
@@ -35837,7 +36026,7 @@
       return interval ? domain(nice(d, interval)) : scale;
     };
     scale.copy = function() {
-      return copy(scale, calendar(ticks2, tickInterval, year, month, week, day, hour, minute, second2, format2));
+      return copy(scale, calendar(ticks2, tickInterval, year, month, week, day, hour, minute, second2, format3));
     };
     return scale;
   }
@@ -36044,8 +36233,8 @@
       var domain = scale.domain();
       var a = domain[0], b = domain[1];
       var isDescending = b < a;
-      var _ref = isDescending ? [b, a] : [a, b], min2 = _ref[0], max2 = _ref[1];
-      var domainWithZero = [Math.min(0, min2), Math.max(0, max2)];
+      var _ref = isDescending ? [b, a] : [a, b], min3 = _ref[0], max3 = _ref[1];
+      var domainWithZero = [Math.min(0, min3), Math.max(0, max3)];
       scale.domain(isDescending ? domainWithZero.reverse() : domainWithZero);
     }
   }
@@ -36778,7 +36967,7 @@
   }
   function Axis(_ref) {
     var _ref$children = _ref.children, children = _ref$children === void 0 ? AxisRenderer : _ref$children, axisClassName = _ref.axisClassName, _ref$hideAxisLine = _ref.hideAxisLine, hideAxisLine = _ref$hideAxisLine === void 0 ? false : _ref$hideAxisLine, _ref$hideTicks = _ref.hideTicks, hideTicks = _ref$hideTicks === void 0 ? false : _ref$hideTicks, _ref$hideZero = _ref.hideZero, hideZero = _ref$hideZero === void 0 ? false : _ref$hideZero, innerRef = _ref.innerRef, _ref$left = _ref.left, left = _ref$left === void 0 ? 0 : _ref$left, _ref$numTicks = _ref.numTicks, numTicks = _ref$numTicks === void 0 ? 10 : _ref$numTicks, _ref$orientation = _ref.orientation, orientation = _ref$orientation === void 0 ? orientation_default.bottom : _ref$orientation, _ref$rangePadding = _ref.rangePadding, rangePadding = _ref$rangePadding === void 0 ? 0 : _ref$rangePadding, scale = _ref.scale, tickFormat2 = _ref.tickFormat, _ref$tickLength = _ref.tickLength, tickLength = _ref$tickLength === void 0 ? 8 : _ref$tickLength, tickValues = _ref.tickValues, _ref$top = _ref.top, top = _ref$top === void 0 ? 0 : _ref$top, restProps = _objectWithoutPropertiesLoose8(_ref, _excluded10);
-    var format2 = tickFormat2 != null ? tickFormat2 : getTickFormatter(scale);
+    var format3 = tickFormat2 != null ? tickFormat2 : getTickFormatter(scale);
     var isLeft = orientation === orientation_default.left;
     var isTop = orientation === orientation_default.top;
     var horizontal = isTop || orientation === orientation_default.bottom;
@@ -36816,7 +37005,7 @@
           x: scaledValue,
           y: tickLength * tickSign
         }, horizontal),
-        formattedValue: format2(value, index, filteredTickValues)
+        formattedValue: format3(value, index, filteredTickValues)
       };
     });
     return /* @__PURE__ */ import_react10.default.createElement(Group, {
@@ -36835,7 +37024,7 @@
       orientation,
       rangePadding,
       scale,
-      tickFormat: format2,
+      tickFormat: format3,
       tickLength,
       tickPosition,
       tickSign,
@@ -37088,37 +37277,13 @@
     ] }) });
   }
 
-  // src/pages/dashboard/revenue/index.tsx
-  var import_jsx_runtime7 = __toESM(require_jsx_runtime());
-  function Revenue() {
-    const { revenue = [], isLoading } = useRevenue_default();
-    if (isLoading || !revenue.length)
-      return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "w-[600px] h-[600px] flex items-center justify-center", children: "Loading..." });
-    return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "flex w-full justify-center p-4 ", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(BarChart, { title: "Annual Revenue", data: revenue, width: 1200, height: 600 }) });
-  }
-
-  // src/apis/useSubscriptions.ts
-  var import_react15 = __toESM(require_react());
-  function useSubscriptions() {
-    const [subscriptions, setSubscriptions] = (0, import_react15.useState)();
-    const [loading, setLoading] = (0, import_react15.useState)(false);
-    (0, import_react15.useEffect)(() => {
-      const fetchData = async () => {
-        setLoading(true);
-        const response = await getSubscriptions();
-        setSubscriptions(response);
-        setLoading(false);
-      };
-      fetchData();
-    }, []);
-    return { subscriptions, loading };
-  }
-  var useSubscriptions_default = useSubscriptions;
-
-  // node_modules/.pnpm/@visx+marker@3.5.0_react@18.2.0/node_modules/@visx/marker/esm/markers/Marker.js
+  // node_modules/.pnpm/@visx+responsive@3.10.2_react@18.2.0/node_modules/@visx/responsive/esm/components/ParentSize.js
   var import_prop_types3 = __toESM(require_prop_types());
   var import_react16 = __toESM(require_react());
-  var _excluded14 = ["id", "markerWidth", "markerHeight", "markerUnits", "children"];
+
+  // node_modules/.pnpm/@visx+responsive@3.10.2_react@18.2.0/node_modules/@visx/responsive/esm/hooks/useParentSize.js
+  var import_debounce = __toESM(require_debounce());
+  var import_react15 = __toESM(require_react());
   function _extends16() {
     _extends16 = Object.assign ? Object.assign.bind() : function(target) {
       for (var i = 1; i < arguments.length; i++) {
@@ -37132,6 +37297,82 @@
       return target;
     };
     return _extends16.apply(this, arguments);
+  }
+  var defaultIgnoreDimensions = [];
+  var defaultInitialSize = {
+    width: 0,
+    height: 0,
+    top: 0,
+    left: 0
+  };
+  function useParentSize(_temp) {
+    var _ref = _temp === void 0 ? {} : _temp, _ref$initialSize = _ref.initialSize, initialSize = _ref$initialSize === void 0 ? defaultInitialSize : _ref$initialSize, _ref$debounceTime = _ref.debounceTime, debounceTime = _ref$debounceTime === void 0 ? 300 : _ref$debounceTime, _ref$ignoreDimensions = _ref.ignoreDimensions, ignoreDimensions = _ref$ignoreDimensions === void 0 ? defaultIgnoreDimensions : _ref$ignoreDimensions, _ref$enableDebounceLe = _ref.enableDebounceLeadingCall, enableDebounceLeadingCall = _ref$enableDebounceLe === void 0 ? true : _ref$enableDebounceLe, resizeObserverPolyfill = _ref.resizeObserverPolyfill;
+    var parentRef = (0, import_react15.useRef)(null);
+    var animationFrameID = (0, import_react15.useRef)(0);
+    var _useState = (0, import_react15.useState)(_extends16({}, defaultInitialSize, initialSize)), state = _useState[0], setState = _useState[1];
+    var resize = (0, import_react15.useMemo)(function() {
+      var normalized = Array.isArray(ignoreDimensions) ? ignoreDimensions : [ignoreDimensions];
+      return (0, import_debounce.default)(function(incoming) {
+        setState(function(existing) {
+          var stateKeys = Object.keys(existing);
+          var keysWithChanges = stateKeys.filter(function(key) {
+            return existing[key] !== incoming[key];
+          });
+          var shouldBail = keysWithChanges.every(function(key) {
+            return normalized.includes(key);
+          });
+          return shouldBail ? existing : incoming;
+        });
+      }, debounceTime, {
+        leading: enableDebounceLeadingCall
+      });
+    }, [debounceTime, enableDebounceLeadingCall, ignoreDimensions]);
+    (0, import_react15.useEffect)(function() {
+      var LocalResizeObserver = resizeObserverPolyfill || window.ResizeObserver;
+      var observer = new LocalResizeObserver(function(entries) {
+        entries.forEach(function(entry) {
+          var _entry$contentRect;
+          var _ref2 = (_entry$contentRect = entry == null ? void 0 : entry.contentRect) != null ? _entry$contentRect : {}, left = _ref2.left, top = _ref2.top, width = _ref2.width, height = _ref2.height;
+          animationFrameID.current = window.requestAnimationFrame(function() {
+            resize({
+              width,
+              height,
+              top,
+              left
+            });
+          });
+        });
+      });
+      if (parentRef.current)
+        observer.observe(parentRef.current);
+      return function() {
+        window.cancelAnimationFrame(animationFrameID.current);
+        observer.disconnect();
+        resize.cancel();
+      };
+    }, [resize, resizeObserverPolyfill]);
+    return _extends16({
+      parentRef,
+      resize
+    }, state);
+  }
+
+  // node_modules/.pnpm/@visx+responsive@3.10.2_react@18.2.0/node_modules/@visx/responsive/esm/components/ParentSize.js
+  var _excluded14 = ["className", "children", "debounceTime", "ignoreDimensions", "initialSize", "parentSizeStyles", "enableDebounceLeadingCall", "resizeObserverPolyfill"];
+  var _excluded22 = ["parentRef", "resize"];
+  function _extends17() {
+    _extends17 = Object.assign ? Object.assign.bind() : function(target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    };
+    return _extends17.apply(this, arguments);
   }
   function _objectWithoutPropertiesLoose12(source, excluded) {
     if (source == null)
@@ -37147,32 +37388,95 @@
     }
     return target;
   }
-  function Marker(_ref) {
-    var id = _ref.id, _ref$markerWidth = _ref.markerWidth, markerWidth = _ref$markerWidth === void 0 ? 3 : _ref$markerWidth, _ref$markerHeight = _ref.markerHeight, markerHeight = _ref$markerHeight === void 0 ? 3 : _ref$markerHeight, _ref$markerUnits = _ref.markerUnits, markerUnits = _ref$markerUnits === void 0 ? "userSpaceOnUse" : _ref$markerUnits, children = _ref.children, restProps = _objectWithoutPropertiesLoose12(_ref, _excluded14);
-    return /* @__PURE__ */ import_react16.default.createElement("defs", null, /* @__PURE__ */ import_react16.default.createElement("marker", _extends16({
-      id,
-      markerWidth,
-      markerHeight,
-      markerUnits
-    }, restProps), children));
+  var defaultParentSizeStyles = {
+    width: "100%",
+    height: "100%"
+  };
+  function ParentSize(_ref) {
+    var className = _ref.className, children = _ref.children, debounceTime = _ref.debounceTime, ignoreDimensions = _ref.ignoreDimensions, initialSize = _ref.initialSize, _ref$parentSizeStyles = _ref.parentSizeStyles, parentSizeStyles = _ref$parentSizeStyles === void 0 ? defaultParentSizeStyles : _ref$parentSizeStyles, _ref$enableDebounceLe = _ref.enableDebounceLeadingCall, enableDebounceLeadingCall = _ref$enableDebounceLe === void 0 ? true : _ref$enableDebounceLe, resizeObserverPolyfill = _ref.resizeObserverPolyfill, restProps = _objectWithoutPropertiesLoose12(_ref, _excluded14);
+    var _useParentSize = useParentSize({
+      initialSize,
+      debounceTime,
+      ignoreDimensions,
+      enableDebounceLeadingCall,
+      resizeObserverPolyfill
+    }), parentRef = _useParentSize.parentRef, resize = _useParentSize.resize, dimensions = _objectWithoutPropertiesLoose12(_useParentSize, _excluded22);
+    return /* @__PURE__ */ import_react16.default.createElement("div", _extends17({
+      style: parentSizeStyles,
+      ref: parentRef,
+      className
+    }, restProps), children(_extends17({}, dimensions, {
+      ref: parentRef.current,
+      resize
+    })));
   }
-  Marker.propTypes = {
-    id: import_prop_types3.default.string.isRequired,
-    size: import_prop_types3.default.number,
-    markerWidth: import_prop_types3.default.oneOfType([import_prop_types3.default.string, import_prop_types3.default.number]),
-    markerHeight: import_prop_types3.default.oneOfType([import_prop_types3.default.string, import_prop_types3.default.number]),
-    markerUnits: import_prop_types3.default.string,
-    refX: import_prop_types3.default.oneOfType([import_prop_types3.default.string, import_prop_types3.default.number]),
-    refY: import_prop_types3.default.oneOfType([import_prop_types3.default.string, import_prop_types3.default.number]),
-    strokeWidth: import_prop_types3.default.number,
-    children: import_prop_types3.default.node.isRequired
+  ParentSize.propTypes = {
+    className: import_prop_types3.default.string,
+    children: import_prop_types3.default.func.isRequired
   };
 
-  // node_modules/.pnpm/@visx+marker@3.5.0_react@18.2.0/node_modules/@visx/marker/esm/markers/Circle.js
+  // node_modules/.pnpm/@visx+responsive@3.10.2_react@18.2.0/node_modules/@visx/responsive/esm/components/ScaleSVG.js
+  var import_prop_types4 = __toESM(require_prop_types());
   var import_react17 = __toESM(require_react());
-  var _excluded15 = ["id", "size", "strokeWidth"];
-  function _extends17() {
-    _extends17 = Object.assign ? Object.assign.bind() : function(target) {
+  function ScaleSVG(_ref) {
+    var children = _ref.children, width = _ref.width, height = _ref.height, _ref$xOrigin = _ref.xOrigin, xOrigin = _ref$xOrigin === void 0 ? 0 : _ref$xOrigin, _ref$yOrigin = _ref.yOrigin, yOrigin = _ref$yOrigin === void 0 ? 0 : _ref$yOrigin, _ref$preserveAspectRa = _ref.preserveAspectRatio, preserveAspectRatio = _ref$preserveAspectRa === void 0 ? "xMinYMin meet" : _ref$preserveAspectRa, innerRef = _ref.innerRef;
+    return /* @__PURE__ */ import_react17.default.createElement("div", {
+      style: {
+        display: "inline-block",
+        position: "relative",
+        width: "100%",
+        verticalAlign: "top",
+        overflow: "hidden"
+      }
+    }, /* @__PURE__ */ import_react17.default.createElement("svg", {
+      preserveAspectRatio,
+      viewBox: xOrigin + " " + yOrigin + " " + width + " " + height,
+      ref: innerRef
+    }, children));
+  }
+  ScaleSVG.propTypes = {
+    children: import_prop_types4.default.node,
+    width: import_prop_types4.default.oneOfType([import_prop_types4.default.number, import_prop_types4.default.string]),
+    height: import_prop_types4.default.oneOfType([import_prop_types4.default.number, import_prop_types4.default.string]),
+    xOrigin: import_prop_types4.default.oneOfType([import_prop_types4.default.number, import_prop_types4.default.string]),
+    yOrigin: import_prop_types4.default.oneOfType([import_prop_types4.default.number, import_prop_types4.default.string]),
+    preserveAspectRatio: import_prop_types4.default.string,
+    innerRef: import_prop_types4.default.oneOfType([import_prop_types4.default.string, import_prop_types4.default.func, import_prop_types4.default.object])
+  };
+
+  // src/pages/dashboard/revenue/index.tsx
+  var import_jsx_runtime7 = __toESM(require_jsx_runtime());
+  function Revenue() {
+    const { revenue = [], isLoading } = useRevenue_default();
+    if (isLoading || !revenue.length)
+      return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "w-[600px] h-[600px] flex items-center justify-center", children: "Loading..." });
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "flex w-full justify-center py-4 max-w-full w-screen h-[600px]", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ParentSize, { children: ({ width, height }) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(BarChart, { title: "Annual Revenue", data: revenue, width, height }) }) });
+  }
+
+  // src/apis/useSubscriptions.ts
+  var import_react18 = __toESM(require_react());
+  function useSubscriptions() {
+    const [subscriptions, setSubscriptions] = (0, import_react18.useState)();
+    const [loading, setLoading] = (0, import_react18.useState)(false);
+    (0, import_react18.useEffect)(() => {
+      const fetchData = async () => {
+        setLoading(true);
+        const response = await getSubscriptions();
+        setSubscriptions(response);
+        setLoading(false);
+      };
+      fetchData();
+    }, []);
+    return { subscriptions, loading };
+  }
+  var useSubscriptions_default = useSubscriptions;
+
+  // node_modules/.pnpm/@visx+marker@3.5.0_react@18.2.0/node_modules/@visx/marker/esm/markers/Marker.js
+  var import_prop_types5 = __toESM(require_prop_types());
+  var import_react19 = __toESM(require_react());
+  var _excluded15 = ["id", "markerWidth", "markerHeight", "markerUnits", "children"];
+  function _extends18() {
+    _extends18 = Object.assign ? Object.assign.bind() : function(target) {
       for (var i = 1; i < arguments.length; i++) {
         var source = arguments[i];
         for (var key in source) {
@@ -37183,7 +37487,7 @@
       }
       return target;
     };
-    return _extends17.apply(this, arguments);
+    return _extends18.apply(this, arguments);
   }
   function _objectWithoutPropertiesLoose13(source, excluded) {
     if (source == null)
@@ -37199,13 +37503,65 @@
     }
     return target;
   }
+  function Marker(_ref) {
+    var id2 = _ref.id, _ref$markerWidth = _ref.markerWidth, markerWidth = _ref$markerWidth === void 0 ? 3 : _ref$markerWidth, _ref$markerHeight = _ref.markerHeight, markerHeight = _ref$markerHeight === void 0 ? 3 : _ref$markerHeight, _ref$markerUnits = _ref.markerUnits, markerUnits = _ref$markerUnits === void 0 ? "userSpaceOnUse" : _ref$markerUnits, children = _ref.children, restProps = _objectWithoutPropertiesLoose13(_ref, _excluded15);
+    return /* @__PURE__ */ import_react19.default.createElement("defs", null, /* @__PURE__ */ import_react19.default.createElement("marker", _extends18({
+      id: id2,
+      markerWidth,
+      markerHeight,
+      markerUnits
+    }, restProps), children));
+  }
+  Marker.propTypes = {
+    id: import_prop_types5.default.string.isRequired,
+    size: import_prop_types5.default.number,
+    markerWidth: import_prop_types5.default.oneOfType([import_prop_types5.default.string, import_prop_types5.default.number]),
+    markerHeight: import_prop_types5.default.oneOfType([import_prop_types5.default.string, import_prop_types5.default.number]),
+    markerUnits: import_prop_types5.default.string,
+    refX: import_prop_types5.default.oneOfType([import_prop_types5.default.string, import_prop_types5.default.number]),
+    refY: import_prop_types5.default.oneOfType([import_prop_types5.default.string, import_prop_types5.default.number]),
+    strokeWidth: import_prop_types5.default.number,
+    children: import_prop_types5.default.node.isRequired
+  };
+
+  // node_modules/.pnpm/@visx+marker@3.5.0_react@18.2.0/node_modules/@visx/marker/esm/markers/Circle.js
+  var import_react20 = __toESM(require_react());
+  var _excluded16 = ["id", "size", "strokeWidth"];
+  function _extends19() {
+    _extends19 = Object.assign ? Object.assign.bind() : function(target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    };
+    return _extends19.apply(this, arguments);
+  }
+  function _objectWithoutPropertiesLoose14(source, excluded) {
+    if (source == null)
+      return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for (i = 0; i < sourceKeys.length; i++) {
+      key = sourceKeys[i];
+      if (excluded.indexOf(key) >= 0)
+        continue;
+      target[key] = source[key];
+    }
+    return target;
+  }
   function MarkerCircle(_ref) {
-    var id = _ref.id, _ref$size = _ref.size, size = _ref$size === void 0 ? 9 : _ref$size, _ref$strokeWidth = _ref.strokeWidth, strokeWidth = _ref$strokeWidth === void 0 ? 1 : _ref$strokeWidth, restProps = _objectWithoutPropertiesLoose13(_ref, _excluded15);
+    var id2 = _ref.id, _ref$size = _ref.size, size = _ref$size === void 0 ? 9 : _ref$size, _ref$strokeWidth = _ref.strokeWidth, strokeWidth = _ref$strokeWidth === void 0 ? 1 : _ref$strokeWidth, restProps = _objectWithoutPropertiesLoose14(_ref, _excluded16);
     var diameter = size * 2;
     var bounds = diameter + strokeWidth;
     var mid = bounds / 2;
-    return /* @__PURE__ */ import_react17.default.createElement(Marker, _extends17({
-      id,
+    return /* @__PURE__ */ import_react20.default.createElement(Marker, _extends19({
+      id: id2,
       markerWidth: bounds,
       markerHeight: bounds,
       refX: 0,
@@ -37213,7 +37569,7 @@
       orient: "auto-start-reverse",
       markerUnits: "strokeWidth",
       strokeWidth
-    }, restProps), /* @__PURE__ */ import_react17.default.createElement("circle", {
+    }, restProps), /* @__PURE__ */ import_react20.default.createElement("circle", {
       r: size,
       cx: mid,
       cy: mid
@@ -37221,7 +37577,7 @@
   }
 
   // src/components/LineChart.tsx
-  var import_react18 = __toESM(require_react());
+  var import_react21 = __toESM(require_react());
 
   // node_modules/.pnpm/@visx+curve@3.3.0/node_modules/@visx/curve/esm/index.js
   var import_d3_shape2 = __toESM(require_d3_shape());
@@ -37229,13 +37585,13 @@
   // src/components/LineChart.tsx
   var import_jsx_runtime8 = __toESM(require_jsx_runtime());
   function LineChart({ width = 400, title, height = 400, data }) {
-    const getX = (0, import_react18.useCallback)((d) => d.date, []);
-    const getY = (0, import_react18.useCallback)((d) => d.value, []);
+    const getX = (0, import_react21.useCallback)((d) => d.date, []);
+    const getY = (0, import_react21.useCallback)((d) => d.value, []);
     const allData = data.flat();
-    const xScale = (0, import_react18.useCallback)(() => createTimeScale({
+    const xScale = (0, import_react21.useCallback)(() => createTimeScale({
       domain: extent(allData, getX)
     }), [allData, getX])();
-    const yScale = (0, import_react18.useCallback)(() => createLinearScale({
+    const yScale = (0, import_react21.useCallback)(() => createLinearScale({
       domain: extent(allData, getY)
     }), [])();
     const margin = 60;
@@ -37244,7 +37600,7 @@
     xScale.range([0, maxWidth]);
     yScale.range([maxHeight, 0]);
     const colors = ["#4793AF", "#FFC470", "#DD5746", "#8B322C"];
-    return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("svg", { width, height, children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(ScaleSVG, { width, height, children: [
       /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(MarkerCircle, { id: "marker-circle", fill: "#333", size: 2, refX: 2 }),
       width > 8 && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(Group, { top: 0, left: 0, children: [
         title && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Text, { textAnchor: "middle", x: maxWidth / 2, y: margin / 2, fontSize: 18, style: { fontWeight: "bold" }, children: title }),
@@ -37270,9 +37626,7 @@
             strokeWidth: 3,
             strokeOpacity: 1,
             shapeRendering: "geometricPrecision",
-            markerMid: "url(#marker-circle)",
-            markerStart: "url(#marker-circle)",
-            markerEnd: "url(#marker-circle)"
+            markerMid: "url(#marker-circle)"
           },
           i
         )) })
@@ -37286,18 +37640,21 @@
     const { subscriptions = [], loading } = useSubscriptions_default();
     if (loading || !subscriptions.length)
       return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "w-[1200px] h-[600px] flex items-center justify-center", children: "Loading..." });
-    return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "flex w-full justify-center p-4 ", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(LineChart, { title: "Total Subscriptions", data: subscriptions, width: 1200, height: 600 }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "flex w-full justify-center py-4 max-w-full w-screen h-[600px]", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(ParentSize, { children: ({ width, height }) => {
+      console.log(width, height);
+      return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(LineChart, { title: "Total Subscriptions", data: subscriptions, width, height });
+    } }) });
   }
 
   // src/pages/post-management/index.tsx
-  var import_react21 = __toESM(require_react());
+  var import_react24 = __toESM(require_react());
 
   // src/apis/usePosts.ts
-  var import_react19 = __toESM(require_react());
+  var import_react22 = __toESM(require_react());
   function usePosts() {
-    const [posts, setPosts] = (0, import_react19.useState)([]);
-    const [loading, setLoading] = (0, import_react19.useState)(true);
-    (0, import_react19.useEffect)(() => {
+    const [posts, setPosts] = (0, import_react22.useState)([]);
+    const [loading, setLoading] = (0, import_react22.useState)(true);
+    (0, import_react22.useEffect)(() => {
       (async () => {
         const posts2 = await fetch("https://jsonplaceholder.typicode.com/posts");
         const postsData = await posts2.json();
@@ -37310,7 +37667,7 @@
   var usePosts_default = usePosts;
 
   // node_modules/.pnpm/@tanstack+react-table@8.16.0_react-dom@18.2.0_react@18.2.0/node_modules/@tanstack/react-table/build/lib/index.mjs
-  var React16 = __toESM(require_react(), 1);
+  var React18 = __toESM(require_react(), 1);
 
   // node_modules/.pnpm/@tanstack+table-core@8.16.0/node_modules/@tanstack/table-core/build/lib/index.mjs
   function functionalUpdate(updater, input) {
@@ -37428,7 +37785,7 @@
       ...columnDef
     };
     const accessorKey = resolvedColumnDef.accessorKey;
-    let id = (_ref = (_resolvedColumnDef$id = resolvedColumnDef.id) != null ? _resolvedColumnDef$id : accessorKey ? accessorKey.replace(".", "_") : void 0) != null ? _ref : typeof resolvedColumnDef.header === "string" ? resolvedColumnDef.header : void 0;
+    let id2 = (_ref = (_resolvedColumnDef$id = resolvedColumnDef.id) != null ? _resolvedColumnDef$id : accessorKey ? accessorKey.replace(".", "_") : void 0) != null ? _ref : typeof resolvedColumnDef.header === "string" ? resolvedColumnDef.header : void 0;
     let accessorFn;
     if (resolvedColumnDef.accessorFn) {
       accessorFn = resolvedColumnDef.accessorFn;
@@ -37449,14 +37806,14 @@
         accessorFn = (originalRow) => originalRow[resolvedColumnDef.accessorKey];
       }
     }
-    if (!id) {
+    if (!id2) {
       if (true) {
         throw new Error(resolvedColumnDef.accessorFn ? `Columns require an id when using an accessorFn` : `Columns require an id when using a non-string header`);
       }
       throw new Error();
     }
     let column = {
-      id: `${String(id)}`,
+      id: `${String(id2)}`,
       accessorFn,
       parent,
       depth,
@@ -37483,9 +37840,9 @@
   var debug = "debugHeaders";
   function createHeader(table, column, options) {
     var _options$id;
-    const id = (_options$id = options.id) != null ? _options$id : column.id;
+    const id2 = (_options$id = options.id) != null ? _options$id : column.id;
     let header = {
-      id,
+      id: id2,
       column,
       index: options.index,
       isPlaceholder: !!options.isPlaceholder,
@@ -37693,9 +38050,9 @@
     recurseHeadersForSpans((_headerGroups$0$heade = (_headerGroups$ = headerGroups[0]) == null ? void 0 : _headerGroups$.headers) != null ? _headerGroups$0$heade : []);
     return headerGroups;
   }
-  var createRow = (table, id, original, rowIndex, depth, subRows, parentId) => {
+  var createRow = (table, id2, original, rowIndex, depth, subRows, parentId) => {
     let row = {
-      id,
+      id: id2,
       index: rowIndex,
       original,
       depth,
@@ -37834,22 +38191,22 @@
   };
   weakEquals.autoRemove = (val) => testFalsey(val);
   var inNumberRange = (row, columnId, filterValue) => {
-    let [min2, max2] = filterValue;
+    let [min3, max3] = filterValue;
     const rowValue = row.getValue(columnId);
-    return rowValue >= min2 && rowValue <= max2;
+    return rowValue >= min3 && rowValue <= max3;
   };
   inNumberRange.resolveFilterValue = (val) => {
     let [unsafeMin, unsafeMax] = val;
     let parsedMin = typeof unsafeMin !== "number" ? parseFloat(unsafeMin) : unsafeMin;
     let parsedMax = typeof unsafeMax !== "number" ? parseFloat(unsafeMax) : unsafeMax;
-    let min2 = unsafeMin === null || Number.isNaN(parsedMin) ? -Infinity : parsedMin;
-    let max2 = unsafeMax === null || Number.isNaN(parsedMax) ? Infinity : parsedMax;
-    if (min2 > max2) {
-      const temp = min2;
-      min2 = max2;
-      max2 = temp;
+    let min3 = unsafeMin === null || Number.isNaN(parsedMin) ? -Infinity : parsedMin;
+    let max3 = unsafeMax === null || Number.isNaN(parsedMax) ? Infinity : parsedMax;
+    if (min3 > max3) {
+      const temp = min3;
+      min3 = max3;
+      max3 = temp;
     }
-    return [min2, max2];
+    return [min3, max3];
   };
   inNumberRange.autoRemove = (val) => testFalsey(val) || testFalsey(val[0]) && testFalsey(val[1]);
   var filterFns = {
@@ -38003,43 +38360,43 @@
     }, 0);
   };
   var min = (columnId, _leafRows, childRows) => {
-    let min2;
+    let min3;
     childRows.forEach((row) => {
       const value = row.getValue(columnId);
-      if (value != null && (min2 > value || min2 === void 0 && value >= value)) {
-        min2 = value;
+      if (value != null && (min3 > value || min3 === void 0 && value >= value)) {
+        min3 = value;
       }
     });
-    return min2;
+    return min3;
   };
   var max = (columnId, _leafRows, childRows) => {
-    let max2;
+    let max3;
     childRows.forEach((row) => {
       const value = row.getValue(columnId);
-      if (value != null && (max2 < value || max2 === void 0 && value >= value)) {
-        max2 = value;
+      if (value != null && (max3 < value || max3 === void 0 && value >= value)) {
+        max3 = value;
       }
     });
-    return max2;
+    return max3;
   };
   var extent2 = (columnId, _leafRows, childRows) => {
-    let min2;
-    let max2;
+    let min3;
+    let max3;
     childRows.forEach((row) => {
       const value = row.getValue(columnId);
       if (value != null) {
-        if (min2 === void 0) {
+        if (min3 === void 0) {
           if (value >= value)
-            min2 = max2 = value;
+            min3 = max3 = value;
         } else {
-          if (min2 > value)
-            min2 = value;
-          if (max2 < value)
-            max2 = value;
+          if (min3 > value)
+            min3 = value;
+          if (max3 < value)
+            max3 = value;
         }
       }
     });
-    return [min2, max2];
+    return [min3, max3];
   };
   var mean = (columnId, leafRows) => {
     let count2 = 0;
@@ -38841,8 +39198,8 @@
       table.getExpandedDepth = () => {
         let maxDepth = 0;
         const rowIds = table.getState().expanded === true ? Object.keys(table.getRowModel().rowsById) : Object.keys(table.getState().expanded);
-        rowIds.forEach((id) => {
-          const splitId = id.split(".");
+        rowIds.forEach((id2) => {
+          const splitId = id2.split(".");
           maxDepth = Math.max(maxDepth, splitId.length);
         });
         return maxDepth;
@@ -39086,15 +39443,15 @@
       row.pin = (position, includeLeafRows, includeParentRows) => {
         const leafRowIds = includeLeafRows ? row.getLeafRows().map((_ref) => {
           let {
-            id
+            id: id2
           } = _ref;
-          return id;
+          return id2;
         }) : [];
         const parentRowIds = includeParentRows ? row.getParentRows().map((_ref2) => {
           let {
-            id
+            id: id2
           } = _ref2;
-          return id;
+          return id2;
         }) : [];
         const rowIds = /* @__PURE__ */ new Set([...parentRowIds, row.id, ...leafRowIds]);
         table.setRowPinning((old) => {
@@ -39147,9 +39504,9 @@
           return -1;
         const visiblePinnedRowIds = (_table$_getPinnedRows = table._getPinnedRows(position)) == null ? void 0 : _table$_getPinnedRows.map((_ref4) => {
           let {
-            id
+            id: id2
           } = _ref4;
-          return id;
+          return id2;
         });
         return (_visiblePinnedRowIds$ = visiblePinnedRowIds == null ? void 0 : visiblePinnedRowIds.indexOf(row.id)) != null ? _visiblePinnedRowIds$ : -1;
       };
@@ -39392,18 +39749,18 @@
       };
     }
   };
-  var mutateRowIsSelected = (selectedRowIds, id, value, includeChildren, table) => {
+  var mutateRowIsSelected = (selectedRowIds, id2, value, includeChildren, table) => {
     var _row$subRows;
-    const row = table.getRow(id, true);
+    const row = table.getRow(id2, true);
     if (value) {
       if (!row.getCanMultiSelect()) {
         Object.keys(selectedRowIds).forEach((key) => delete selectedRowIds[key]);
       }
       if (row.getCanSelect()) {
-        selectedRowIds[id] = true;
+        selectedRowIds[id2] = true;
       }
     } else {
-      delete selectedRowIds[id];
+      delete selectedRowIds[id2];
     }
     if (includeChildren && (_row$subRows = row.subRows) != null && _row$subRows.length && row.getCanSelectSubRows()) {
       row.subRows.forEach((row2) => mutateRowIsSelected(selectedRowIds, row2.id, value, includeChildren, table));
@@ -39758,15 +40115,15 @@
     let table = {
       _features
     };
-    const defaultOptions = table._features.reduce((obj, feature) => {
+    const defaultOptions2 = table._features.reduce((obj, feature) => {
       return Object.assign(obj, feature.getDefaultOptions == null ? void 0 : feature.getDefaultOptions(table));
     }, {});
     const mergeOptions = (options2) => {
       if (table.options.mergeOptions) {
-        return table.options.mergeOptions(defaultOptions, options2);
+        return table.options.mergeOptions(defaultOptions2, options2);
       }
       return {
-        ...defaultOptions,
+        ...defaultOptions2,
         ...options2
       };
     };
@@ -39784,7 +40141,7 @@
     const coreInstance = {
       _features,
       options: {
-        ...defaultOptions,
+        ...defaultOptions2,
         ...options
       },
       initialState,
@@ -39831,13 +40188,13 @@
         return table.getPaginationRowModel();
       },
       //in next version, we should just pass in the row model as the optional 2nd arg
-      getRow: (id, searchAll) => {
-        let row = (searchAll ? table.getPrePaginationRowModel() : table.getRowModel()).rowsById[id];
+      getRow: (id2, searchAll) => {
+        let row = (searchAll ? table.getPrePaginationRowModel() : table.getRowModel()).rowsById[id2];
         if (!row) {
-          row = table.getCoreRowModel().rowsById[id];
+          row = table.getCoreRowModel().rowsById[id2];
           if (!row) {
             if (true) {
-              throw new Error(`getRow could not find row with ID: ${id}`);
+              throw new Error(`getRow could not find row with ID: ${id2}`);
             }
             throw new Error();
           }
@@ -40006,7 +40363,7 @@
 
   // node_modules/.pnpm/@tanstack+react-table@8.16.0_react-dom@18.2.0_react@18.2.0/node_modules/@tanstack/react-table/build/lib/index.mjs
   function flexRender(Comp, props) {
-    return !Comp ? null : isReactComponent(Comp) ? /* @__PURE__ */ React16.createElement(Comp, props) : Comp;
+    return !Comp ? null : isReactComponent(Comp) ? /* @__PURE__ */ React18.createElement(Comp, props) : Comp;
   }
   function isReactComponent(component) {
     return isClassComponent(component) || typeof component === "function" || isExoticComponent(component);
@@ -40030,10 +40387,10 @@
       renderFallbackValue: null,
       ...options
     };
-    const [tableRef] = React16.useState(() => ({
+    const [tableRef] = React18.useState(() => ({
       current: createTable(resolvedOptions)
     }));
-    const [state, setState] = React16.useState(() => tableRef.current.initialState);
+    const [state, setState] = React18.useState(() => tableRef.current.initialState);
     tableRef.current.setOptions((prev) => ({
       ...prev,
       ...options,
@@ -40052,10 +40409,10 @@
   }
 
   // src/components/Table.tsx
-  var import_react20 = __toESM(require_react());
+  var import_react23 = __toESM(require_react());
   var import_jsx_runtime10 = __toESM(require_jsx_runtime());
   function Table({ data, columns }) {
-    const [pagination, setPagination] = (0, import_react20.useState)({
+    const [pagination, setPagination] = (0, import_react23.useState)({
       pageSize: 10,
       pageIndex: 0
     });
@@ -40069,83 +40426,55 @@
         pagination
       }
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("table", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("thead", { children: table.getHeaderGroups().map((headerGroup) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tr", { children: headerGroup.headers.map((header) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("th", { children: header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext()) }, header.id)) }, headerGroup.id)) }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tbody", { children: table.getRowModel().rows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tr", { children: row.getVisibleCells().map((cell) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("td", { children: flexRender(cell.column.columnDef.cell, cell.getContext()) }, cell.id)) }, row.id)) }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tfoot", { children: table.getFooterGroups().map((footerGroup) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tr", { children: footerGroup.headers.map((header) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("th", { children: header.isPlaceholder ? null : flexRender(header.column.columnDef.footer, header.getContext()) }, header.id)) }, footerGroup.id)) })
+    return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(import_jsx_runtime10.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("table", { className: "table-auto w-full", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("thead", { className: "border bg-gray-100 rounded-tl-lg text-neutral-600 rounded-tr-lg", children: table.getHeaderGroups().map((headerGroup) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tr", { children: headerGroup.headers.map((header) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("th", { className: "font-semibold p-4 text-left", children: header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext()) }, header.id)) }, headerGroup.id)) }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("tbody", { children: [
+          data.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tr", { children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("td", { colSpan: columns.length, className: "text-center p-4", children: "No data" }) }),
+          table.getRowModel().rows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tr", { className: "border-b border-x", children: row.getVisibleCells().map((cell) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("td", { className: "px-4 py-2", children: flexRender(cell.column.columnDef.cell, cell.getContext()) }, cell.id)) }, row.id))
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tfoot", { className: "bg-gray-100", children: table.getFooterGroups().map((footerGroup) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tr", { children: footerGroup.headers.map((header) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("th", { children: header.isPlaceholder ? null : flexRender(header.column.columnDef.footer, header.getContext()) }, header.id)) }, footerGroup.id)) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex items-center gap-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex my-4 items-center w-full justify-center gap-2", children: [
         /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
           "button",
           {
-            className: "border rounded p-1",
+            className: "border rounded p-2 disabled:opacity-30 bg-gray-100",
             onClick: () => table.firstPage(),
             disabled: !table.getCanPreviousPage(),
-            children: "<<"
+            children: "Start"
           }
         ),
         /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
           "button",
           {
-            className: "border rounded p-1",
+            className: "border rounded p-2 disabled:opacity-30 bg-gray-100",
             onClick: () => table.previousPage(),
             disabled: !table.getCanPreviousPage(),
-            children: "<"
+            children: "Previous"
           }
         ),
+        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { className: "p-2 bg-gray-100 border rounded-md text-neutral-700", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("strong", { children: table.getState().pagination.pageIndex + 1 }),
+          " / ",
+          table.getPageCount()
+        ] }),
         /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
           "button",
           {
-            className: "border rounded p-1",
+            className: "border rounded p-2 disabled:opacity-30 bg-gray-100",
             onClick: () => table.nextPage(),
             disabled: !table.getCanNextPage(),
-            children: ">"
+            children: "Next"
           }
         ),
         /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
           "button",
           {
-            className: "border rounded p-1",
+            className: "border rounded p-2 disabled:opacity-30 bg-gray-100",
             onClick: () => table.lastPage(),
             disabled: !table.getCanNextPage(),
-            children: ">>"
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { className: "flex items-center gap-1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { children: "Page" }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("strong", { children: [
-            table.getState().pagination.pageIndex + 1,
-            " of ",
-            table.getPageCount().toLocaleString()
-          ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { className: "flex items-center gap-1", children: [
-          "| Go to page:",
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
-            "input",
-            {
-              type: "number",
-              defaultValue: table.getState().pagination.pageIndex + 1,
-              onChange: (e) => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                table.setPageIndex(page);
-              },
-              className: "border p-1 rounded w-16"
-            }
-          )
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
-          "select",
-          {
-            value: table.getState().pagination.pageSize,
-            onChange: (e) => {
-              table.setPageSize(Number(e.target.value));
-            },
-            children: [10, 20, 30, 40, 50].map((pageSize) => /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("option", { value: pageSize, children: [
-              "Show ",
-              pageSize
-            ] }, pageSize))
+            children: "End"
           }
         )
       ] })
@@ -40156,7 +40485,7 @@
   var import_jsx_runtime11 = __toESM(require_jsx_runtime());
   function PostManagement() {
     const { posts = [] } = usePosts_default();
-    const columns = (0, import_react21.useMemo)(
+    const columns = (0, import_react24.useMemo)(
       () => [
         {
           accessorKey: "id",
@@ -40172,56 +40501,3389 @@
         },
         {
           id: "actions",
-          header: "Actions",
-          cell: () => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { children: "View" })
+          header: () => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "text-center inline-block w-full", children: "Actions" }),
+          cell: () => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "text-center block mx-auto", "aria-label": "view detail", title: "View Detail", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Eye, {}) })
         }
       ],
       []
     );
     return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("section", { children: [
       /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(PageTitle, { title: "Post Management" }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Table, { data: posts, columns })
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "p-8 flex flex-col items-center w-full", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "w-full", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Filter, {}),
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Table, { data: posts, columns })
+      ] }) })
+    ] });
+  }
+  var Filter = () => {
+    return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex gap-2 mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("input", { type: "text", placeholder: "Search by user id or title", className: "px-4 py-2 w-full border border-gray-300 rounded-md" }),
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("button", { className: "p-2 px-4 bg-zinc-900 hover:bg-zinc-900/80 transition duration-150 text-white rounded-md flex items-center gap-2", children: [
+        " Search ",
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Search, {})
+      ] })
+    ] });
+  };
+  var Eye = () => {
+    return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", "stroke-width": "1.5", stroke: "currentColor", className: "w-4 h-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("path", { "stroke-linecap": "round", "stroke-linejoin": "round", d: "M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" }),
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("path", { "stroke-linecap": "round", "stroke-linejoin": "round", d: "M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" })
+    ] });
+  };
+  var Search = () => {
+    return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", "stroke-width": "1.5", stroke: "currentColor", className: "w-4 h-4", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("path", { "stroke-linecap": "round", "stroke-linejoin": "round", d: "m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" }) });
+  };
+
+  // src/pages/setting/index.tsx
+  var import_react26 = __toESM(require_react());
+
+  // src/components/Button.tsx
+  var import_jsx_runtime12 = __toESM(require_jsx_runtime());
+  function Button({ children, className, ...props }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { ...props, className: `px-4 shadow-sm rounded-md py-2 border ${className}`, children });
+  }
+
+  // node_modules/.pnpm/react-day-picker@8.10.1_date-fns@3.6.0_react@18.2.0/node_modules/react-day-picker/dist/index.esm.js
+  var import_jsx_runtime13 = __toESM(require_jsx_runtime());
+  var import_react25 = __toESM(require_react());
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/toDate.mjs
+  function toDate(argument) {
+    const argStr = Object.prototype.toString.call(argument);
+    if (argument instanceof Date || typeof argument === "object" && argStr === "[object Date]") {
+      return new argument.constructor(+argument);
+    } else if (typeof argument === "number" || argStr === "[object Number]" || typeof argument === "string" || argStr === "[object String]") {
+      return new Date(argument);
+    } else {
+      return /* @__PURE__ */ new Date(NaN);
+    }
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/constructFrom.mjs
+  function constructFrom(date2, value) {
+    if (date2 instanceof Date) {
+      return new date2.constructor(value);
+    } else {
+      return new Date(value);
+    }
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/addDays.mjs
+  function addDays(date2, amount) {
+    const _date = toDate(date2);
+    if (isNaN(amount))
+      return constructFrom(date2, NaN);
+    if (!amount) {
+      return _date;
+    }
+    _date.setDate(_date.getDate() + amount);
+    return _date;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/addMonths.mjs
+  function addMonths(date2, amount) {
+    const _date = toDate(date2);
+    if (isNaN(amount))
+      return constructFrom(date2, NaN);
+    if (!amount) {
+      return _date;
+    }
+    const dayOfMonth = _date.getDate();
+    const endOfDesiredMonth = constructFrom(date2, _date.getTime());
+    endOfDesiredMonth.setMonth(_date.getMonth() + amount + 1, 0);
+    const daysInMonth = endOfDesiredMonth.getDate();
+    if (dayOfMonth >= daysInMonth) {
+      return endOfDesiredMonth;
+    } else {
+      _date.setFullYear(
+        endOfDesiredMonth.getFullYear(),
+        endOfDesiredMonth.getMonth(),
+        dayOfMonth
+      );
+      return _date;
+    }
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/constants.mjs
+  var daysInYear = 365.2425;
+  var maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1e3;
+  var minTime = -maxTime;
+  var millisecondsInWeek = 6048e5;
+  var millisecondsInDay = 864e5;
+  var secondsInHour = 3600;
+  var secondsInDay = secondsInHour * 24;
+  var secondsInWeek = secondsInDay * 7;
+  var secondsInYear = secondsInDay * daysInYear;
+  var secondsInMonth = secondsInYear / 12;
+  var secondsInQuarter = secondsInMonth * 3;
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/_lib/defaultOptions.mjs
+  var defaultOptions = {};
+  function getDefaultOptions() {
+    return defaultOptions;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/startOfWeek.mjs
+  function startOfWeek(date2, options) {
+    const defaultOptions2 = getDefaultOptions();
+    const weekStartsOn = options?.weekStartsOn ?? options?.locale?.options?.weekStartsOn ?? defaultOptions2.weekStartsOn ?? defaultOptions2.locale?.options?.weekStartsOn ?? 0;
+    const _date = toDate(date2);
+    const day = _date.getDay();
+    const diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn;
+    _date.setDate(_date.getDate() - diff);
+    _date.setHours(0, 0, 0, 0);
+    return _date;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/startOfISOWeek.mjs
+  function startOfISOWeek(date2) {
+    return startOfWeek(date2, { weekStartsOn: 1 });
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/getISOWeekYear.mjs
+  function getISOWeekYear(date2) {
+    const _date = toDate(date2);
+    const year = _date.getFullYear();
+    const fourthOfJanuaryOfNextYear = constructFrom(date2, 0);
+    fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4);
+    fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
+    const startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear);
+    const fourthOfJanuaryOfThisYear = constructFrom(date2, 0);
+    fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4);
+    fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0);
+    const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear);
+    if (_date.getTime() >= startOfNextYear.getTime()) {
+      return year + 1;
+    } else if (_date.getTime() >= startOfThisYear.getTime()) {
+      return year;
+    } else {
+      return year - 1;
+    }
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/startOfDay.mjs
+  function startOfDay(date2) {
+    const _date = toDate(date2);
+    _date.setHours(0, 0, 0, 0);
+    return _date;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/_lib/getTimezoneOffsetInMilliseconds.mjs
+  function getTimezoneOffsetInMilliseconds(date2) {
+    const _date = toDate(date2);
+    const utcDate2 = new Date(
+      Date.UTC(
+        _date.getFullYear(),
+        _date.getMonth(),
+        _date.getDate(),
+        _date.getHours(),
+        _date.getMinutes(),
+        _date.getSeconds(),
+        _date.getMilliseconds()
+      )
+    );
+    utcDate2.setUTCFullYear(_date.getFullYear());
+    return +date2 - +utcDate2;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/differenceInCalendarDays.mjs
+  function differenceInCalendarDays(dateLeft, dateRight) {
+    const startOfDayLeft = startOfDay(dateLeft);
+    const startOfDayRight = startOfDay(dateRight);
+    const timestampLeft = +startOfDayLeft - getTimezoneOffsetInMilliseconds(startOfDayLeft);
+    const timestampRight = +startOfDayRight - getTimezoneOffsetInMilliseconds(startOfDayRight);
+    return Math.round((timestampLeft - timestampRight) / millisecondsInDay);
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/startOfISOWeekYear.mjs
+  function startOfISOWeekYear(date2) {
+    const year = getISOWeekYear(date2);
+    const fourthOfJanuary = constructFrom(date2, 0);
+    fourthOfJanuary.setFullYear(year, 0, 4);
+    fourthOfJanuary.setHours(0, 0, 0, 0);
+    return startOfISOWeek(fourthOfJanuary);
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/addWeeks.mjs
+  function addWeeks(date2, amount) {
+    const days = amount * 7;
+    return addDays(date2, days);
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/addYears.mjs
+  function addYears(date2, amount) {
+    return addMonths(date2, amount * 12);
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/max.mjs
+  function max2(dates) {
+    let result;
+    dates.forEach(function(dirtyDate) {
+      const currentDate = toDate(dirtyDate);
+      if (result === void 0 || result < currentDate || isNaN(Number(currentDate))) {
+        result = currentDate;
+      }
+    });
+    return result || /* @__PURE__ */ new Date(NaN);
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/min.mjs
+  function min2(dates) {
+    let result;
+    dates.forEach((dirtyDate) => {
+      const date2 = toDate(dirtyDate);
+      if (!result || result > date2 || isNaN(+date2)) {
+        result = date2;
+      }
+    });
+    return result || /* @__PURE__ */ new Date(NaN);
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/isSameDay.mjs
+  function isSameDay(dateLeft, dateRight) {
+    const dateLeftStartOfDay = startOfDay(dateLeft);
+    const dateRightStartOfDay = startOfDay(dateRight);
+    return +dateLeftStartOfDay === +dateRightStartOfDay;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/isDate.mjs
+  function isDate(value) {
+    return value instanceof Date || typeof value === "object" && Object.prototype.toString.call(value) === "[object Date]";
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/isValid.mjs
+  function isValid(date2) {
+    if (!isDate(date2) && typeof date2 !== "number") {
+      return false;
+    }
+    const _date = toDate(date2);
+    return !isNaN(Number(_date));
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/differenceInCalendarMonths.mjs
+  function differenceInCalendarMonths(dateLeft, dateRight) {
+    const _dateLeft = toDate(dateLeft);
+    const _dateRight = toDate(dateRight);
+    const yearDiff = _dateLeft.getFullYear() - _dateRight.getFullYear();
+    const monthDiff = _dateLeft.getMonth() - _dateRight.getMonth();
+    return yearDiff * 12 + monthDiff;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/differenceInCalendarWeeks.mjs
+  function differenceInCalendarWeeks(dateLeft, dateRight, options) {
+    const startOfWeekLeft = startOfWeek(dateLeft, options);
+    const startOfWeekRight = startOfWeek(dateRight, options);
+    const timestampLeft = +startOfWeekLeft - getTimezoneOffsetInMilliseconds(startOfWeekLeft);
+    const timestampRight = +startOfWeekRight - getTimezoneOffsetInMilliseconds(startOfWeekRight);
+    return Math.round((timestampLeft - timestampRight) / millisecondsInWeek);
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/endOfMonth.mjs
+  function endOfMonth(date2) {
+    const _date = toDate(date2);
+    const month = _date.getMonth();
+    _date.setFullYear(_date.getFullYear(), month + 1, 0);
+    _date.setHours(23, 59, 59, 999);
+    return _date;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/startOfMonth.mjs
+  function startOfMonth(date2) {
+    const _date = toDate(date2);
+    _date.setDate(1);
+    _date.setHours(0, 0, 0, 0);
+    return _date;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/startOfYear.mjs
+  function startOfYear(date2) {
+    const cleanDate = toDate(date2);
+    const _date = constructFrom(date2, 0);
+    _date.setFullYear(cleanDate.getFullYear(), 0, 1);
+    _date.setHours(0, 0, 0, 0);
+    return _date;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/endOfWeek.mjs
+  function endOfWeek(date2, options) {
+    const defaultOptions2 = getDefaultOptions();
+    const weekStartsOn = options?.weekStartsOn ?? options?.locale?.options?.weekStartsOn ?? defaultOptions2.weekStartsOn ?? defaultOptions2.locale?.options?.weekStartsOn ?? 0;
+    const _date = toDate(date2);
+    const day = _date.getDay();
+    const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn);
+    _date.setDate(_date.getDate() + diff);
+    _date.setHours(23, 59, 59, 999);
+    return _date;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/endOfISOWeek.mjs
+  function endOfISOWeek(date2) {
+    return endOfWeek(date2, { weekStartsOn: 1 });
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/locale/en-US/_lib/formatDistance.mjs
+  var formatDistanceLocale = {
+    lessThanXSeconds: {
+      one: "less than a second",
+      other: "less than {{count}} seconds"
+    },
+    xSeconds: {
+      one: "1 second",
+      other: "{{count}} seconds"
+    },
+    halfAMinute: "half a minute",
+    lessThanXMinutes: {
+      one: "less than a minute",
+      other: "less than {{count}} minutes"
+    },
+    xMinutes: {
+      one: "1 minute",
+      other: "{{count}} minutes"
+    },
+    aboutXHours: {
+      one: "about 1 hour",
+      other: "about {{count}} hours"
+    },
+    xHours: {
+      one: "1 hour",
+      other: "{{count}} hours"
+    },
+    xDays: {
+      one: "1 day",
+      other: "{{count}} days"
+    },
+    aboutXWeeks: {
+      one: "about 1 week",
+      other: "about {{count}} weeks"
+    },
+    xWeeks: {
+      one: "1 week",
+      other: "{{count}} weeks"
+    },
+    aboutXMonths: {
+      one: "about 1 month",
+      other: "about {{count}} months"
+    },
+    xMonths: {
+      one: "1 month",
+      other: "{{count}} months"
+    },
+    aboutXYears: {
+      one: "about 1 year",
+      other: "about {{count}} years"
+    },
+    xYears: {
+      one: "1 year",
+      other: "{{count}} years"
+    },
+    overXYears: {
+      one: "over 1 year",
+      other: "over {{count}} years"
+    },
+    almostXYears: {
+      one: "almost 1 year",
+      other: "almost {{count}} years"
+    }
+  };
+  var formatDistance = (token, count2, options) => {
+    let result;
+    const tokenValue = formatDistanceLocale[token];
+    if (typeof tokenValue === "string") {
+      result = tokenValue;
+    } else if (count2 === 1) {
+      result = tokenValue.one;
+    } else {
+      result = tokenValue.other.replace("{{count}}", count2.toString());
+    }
+    if (options?.addSuffix) {
+      if (options.comparison && options.comparison > 0) {
+        return "in " + result;
+      } else {
+        return result + " ago";
+      }
+    }
+    return result;
+  };
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/locale/_lib/buildFormatLongFn.mjs
+  function buildFormatLongFn(args) {
+    return (options = {}) => {
+      const width = options.width ? String(options.width) : args.defaultWidth;
+      const format3 = args.formats[width] || args.formats[args.defaultWidth];
+      return format3;
+    };
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/locale/en-US/_lib/formatLong.mjs
+  var dateFormats = {
+    full: "EEEE, MMMM do, y",
+    long: "MMMM do, y",
+    medium: "MMM d, y",
+    short: "MM/dd/yyyy"
+  };
+  var timeFormats = {
+    full: "h:mm:ss a zzzz",
+    long: "h:mm:ss a z",
+    medium: "h:mm:ss a",
+    short: "h:mm a"
+  };
+  var dateTimeFormats = {
+    full: "{{date}} 'at' {{time}}",
+    long: "{{date}} 'at' {{time}}",
+    medium: "{{date}}, {{time}}",
+    short: "{{date}}, {{time}}"
+  };
+  var formatLong = {
+    date: buildFormatLongFn({
+      formats: dateFormats,
+      defaultWidth: "full"
+    }),
+    time: buildFormatLongFn({
+      formats: timeFormats,
+      defaultWidth: "full"
+    }),
+    dateTime: buildFormatLongFn({
+      formats: dateTimeFormats,
+      defaultWidth: "full"
+    })
+  };
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/locale/en-US/_lib/formatRelative.mjs
+  var formatRelativeLocale = {
+    lastWeek: "'last' eeee 'at' p",
+    yesterday: "'yesterday at' p",
+    today: "'today at' p",
+    tomorrow: "'tomorrow at' p",
+    nextWeek: "eeee 'at' p",
+    other: "P"
+  };
+  var formatRelative = (token, _date, _baseDate, _options) => formatRelativeLocale[token];
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/locale/_lib/buildLocalizeFn.mjs
+  function buildLocalizeFn(args) {
+    return (value, options) => {
+      const context = options?.context ? String(options.context) : "standalone";
+      let valuesArray;
+      if (context === "formatting" && args.formattingValues) {
+        const defaultWidth = args.defaultFormattingWidth || args.defaultWidth;
+        const width = options?.width ? String(options.width) : defaultWidth;
+        valuesArray = args.formattingValues[width] || args.formattingValues[defaultWidth];
+      } else {
+        const defaultWidth = args.defaultWidth;
+        const width = options?.width ? String(options.width) : args.defaultWidth;
+        valuesArray = args.values[width] || args.values[defaultWidth];
+      }
+      const index = args.argumentCallback ? args.argumentCallback(value) : value;
+      return valuesArray[index];
+    };
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/locale/en-US/_lib/localize.mjs
+  var eraValues = {
+    narrow: ["B", "A"],
+    abbreviated: ["BC", "AD"],
+    wide: ["Before Christ", "Anno Domini"]
+  };
+  var quarterValues = {
+    narrow: ["1", "2", "3", "4"],
+    abbreviated: ["Q1", "Q2", "Q3", "Q4"],
+    wide: ["1st quarter", "2nd quarter", "3rd quarter", "4th quarter"]
+  };
+  var monthValues = {
+    narrow: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"],
+    abbreviated: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    wide: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ]
+  };
+  var dayValues = {
+    narrow: ["S", "M", "T", "W", "T", "F", "S"],
+    short: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+    abbreviated: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    wide: [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ]
+  };
+  var dayPeriodValues = {
+    narrow: {
+      am: "a",
+      pm: "p",
+      midnight: "mi",
+      noon: "n",
+      morning: "morning",
+      afternoon: "afternoon",
+      evening: "evening",
+      night: "night"
+    },
+    abbreviated: {
+      am: "AM",
+      pm: "PM",
+      midnight: "midnight",
+      noon: "noon",
+      morning: "morning",
+      afternoon: "afternoon",
+      evening: "evening",
+      night: "night"
+    },
+    wide: {
+      am: "a.m.",
+      pm: "p.m.",
+      midnight: "midnight",
+      noon: "noon",
+      morning: "morning",
+      afternoon: "afternoon",
+      evening: "evening",
+      night: "night"
+    }
+  };
+  var formattingDayPeriodValues = {
+    narrow: {
+      am: "a",
+      pm: "p",
+      midnight: "mi",
+      noon: "n",
+      morning: "in the morning",
+      afternoon: "in the afternoon",
+      evening: "in the evening",
+      night: "at night"
+    },
+    abbreviated: {
+      am: "AM",
+      pm: "PM",
+      midnight: "midnight",
+      noon: "noon",
+      morning: "in the morning",
+      afternoon: "in the afternoon",
+      evening: "in the evening",
+      night: "at night"
+    },
+    wide: {
+      am: "a.m.",
+      pm: "p.m.",
+      midnight: "midnight",
+      noon: "noon",
+      morning: "in the morning",
+      afternoon: "in the afternoon",
+      evening: "in the evening",
+      night: "at night"
+    }
+  };
+  var ordinalNumber = (dirtyNumber, _options) => {
+    const number4 = Number(dirtyNumber);
+    const rem100 = number4 % 100;
+    if (rem100 > 20 || rem100 < 10) {
+      switch (rem100 % 10) {
+        case 1:
+          return number4 + "st";
+        case 2:
+          return number4 + "nd";
+        case 3:
+          return number4 + "rd";
+      }
+    }
+    return number4 + "th";
+  };
+  var localize = {
+    ordinalNumber,
+    era: buildLocalizeFn({
+      values: eraValues,
+      defaultWidth: "wide"
+    }),
+    quarter: buildLocalizeFn({
+      values: quarterValues,
+      defaultWidth: "wide",
+      argumentCallback: (quarter) => quarter - 1
+    }),
+    month: buildLocalizeFn({
+      values: monthValues,
+      defaultWidth: "wide"
+    }),
+    day: buildLocalizeFn({
+      values: dayValues,
+      defaultWidth: "wide"
+    }),
+    dayPeriod: buildLocalizeFn({
+      values: dayPeriodValues,
+      defaultWidth: "wide",
+      formattingValues: formattingDayPeriodValues,
+      defaultFormattingWidth: "wide"
+    })
+  };
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/locale/_lib/buildMatchFn.mjs
+  function buildMatchFn(args) {
+    return (string, options = {}) => {
+      const width = options.width;
+      const matchPattern = width && args.matchPatterns[width] || args.matchPatterns[args.defaultMatchWidth];
+      const matchResult = string.match(matchPattern);
+      if (!matchResult) {
+        return null;
+      }
+      const matchedString = matchResult[0];
+      const parsePatterns = width && args.parsePatterns[width] || args.parsePatterns[args.defaultParseWidth];
+      const key = Array.isArray(parsePatterns) ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString)) : (
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
+        findKey(parsePatterns, (pattern) => pattern.test(matchedString))
+      );
+      let value;
+      value = args.valueCallback ? args.valueCallback(key) : key;
+      value = options.valueCallback ? (
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any -- I challange you to fix the type
+        options.valueCallback(value)
+      ) : value;
+      const rest = string.slice(matchedString.length);
+      return { value, rest };
+    };
+  }
+  function findKey(object, predicate) {
+    for (const key in object) {
+      if (Object.prototype.hasOwnProperty.call(object, key) && predicate(object[key])) {
+        return key;
+      }
+    }
+    return void 0;
+  }
+  function findIndex(array, predicate) {
+    for (let key = 0; key < array.length; key++) {
+      if (predicate(array[key])) {
+        return key;
+      }
+    }
+    return void 0;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/locale/_lib/buildMatchPatternFn.mjs
+  function buildMatchPatternFn(args) {
+    return (string, options = {}) => {
+      const matchResult = string.match(args.matchPattern);
+      if (!matchResult)
+        return null;
+      const matchedString = matchResult[0];
+      const parseResult = string.match(args.parsePattern);
+      if (!parseResult)
+        return null;
+      let value = args.valueCallback ? args.valueCallback(parseResult[0]) : parseResult[0];
+      value = options.valueCallback ? options.valueCallback(value) : value;
+      const rest = string.slice(matchedString.length);
+      return { value, rest };
+    };
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/locale/en-US/_lib/match.mjs
+  var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i;
+  var parseOrdinalNumberPattern = /\d+/i;
+  var matchEraPatterns = {
+    narrow: /^(b|a)/i,
+    abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
+    wide: /^(before christ|before common era|anno domini|common era)/i
+  };
+  var parseEraPatterns = {
+    any: [/^b/i, /^(a|c)/i]
+  };
+  var matchQuarterPatterns = {
+    narrow: /^[1234]/i,
+    abbreviated: /^q[1234]/i,
+    wide: /^[1234](th|st|nd|rd)? quarter/i
+  };
+  var parseQuarterPatterns = {
+    any: [/1/i, /2/i, /3/i, /4/i]
+  };
+  var matchMonthPatterns = {
+    narrow: /^[jfmasond]/i,
+    abbreviated: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
+    wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
+  };
+  var parseMonthPatterns = {
+    narrow: [
+      /^j/i,
+      /^f/i,
+      /^m/i,
+      /^a/i,
+      /^m/i,
+      /^j/i,
+      /^j/i,
+      /^a/i,
+      /^s/i,
+      /^o/i,
+      /^n/i,
+      /^d/i
+    ],
+    any: [
+      /^ja/i,
+      /^f/i,
+      /^mar/i,
+      /^ap/i,
+      /^may/i,
+      /^jun/i,
+      /^jul/i,
+      /^au/i,
+      /^s/i,
+      /^o/i,
+      /^n/i,
+      /^d/i
+    ]
+  };
+  var matchDayPatterns = {
+    narrow: /^[smtwf]/i,
+    short: /^(su|mo|tu|we|th|fr|sa)/i,
+    abbreviated: /^(sun|mon|tue|wed|thu|fri|sat)/i,
+    wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
+  };
+  var parseDayPatterns = {
+    narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
+    any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
+  };
+  var matchDayPeriodPatterns = {
+    narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
+    any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i
+  };
+  var parseDayPeriodPatterns = {
+    any: {
+      am: /^a/i,
+      pm: /^p/i,
+      midnight: /^mi/i,
+      noon: /^no/i,
+      morning: /morning/i,
+      afternoon: /afternoon/i,
+      evening: /evening/i,
+      night: /night/i
+    }
+  };
+  var match = {
+    ordinalNumber: buildMatchPatternFn({
+      matchPattern: matchOrdinalNumberPattern,
+      parsePattern: parseOrdinalNumberPattern,
+      valueCallback: (value) => parseInt(value, 10)
+    }),
+    era: buildMatchFn({
+      matchPatterns: matchEraPatterns,
+      defaultMatchWidth: "wide",
+      parsePatterns: parseEraPatterns,
+      defaultParseWidth: "any"
+    }),
+    quarter: buildMatchFn({
+      matchPatterns: matchQuarterPatterns,
+      defaultMatchWidth: "wide",
+      parsePatterns: parseQuarterPatterns,
+      defaultParseWidth: "any",
+      valueCallback: (index) => index + 1
+    }),
+    month: buildMatchFn({
+      matchPatterns: matchMonthPatterns,
+      defaultMatchWidth: "wide",
+      parsePatterns: parseMonthPatterns,
+      defaultParseWidth: "any"
+    }),
+    day: buildMatchFn({
+      matchPatterns: matchDayPatterns,
+      defaultMatchWidth: "wide",
+      parsePatterns: parseDayPatterns,
+      defaultParseWidth: "any"
+    }),
+    dayPeriod: buildMatchFn({
+      matchPatterns: matchDayPeriodPatterns,
+      defaultMatchWidth: "any",
+      parsePatterns: parseDayPeriodPatterns,
+      defaultParseWidth: "any"
+    })
+  };
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/locale/en-US.mjs
+  var enUS = {
+    code: "en-US",
+    formatDistance,
+    formatLong,
+    formatRelative,
+    localize,
+    match,
+    options: {
+      weekStartsOn: 0,
+      firstWeekContainsDate: 1
+    }
+  };
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/getDayOfYear.mjs
+  function getDayOfYear(date2) {
+    const _date = toDate(date2);
+    const diff = differenceInCalendarDays(_date, startOfYear(_date));
+    const dayOfYear = diff + 1;
+    return dayOfYear;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/getISOWeek.mjs
+  function getISOWeek(date2) {
+    const _date = toDate(date2);
+    const diff = +startOfISOWeek(_date) - +startOfISOWeekYear(_date);
+    return Math.round(diff / millisecondsInWeek) + 1;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/getWeekYear.mjs
+  function getWeekYear(date2, options) {
+    const _date = toDate(date2);
+    const year = _date.getFullYear();
+    const defaultOptions2 = getDefaultOptions();
+    const firstWeekContainsDate = options?.firstWeekContainsDate ?? options?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1;
+    const firstWeekOfNextYear = constructFrom(date2, 0);
+    firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate);
+    firstWeekOfNextYear.setHours(0, 0, 0, 0);
+    const startOfNextYear = startOfWeek(firstWeekOfNextYear, options);
+    const firstWeekOfThisYear = constructFrom(date2, 0);
+    firstWeekOfThisYear.setFullYear(year, 0, firstWeekContainsDate);
+    firstWeekOfThisYear.setHours(0, 0, 0, 0);
+    const startOfThisYear = startOfWeek(firstWeekOfThisYear, options);
+    if (_date.getTime() >= startOfNextYear.getTime()) {
+      return year + 1;
+    } else if (_date.getTime() >= startOfThisYear.getTime()) {
+      return year;
+    } else {
+      return year - 1;
+    }
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/startOfWeekYear.mjs
+  function startOfWeekYear(date2, options) {
+    const defaultOptions2 = getDefaultOptions();
+    const firstWeekContainsDate = options?.firstWeekContainsDate ?? options?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1;
+    const year = getWeekYear(date2, options);
+    const firstWeek = constructFrom(date2, 0);
+    firstWeek.setFullYear(year, 0, firstWeekContainsDate);
+    firstWeek.setHours(0, 0, 0, 0);
+    const _date = startOfWeek(firstWeek, options);
+    return _date;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/getWeek.mjs
+  function getWeek(date2, options) {
+    const _date = toDate(date2);
+    const diff = +startOfWeek(_date, options) - +startOfWeekYear(_date, options);
+    return Math.round(diff / millisecondsInWeek) + 1;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/_lib/addLeadingZeros.mjs
+  function addLeadingZeros(number4, targetLength) {
+    const sign = number4 < 0 ? "-" : "";
+    const output = Math.abs(number4).toString().padStart(targetLength, "0");
+    return sign + output;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/_lib/format/lightFormatters.mjs
+  var lightFormatters = {
+    // Year
+    y(date2, token) {
+      const signedYear = date2.getFullYear();
+      const year = signedYear > 0 ? signedYear : 1 - signedYear;
+      return addLeadingZeros(token === "yy" ? year % 100 : year, token.length);
+    },
+    // Month
+    M(date2, token) {
+      const month = date2.getMonth();
+      return token === "M" ? String(month + 1) : addLeadingZeros(month + 1, 2);
+    },
+    // Day of the month
+    d(date2, token) {
+      return addLeadingZeros(date2.getDate(), token.length);
+    },
+    // AM or PM
+    a(date2, token) {
+      const dayPeriodEnumValue = date2.getHours() / 12 >= 1 ? "pm" : "am";
+      switch (token) {
+        case "a":
+        case "aa":
+          return dayPeriodEnumValue.toUpperCase();
+        case "aaa":
+          return dayPeriodEnumValue;
+        case "aaaaa":
+          return dayPeriodEnumValue[0];
+        case "aaaa":
+        default:
+          return dayPeriodEnumValue === "am" ? "a.m." : "p.m.";
+      }
+    },
+    // Hour [1-12]
+    h(date2, token) {
+      return addLeadingZeros(date2.getHours() % 12 || 12, token.length);
+    },
+    // Hour [0-23]
+    H(date2, token) {
+      return addLeadingZeros(date2.getHours(), token.length);
+    },
+    // Minute
+    m(date2, token) {
+      return addLeadingZeros(date2.getMinutes(), token.length);
+    },
+    // Second
+    s(date2, token) {
+      return addLeadingZeros(date2.getSeconds(), token.length);
+    },
+    // Fraction of second
+    S(date2, token) {
+      const numberOfDigits = token.length;
+      const milliseconds2 = date2.getMilliseconds();
+      const fractionalSeconds = Math.trunc(
+        milliseconds2 * Math.pow(10, numberOfDigits - 3)
+      );
+      return addLeadingZeros(fractionalSeconds, token.length);
+    }
+  };
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/_lib/format/formatters.mjs
+  var dayPeriodEnum = {
+    am: "am",
+    pm: "pm",
+    midnight: "midnight",
+    noon: "noon",
+    morning: "morning",
+    afternoon: "afternoon",
+    evening: "evening",
+    night: "night"
+  };
+  var formatters = {
+    // Era
+    G: function(date2, token, localize2) {
+      const era = date2.getFullYear() > 0 ? 1 : 0;
+      switch (token) {
+        case "G":
+        case "GG":
+        case "GGG":
+          return localize2.era(era, { width: "abbreviated" });
+        case "GGGGG":
+          return localize2.era(era, { width: "narrow" });
+        case "GGGG":
+        default:
+          return localize2.era(era, { width: "wide" });
+      }
+    },
+    // Year
+    y: function(date2, token, localize2) {
+      if (token === "yo") {
+        const signedYear = date2.getFullYear();
+        const year = signedYear > 0 ? signedYear : 1 - signedYear;
+        return localize2.ordinalNumber(year, { unit: "year" });
+      }
+      return lightFormatters.y(date2, token);
+    },
+    // Local week-numbering year
+    Y: function(date2, token, localize2, options) {
+      const signedWeekYear = getWeekYear(date2, options);
+      const weekYear = signedWeekYear > 0 ? signedWeekYear : 1 - signedWeekYear;
+      if (token === "YY") {
+        const twoDigitYear = weekYear % 100;
+        return addLeadingZeros(twoDigitYear, 2);
+      }
+      if (token === "Yo") {
+        return localize2.ordinalNumber(weekYear, { unit: "year" });
+      }
+      return addLeadingZeros(weekYear, token.length);
+    },
+    // ISO week-numbering year
+    R: function(date2, token) {
+      const isoWeekYear = getISOWeekYear(date2);
+      return addLeadingZeros(isoWeekYear, token.length);
+    },
+    // Extended year. This is a single number designating the year of this calendar system.
+    // The main difference between `y` and `u` localizers are B.C. years:
+    // | Year | `y` | `u` |
+    // |------|-----|-----|
+    // | AC 1 |   1 |   1 |
+    // | BC 1 |   1 |   0 |
+    // | BC 2 |   2 |  -1 |
+    // Also `yy` always returns the last two digits of a year,
+    // while `uu` pads single digit years to 2 characters and returns other years unchanged.
+    u: function(date2, token) {
+      const year = date2.getFullYear();
+      return addLeadingZeros(year, token.length);
+    },
+    // Quarter
+    Q: function(date2, token, localize2) {
+      const quarter = Math.ceil((date2.getMonth() + 1) / 3);
+      switch (token) {
+        case "Q":
+          return String(quarter);
+        case "QQ":
+          return addLeadingZeros(quarter, 2);
+        case "Qo":
+          return localize2.ordinalNumber(quarter, { unit: "quarter" });
+        case "QQQ":
+          return localize2.quarter(quarter, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "QQQQQ":
+          return localize2.quarter(quarter, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "QQQQ":
+        default:
+          return localize2.quarter(quarter, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // Stand-alone quarter
+    q: function(date2, token, localize2) {
+      const quarter = Math.ceil((date2.getMonth() + 1) / 3);
+      switch (token) {
+        case "q":
+          return String(quarter);
+        case "qq":
+          return addLeadingZeros(quarter, 2);
+        case "qo":
+          return localize2.ordinalNumber(quarter, { unit: "quarter" });
+        case "qqq":
+          return localize2.quarter(quarter, {
+            width: "abbreviated",
+            context: "standalone"
+          });
+        case "qqqqq":
+          return localize2.quarter(quarter, {
+            width: "narrow",
+            context: "standalone"
+          });
+        case "qqqq":
+        default:
+          return localize2.quarter(quarter, {
+            width: "wide",
+            context: "standalone"
+          });
+      }
+    },
+    // Month
+    M: function(date2, token, localize2) {
+      const month = date2.getMonth();
+      switch (token) {
+        case "M":
+        case "MM":
+          return lightFormatters.M(date2, token);
+        case "Mo":
+          return localize2.ordinalNumber(month + 1, { unit: "month" });
+        case "MMM":
+          return localize2.month(month, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "MMMMM":
+          return localize2.month(month, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "MMMM":
+        default:
+          return localize2.month(month, { width: "wide", context: "formatting" });
+      }
+    },
+    // Stand-alone month
+    L: function(date2, token, localize2) {
+      const month = date2.getMonth();
+      switch (token) {
+        case "L":
+          return String(month + 1);
+        case "LL":
+          return addLeadingZeros(month + 1, 2);
+        case "Lo":
+          return localize2.ordinalNumber(month + 1, { unit: "month" });
+        case "LLL":
+          return localize2.month(month, {
+            width: "abbreviated",
+            context: "standalone"
+          });
+        case "LLLLL":
+          return localize2.month(month, {
+            width: "narrow",
+            context: "standalone"
+          });
+        case "LLLL":
+        default:
+          return localize2.month(month, { width: "wide", context: "standalone" });
+      }
+    },
+    // Local week of year
+    w: function(date2, token, localize2, options) {
+      const week = getWeek(date2, options);
+      if (token === "wo") {
+        return localize2.ordinalNumber(week, { unit: "week" });
+      }
+      return addLeadingZeros(week, token.length);
+    },
+    // ISO week of year
+    I: function(date2, token, localize2) {
+      const isoWeek = getISOWeek(date2);
+      if (token === "Io") {
+        return localize2.ordinalNumber(isoWeek, { unit: "week" });
+      }
+      return addLeadingZeros(isoWeek, token.length);
+    },
+    // Day of the month
+    d: function(date2, token, localize2) {
+      if (token === "do") {
+        return localize2.ordinalNumber(date2.getDate(), { unit: "date" });
+      }
+      return lightFormatters.d(date2, token);
+    },
+    // Day of year
+    D: function(date2, token, localize2) {
+      const dayOfYear = getDayOfYear(date2);
+      if (token === "Do") {
+        return localize2.ordinalNumber(dayOfYear, { unit: "dayOfYear" });
+      }
+      return addLeadingZeros(dayOfYear, token.length);
+    },
+    // Day of week
+    E: function(date2, token, localize2) {
+      const dayOfWeek = date2.getDay();
+      switch (token) {
+        case "E":
+        case "EE":
+        case "EEE":
+          return localize2.day(dayOfWeek, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "EEEEE":
+          return localize2.day(dayOfWeek, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "EEEEEE":
+          return localize2.day(dayOfWeek, {
+            width: "short",
+            context: "formatting"
+          });
+        case "EEEE":
+        default:
+          return localize2.day(dayOfWeek, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // Local day of week
+    e: function(date2, token, localize2, options) {
+      const dayOfWeek = date2.getDay();
+      const localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7;
+      switch (token) {
+        case "e":
+          return String(localDayOfWeek);
+        case "ee":
+          return addLeadingZeros(localDayOfWeek, 2);
+        case "eo":
+          return localize2.ordinalNumber(localDayOfWeek, { unit: "day" });
+        case "eee":
+          return localize2.day(dayOfWeek, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "eeeee":
+          return localize2.day(dayOfWeek, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "eeeeee":
+          return localize2.day(dayOfWeek, {
+            width: "short",
+            context: "formatting"
+          });
+        case "eeee":
+        default:
+          return localize2.day(dayOfWeek, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // Stand-alone local day of week
+    c: function(date2, token, localize2, options) {
+      const dayOfWeek = date2.getDay();
+      const localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7;
+      switch (token) {
+        case "c":
+          return String(localDayOfWeek);
+        case "cc":
+          return addLeadingZeros(localDayOfWeek, token.length);
+        case "co":
+          return localize2.ordinalNumber(localDayOfWeek, { unit: "day" });
+        case "ccc":
+          return localize2.day(dayOfWeek, {
+            width: "abbreviated",
+            context: "standalone"
+          });
+        case "ccccc":
+          return localize2.day(dayOfWeek, {
+            width: "narrow",
+            context: "standalone"
+          });
+        case "cccccc":
+          return localize2.day(dayOfWeek, {
+            width: "short",
+            context: "standalone"
+          });
+        case "cccc":
+        default:
+          return localize2.day(dayOfWeek, {
+            width: "wide",
+            context: "standalone"
+          });
+      }
+    },
+    // ISO day of week
+    i: function(date2, token, localize2) {
+      const dayOfWeek = date2.getDay();
+      const isoDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek;
+      switch (token) {
+        case "i":
+          return String(isoDayOfWeek);
+        case "ii":
+          return addLeadingZeros(isoDayOfWeek, token.length);
+        case "io":
+          return localize2.ordinalNumber(isoDayOfWeek, { unit: "day" });
+        case "iii":
+          return localize2.day(dayOfWeek, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "iiiii":
+          return localize2.day(dayOfWeek, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "iiiiii":
+          return localize2.day(dayOfWeek, {
+            width: "short",
+            context: "formatting"
+          });
+        case "iiii":
+        default:
+          return localize2.day(dayOfWeek, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // AM or PM
+    a: function(date2, token, localize2) {
+      const hours = date2.getHours();
+      const dayPeriodEnumValue = hours / 12 >= 1 ? "pm" : "am";
+      switch (token) {
+        case "a":
+        case "aa":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "aaa":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          }).toLowerCase();
+        case "aaaaa":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "aaaa":
+        default:
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // AM, PM, midnight, noon
+    b: function(date2, token, localize2) {
+      const hours = date2.getHours();
+      let dayPeriodEnumValue;
+      if (hours === 12) {
+        dayPeriodEnumValue = dayPeriodEnum.noon;
+      } else if (hours === 0) {
+        dayPeriodEnumValue = dayPeriodEnum.midnight;
+      } else {
+        dayPeriodEnumValue = hours / 12 >= 1 ? "pm" : "am";
+      }
+      switch (token) {
+        case "b":
+        case "bb":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "bbb":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          }).toLowerCase();
+        case "bbbbb":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "bbbb":
+        default:
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // in the morning, in the afternoon, in the evening, at night
+    B: function(date2, token, localize2) {
+      const hours = date2.getHours();
+      let dayPeriodEnumValue;
+      if (hours >= 17) {
+        dayPeriodEnumValue = dayPeriodEnum.evening;
+      } else if (hours >= 12) {
+        dayPeriodEnumValue = dayPeriodEnum.afternoon;
+      } else if (hours >= 4) {
+        dayPeriodEnumValue = dayPeriodEnum.morning;
+      } else {
+        dayPeriodEnumValue = dayPeriodEnum.night;
+      }
+      switch (token) {
+        case "B":
+        case "BB":
+        case "BBB":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "abbreviated",
+            context: "formatting"
+          });
+        case "BBBBB":
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "narrow",
+            context: "formatting"
+          });
+        case "BBBB":
+        default:
+          return localize2.dayPeriod(dayPeriodEnumValue, {
+            width: "wide",
+            context: "formatting"
+          });
+      }
+    },
+    // Hour [1-12]
+    h: function(date2, token, localize2) {
+      if (token === "ho") {
+        let hours = date2.getHours() % 12;
+        if (hours === 0)
+          hours = 12;
+        return localize2.ordinalNumber(hours, { unit: "hour" });
+      }
+      return lightFormatters.h(date2, token);
+    },
+    // Hour [0-23]
+    H: function(date2, token, localize2) {
+      if (token === "Ho") {
+        return localize2.ordinalNumber(date2.getHours(), { unit: "hour" });
+      }
+      return lightFormatters.H(date2, token);
+    },
+    // Hour [0-11]
+    K: function(date2, token, localize2) {
+      const hours = date2.getHours() % 12;
+      if (token === "Ko") {
+        return localize2.ordinalNumber(hours, { unit: "hour" });
+      }
+      return addLeadingZeros(hours, token.length);
+    },
+    // Hour [1-24]
+    k: function(date2, token, localize2) {
+      let hours = date2.getHours();
+      if (hours === 0)
+        hours = 24;
+      if (token === "ko") {
+        return localize2.ordinalNumber(hours, { unit: "hour" });
+      }
+      return addLeadingZeros(hours, token.length);
+    },
+    // Minute
+    m: function(date2, token, localize2) {
+      if (token === "mo") {
+        return localize2.ordinalNumber(date2.getMinutes(), { unit: "minute" });
+      }
+      return lightFormatters.m(date2, token);
+    },
+    // Second
+    s: function(date2, token, localize2) {
+      if (token === "so") {
+        return localize2.ordinalNumber(date2.getSeconds(), { unit: "second" });
+      }
+      return lightFormatters.s(date2, token);
+    },
+    // Fraction of second
+    S: function(date2, token) {
+      return lightFormatters.S(date2, token);
+    },
+    // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
+    X: function(date2, token, _localize) {
+      const timezoneOffset = date2.getTimezoneOffset();
+      if (timezoneOffset === 0) {
+        return "Z";
+      }
+      switch (token) {
+        case "X":
+          return formatTimezoneWithOptionalMinutes(timezoneOffset);
+        case "XXXX":
+        case "XX":
+          return formatTimezone(timezoneOffset);
+        case "XXXXX":
+        case "XXX":
+        default:
+          return formatTimezone(timezoneOffset, ":");
+      }
+    },
+    // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
+    x: function(date2, token, _localize) {
+      const timezoneOffset = date2.getTimezoneOffset();
+      switch (token) {
+        case "x":
+          return formatTimezoneWithOptionalMinutes(timezoneOffset);
+        case "xxxx":
+        case "xx":
+          return formatTimezone(timezoneOffset);
+        case "xxxxx":
+        case "xxx":
+        default:
+          return formatTimezone(timezoneOffset, ":");
+      }
+    },
+    // Timezone (GMT)
+    O: function(date2, token, _localize) {
+      const timezoneOffset = date2.getTimezoneOffset();
+      switch (token) {
+        case "O":
+        case "OO":
+        case "OOO":
+          return "GMT" + formatTimezoneShort(timezoneOffset, ":");
+        case "OOOO":
+        default:
+          return "GMT" + formatTimezone(timezoneOffset, ":");
+      }
+    },
+    // Timezone (specific non-location)
+    z: function(date2, token, _localize) {
+      const timezoneOffset = date2.getTimezoneOffset();
+      switch (token) {
+        case "z":
+        case "zz":
+        case "zzz":
+          return "GMT" + formatTimezoneShort(timezoneOffset, ":");
+        case "zzzz":
+        default:
+          return "GMT" + formatTimezone(timezoneOffset, ":");
+      }
+    },
+    // Seconds timestamp
+    t: function(date2, token, _localize) {
+      const timestamp = Math.trunc(date2.getTime() / 1e3);
+      return addLeadingZeros(timestamp, token.length);
+    },
+    // Milliseconds timestamp
+    T: function(date2, token, _localize) {
+      const timestamp = date2.getTime();
+      return addLeadingZeros(timestamp, token.length);
+    }
+  };
+  function formatTimezoneShort(offset, delimiter = "") {
+    const sign = offset > 0 ? "-" : "+";
+    const absOffset = Math.abs(offset);
+    const hours = Math.trunc(absOffset / 60);
+    const minutes = absOffset % 60;
+    if (minutes === 0) {
+      return sign + String(hours);
+    }
+    return sign + String(hours) + delimiter + addLeadingZeros(minutes, 2);
+  }
+  function formatTimezoneWithOptionalMinutes(offset, delimiter) {
+    if (offset % 60 === 0) {
+      const sign = offset > 0 ? "-" : "+";
+      return sign + addLeadingZeros(Math.abs(offset) / 60, 2);
+    }
+    return formatTimezone(offset, delimiter);
+  }
+  function formatTimezone(offset, delimiter = "") {
+    const sign = offset > 0 ? "-" : "+";
+    const absOffset = Math.abs(offset);
+    const hours = addLeadingZeros(Math.trunc(absOffset / 60), 2);
+    const minutes = addLeadingZeros(absOffset % 60, 2);
+    return sign + hours + delimiter + minutes;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/_lib/format/longFormatters.mjs
+  var dateLongFormatter = (pattern, formatLong2) => {
+    switch (pattern) {
+      case "P":
+        return formatLong2.date({ width: "short" });
+      case "PP":
+        return formatLong2.date({ width: "medium" });
+      case "PPP":
+        return formatLong2.date({ width: "long" });
+      case "PPPP":
+      default:
+        return formatLong2.date({ width: "full" });
+    }
+  };
+  var timeLongFormatter = (pattern, formatLong2) => {
+    switch (pattern) {
+      case "p":
+        return formatLong2.time({ width: "short" });
+      case "pp":
+        return formatLong2.time({ width: "medium" });
+      case "ppp":
+        return formatLong2.time({ width: "long" });
+      case "pppp":
+      default:
+        return formatLong2.time({ width: "full" });
+    }
+  };
+  var dateTimeLongFormatter = (pattern, formatLong2) => {
+    const matchResult = pattern.match(/(P+)(p+)?/) || [];
+    const datePattern = matchResult[1];
+    const timePattern = matchResult[2];
+    if (!timePattern) {
+      return dateLongFormatter(pattern, formatLong2);
+    }
+    let dateTimeFormat;
+    switch (datePattern) {
+      case "P":
+        dateTimeFormat = formatLong2.dateTime({ width: "short" });
+        break;
+      case "PP":
+        dateTimeFormat = formatLong2.dateTime({ width: "medium" });
+        break;
+      case "PPP":
+        dateTimeFormat = formatLong2.dateTime({ width: "long" });
+        break;
+      case "PPPP":
+      default:
+        dateTimeFormat = formatLong2.dateTime({ width: "full" });
+        break;
+    }
+    return dateTimeFormat.replace("{{date}}", dateLongFormatter(datePattern, formatLong2)).replace("{{time}}", timeLongFormatter(timePattern, formatLong2));
+  };
+  var longFormatters = {
+    p: timeLongFormatter,
+    P: dateTimeLongFormatter
+  };
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/_lib/protectedTokens.mjs
+  var dayOfYearTokenRE = /^D+$/;
+  var weekYearTokenRE = /^Y+$/;
+  var throwTokens = ["D", "DD", "YY", "YYYY"];
+  function isProtectedDayOfYearToken(token) {
+    return dayOfYearTokenRE.test(token);
+  }
+  function isProtectedWeekYearToken(token) {
+    return weekYearTokenRE.test(token);
+  }
+  function warnOrThrowProtectedError(token, format3, input) {
+    const _message = message(token, format3, input);
+    console.warn(_message);
+    if (throwTokens.includes(token))
+      throw new RangeError(_message);
+  }
+  function message(token, format3, input) {
+    const subject = token[0] === "Y" ? "years" : "days of the month";
+    return `Use \`${token.toLowerCase()}\` instead of \`${token}\` (in \`${format3}\`) for formatting ${subject} to the input \`${input}\`; see: https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md`;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/format.mjs
+  var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g;
+  var longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g;
+  var escapedStringRegExp = /^'([^]*?)'?$/;
+  var doubleQuoteRegExp = /''/g;
+  var unescapedLatinCharacterRegExp = /[a-zA-Z]/;
+  function format2(date2, formatStr, options) {
+    const defaultOptions2 = getDefaultOptions();
+    const locale3 = options?.locale ?? defaultOptions2.locale ?? enUS;
+    const firstWeekContainsDate = options?.firstWeekContainsDate ?? options?.locale?.options?.firstWeekContainsDate ?? defaultOptions2.firstWeekContainsDate ?? defaultOptions2.locale?.options?.firstWeekContainsDate ?? 1;
+    const weekStartsOn = options?.weekStartsOn ?? options?.locale?.options?.weekStartsOn ?? defaultOptions2.weekStartsOn ?? defaultOptions2.locale?.options?.weekStartsOn ?? 0;
+    const originalDate = toDate(date2);
+    if (!isValid(originalDate)) {
+      throw new RangeError("Invalid time value");
+    }
+    let parts = formatStr.match(longFormattingTokensRegExp).map((substring) => {
+      const firstCharacter = substring[0];
+      if (firstCharacter === "p" || firstCharacter === "P") {
+        const longFormatter = longFormatters[firstCharacter];
+        return longFormatter(substring, locale3.formatLong);
+      }
+      return substring;
+    }).join("").match(formattingTokensRegExp).map((substring) => {
+      if (substring === "''") {
+        return { isToken: false, value: "'" };
+      }
+      const firstCharacter = substring[0];
+      if (firstCharacter === "'") {
+        return { isToken: false, value: cleanEscapedString(substring) };
+      }
+      if (formatters[firstCharacter]) {
+        return { isToken: true, value: substring };
+      }
+      if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
+        throw new RangeError(
+          "Format string contains an unescaped latin alphabet character `" + firstCharacter + "`"
+        );
+      }
+      return { isToken: false, value: substring };
+    });
+    if (locale3.localize.preprocessor) {
+      parts = locale3.localize.preprocessor(originalDate, parts);
+    }
+    const formatterOptions = {
+      firstWeekContainsDate,
+      weekStartsOn,
+      locale: locale3
+    };
+    return parts.map((part) => {
+      if (!part.isToken)
+        return part.value;
+      const token = part.value;
+      if (!options?.useAdditionalWeekYearTokens && isProtectedWeekYearToken(token) || !options?.useAdditionalDayOfYearTokens && isProtectedDayOfYearToken(token)) {
+        warnOrThrowProtectedError(token, formatStr, String(date2));
+      }
+      const formatter = formatters[token[0]];
+      return formatter(originalDate, token, locale3.localize, formatterOptions);
+    }).join("");
+  }
+  function cleanEscapedString(input) {
+    const matched = input.match(escapedStringRegExp);
+    if (!matched) {
+      return input;
+    }
+    return matched[1].replace(doubleQuoteRegExp, "'");
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/getDaysInMonth.mjs
+  function getDaysInMonth(date2) {
+    const _date = toDate(date2);
+    const year = _date.getFullYear();
+    const monthIndex = _date.getMonth();
+    const lastDayOfMonth2 = constructFrom(date2, 0);
+    lastDayOfMonth2.setFullYear(year, monthIndex + 1, 0);
+    lastDayOfMonth2.setHours(0, 0, 0, 0);
+    return lastDayOfMonth2.getDate();
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/getUnixTime.mjs
+  function getUnixTime(date2) {
+    return Math.trunc(+toDate(date2) / 1e3);
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/lastDayOfMonth.mjs
+  function lastDayOfMonth(date2) {
+    const _date = toDate(date2);
+    const month = _date.getMonth();
+    _date.setFullYear(_date.getFullYear(), month + 1, 0);
+    _date.setHours(0, 0, 0, 0);
+    return _date;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/getWeeksInMonth.mjs
+  function getWeeksInMonth(date2, options) {
+    return differenceInCalendarWeeks(
+      lastDayOfMonth(date2),
+      startOfMonth(date2),
+      options
+    ) + 1;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/isAfter.mjs
+  function isAfter(date2, dateToCompare) {
+    const _date = toDate(date2);
+    const _dateToCompare = toDate(dateToCompare);
+    return _date.getTime() > _dateToCompare.getTime();
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/isBefore.mjs
+  function isBefore(date2, dateToCompare) {
+    const _date = toDate(date2);
+    const _dateToCompare = toDate(dateToCompare);
+    return +_date < +_dateToCompare;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/isSameMonth.mjs
+  function isSameMonth(dateLeft, dateRight) {
+    const _dateLeft = toDate(dateLeft);
+    const _dateRight = toDate(dateRight);
+    return _dateLeft.getFullYear() === _dateRight.getFullYear() && _dateLeft.getMonth() === _dateRight.getMonth();
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/isSameYear.mjs
+  function isSameYear(dateLeft, dateRight) {
+    const _dateLeft = toDate(dateLeft);
+    const _dateRight = toDate(dateRight);
+    return _dateLeft.getFullYear() === _dateRight.getFullYear();
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/subDays.mjs
+  function subDays(date2, amount) {
+    return addDays(date2, -amount);
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/setMonth.mjs
+  function setMonth(date2, month) {
+    const _date = toDate(date2);
+    const year = _date.getFullYear();
+    const day = _date.getDate();
+    const dateWithDesiredMonth = constructFrom(date2, 0);
+    dateWithDesiredMonth.setFullYear(year, month, 15);
+    dateWithDesiredMonth.setHours(0, 0, 0, 0);
+    const daysInMonth = getDaysInMonth(dateWithDesiredMonth);
+    _date.setMonth(month, Math.min(day, daysInMonth));
+    return _date;
+  }
+
+  // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/setYear.mjs
+  function setYear(date2, year) {
+    const _date = toDate(date2);
+    if (isNaN(+_date)) {
+      return constructFrom(date2, NaN);
+    }
+    _date.setFullYear(year);
+    return _date;
+  }
+
+  // node_modules/.pnpm/react-day-picker@8.10.1_date-fns@3.6.0_react@18.2.0/node_modules/react-day-picker/dist/index.esm.js
+  var __assign = function() {
+    __assign = Object.assign || function __assign2(t) {
+      for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s)
+          if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+      }
+      return t;
+    };
+    return __assign.apply(this, arguments);
+  };
+  function __rest(s, e) {
+    var t = {};
+    for (var p in s)
+      if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+      for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+        if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+          t[p[i]] = s[p[i]];
+      }
+    return t;
+  }
+  function __spreadArray(to, from, pack) {
+    if (pack || arguments.length === 2)
+      for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+          if (!ar)
+            ar = Array.prototype.slice.call(from, 0, i);
+          ar[i] = from[i];
+        }
+      }
+    return to.concat(ar || Array.prototype.slice.call(from));
+  }
+  function isDayPickerMultiple(props) {
+    return props.mode === "multiple";
+  }
+  function isDayPickerRange(props) {
+    return props.mode === "range";
+  }
+  function isDayPickerSingle(props) {
+    return props.mode === "single";
+  }
+  var defaultClassNames = {
+    root: "rdp",
+    multiple_months: "rdp-multiple_months",
+    with_weeknumber: "rdp-with_weeknumber",
+    vhidden: "rdp-vhidden",
+    button_reset: "rdp-button_reset",
+    button: "rdp-button",
+    caption: "rdp-caption",
+    caption_start: "rdp-caption_start",
+    caption_end: "rdp-caption_end",
+    caption_between: "rdp-caption_between",
+    caption_label: "rdp-caption_label",
+    caption_dropdowns: "rdp-caption_dropdowns",
+    dropdown: "rdp-dropdown",
+    dropdown_month: "rdp-dropdown_month",
+    dropdown_year: "rdp-dropdown_year",
+    dropdown_icon: "rdp-dropdown_icon",
+    months: "rdp-months",
+    month: "rdp-month",
+    table: "rdp-table",
+    tbody: "rdp-tbody",
+    tfoot: "rdp-tfoot",
+    head: "rdp-head",
+    head_row: "rdp-head_row",
+    head_cell: "rdp-head_cell",
+    nav: "rdp-nav",
+    nav_button: "rdp-nav_button",
+    nav_button_previous: "rdp-nav_button_previous",
+    nav_button_next: "rdp-nav_button_next",
+    nav_icon: "rdp-nav_icon",
+    row: "rdp-row",
+    weeknumber: "rdp-weeknumber",
+    cell: "rdp-cell",
+    day: "rdp-day",
+    day_today: "rdp-day_today",
+    day_outside: "rdp-day_outside",
+    day_selected: "rdp-day_selected",
+    day_disabled: "rdp-day_disabled",
+    day_hidden: "rdp-day_hidden",
+    day_range_start: "rdp-day_range_start",
+    day_range_end: "rdp-day_range_end",
+    day_range_middle: "rdp-day_range_middle"
+  };
+  function formatCaption(month, options) {
+    return format2(month, "LLLL y", options);
+  }
+  function formatDay(day, options) {
+    return format2(day, "d", options);
+  }
+  function formatMonthCaption(month, options) {
+    return format2(month, "LLLL", options);
+  }
+  function formatWeekNumber(weekNumber) {
+    return "".concat(weekNumber);
+  }
+  function formatWeekdayName(weekday, options) {
+    return format2(weekday, "cccccc", options);
+  }
+  function formatYearCaption(year, options) {
+    return format2(year, "yyyy", options);
+  }
+  var formatters2 = /* @__PURE__ */ Object.freeze({
+    __proto__: null,
+    formatCaption,
+    formatDay,
+    formatMonthCaption,
+    formatWeekNumber,
+    formatWeekdayName,
+    formatYearCaption
+  });
+  var labelDay = function(day, activeModifiers, options) {
+    return format2(day, "do MMMM (EEEE)", options);
+  };
+  var labelMonthDropdown = function() {
+    return "Month: ";
+  };
+  var labelNext = function() {
+    return "Go to next month";
+  };
+  var labelPrevious = function() {
+    return "Go to previous month";
+  };
+  var labelWeekday = function(day, options) {
+    return format2(day, "cccc", options);
+  };
+  var labelWeekNumber = function(n) {
+    return "Week n. ".concat(n);
+  };
+  var labelYearDropdown = function() {
+    return "Year: ";
+  };
+  var labels = /* @__PURE__ */ Object.freeze({
+    __proto__: null,
+    labelDay,
+    labelMonthDropdown,
+    labelNext,
+    labelPrevious,
+    labelWeekNumber,
+    labelWeekday,
+    labelYearDropdown
+  });
+  function getDefaultContextValues() {
+    var captionLayout = "buttons";
+    var classNames = defaultClassNames;
+    var locale3 = enUS;
+    var modifiersClassNames = {};
+    var modifiers = {};
+    var numberOfMonths = 1;
+    var styles = {};
+    var today = /* @__PURE__ */ new Date();
+    return {
+      captionLayout,
+      classNames,
+      formatters: formatters2,
+      labels,
+      locale: locale3,
+      modifiersClassNames,
+      modifiers,
+      numberOfMonths,
+      styles,
+      today,
+      mode: "default"
+    };
+  }
+  function parseFromToProps(props) {
+    var fromYear = props.fromYear, toYear = props.toYear, fromMonth = props.fromMonth, toMonth = props.toMonth;
+    var fromDate = props.fromDate, toDate2 = props.toDate;
+    if (fromMonth) {
+      fromDate = startOfMonth(fromMonth);
+    } else if (fromYear) {
+      fromDate = new Date(fromYear, 0, 1);
+    }
+    if (toMonth) {
+      toDate2 = endOfMonth(toMonth);
+    } else if (toYear) {
+      toDate2 = new Date(toYear, 11, 31);
+    }
+    return {
+      fromDate: fromDate ? startOfDay(fromDate) : void 0,
+      toDate: toDate2 ? startOfDay(toDate2) : void 0
+    };
+  }
+  var DayPickerContext = (0, import_react25.createContext)(void 0);
+  function DayPickerProvider(props) {
+    var _a;
+    var initialProps = props.initialProps;
+    var defaultContextValues = getDefaultContextValues();
+    var _b = parseFromToProps(initialProps), fromDate = _b.fromDate, toDate2 = _b.toDate;
+    var captionLayout = (_a = initialProps.captionLayout) !== null && _a !== void 0 ? _a : defaultContextValues.captionLayout;
+    if (captionLayout !== "buttons" && (!fromDate || !toDate2)) {
+      captionLayout = "buttons";
+    }
+    var onSelect;
+    if (isDayPickerSingle(initialProps) || isDayPickerMultiple(initialProps) || isDayPickerRange(initialProps)) {
+      onSelect = initialProps.onSelect;
+    }
+    var value = __assign(__assign(__assign({}, defaultContextValues), initialProps), { captionLayout, classNames: __assign(__assign({}, defaultContextValues.classNames), initialProps.classNames), components: __assign({}, initialProps.components), formatters: __assign(__assign({}, defaultContextValues.formatters), initialProps.formatters), fromDate, labels: __assign(__assign({}, defaultContextValues.labels), initialProps.labels), mode: initialProps.mode || defaultContextValues.mode, modifiers: __assign(__assign({}, defaultContextValues.modifiers), initialProps.modifiers), modifiersClassNames: __assign(__assign({}, defaultContextValues.modifiersClassNames), initialProps.modifiersClassNames), onSelect, styles: __assign(__assign({}, defaultContextValues.styles), initialProps.styles), toDate: toDate2 });
+    return (0, import_jsx_runtime13.jsx)(DayPickerContext.Provider, { value, children: props.children });
+  }
+  function useDayPicker() {
+    var context = (0, import_react25.useContext)(DayPickerContext);
+    if (!context) {
+      throw new Error("useDayPicker must be used within a DayPickerProvider.");
+    }
+    return context;
+  }
+  function CaptionLabel(props) {
+    var _a = useDayPicker(), locale3 = _a.locale, classNames = _a.classNames, styles = _a.styles, formatCaption2 = _a.formatters.formatCaption;
+    return (0, import_jsx_runtime13.jsx)("div", { className: classNames.caption_label, style: styles.caption_label, "aria-live": "polite", role: "presentation", id: props.id, children: formatCaption2(props.displayMonth, { locale: locale3 }) });
+  }
+  function IconDropdown(props) {
+    return (0, import_jsx_runtime13.jsx)("svg", __assign({ width: "8px", height: "8px", viewBox: "0 0 120 120", "data-testid": "iconDropdown" }, props, { children: (0, import_jsx_runtime13.jsx)("path", { d: "M4.22182541,48.2218254 C8.44222828,44.0014225 15.2388494,43.9273804 19.5496459,47.9996989 L19.7781746,48.2218254 L60,88.443 L100.221825,48.2218254 C104.442228,44.0014225 111.238849,43.9273804 115.549646,47.9996989 L115.778175,48.2218254 C119.998577,52.4422283 120.07262,59.2388494 116.000301,63.5496459 L115.778175,63.7781746 L67.7781746,111.778175 C63.5577717,115.998577 56.7611506,116.07262 52.4503541,112.000301 L52.2218254,111.778175 L4.22182541,63.7781746 C-0.0739418023,59.4824074 -0.0739418023,52.5175926 4.22182541,48.2218254 Z", fill: "currentColor", fillRule: "nonzero" }) }));
+  }
+  function Dropdown(props) {
+    var _a, _b;
+    var onChange = props.onChange, value = props.value, children = props.children, caption = props.caption, className = props.className, style = props.style;
+    var dayPicker = useDayPicker();
+    var IconDropdownComponent = (_b = (_a = dayPicker.components) === null || _a === void 0 ? void 0 : _a.IconDropdown) !== null && _b !== void 0 ? _b : IconDropdown;
+    return (0, import_jsx_runtime13.jsxs)("div", { className, style, children: [(0, import_jsx_runtime13.jsx)("span", { className: dayPicker.classNames.vhidden, children: props["aria-label"] }), (0, import_jsx_runtime13.jsx)("select", { name: props.name, "aria-label": props["aria-label"], className: dayPicker.classNames.dropdown, style: dayPicker.styles.dropdown, value, onChange, children }), (0, import_jsx_runtime13.jsxs)("div", { className: dayPicker.classNames.caption_label, style: dayPicker.styles.caption_label, "aria-hidden": "true", children: [caption, (0, import_jsx_runtime13.jsx)(IconDropdownComponent, { className: dayPicker.classNames.dropdown_icon, style: dayPicker.styles.dropdown_icon })] })] });
+  }
+  function MonthsDropdown(props) {
+    var _a;
+    var _b = useDayPicker(), fromDate = _b.fromDate, toDate2 = _b.toDate, styles = _b.styles, locale3 = _b.locale, formatMonthCaption2 = _b.formatters.formatMonthCaption, classNames = _b.classNames, components = _b.components, labelMonthDropdown2 = _b.labels.labelMonthDropdown;
+    if (!fromDate)
+      return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, {});
+    if (!toDate2)
+      return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, {});
+    var dropdownMonths = [];
+    if (isSameYear(fromDate, toDate2)) {
+      var date2 = startOfMonth(fromDate);
+      for (var month = fromDate.getMonth(); month <= toDate2.getMonth(); month++) {
+        dropdownMonths.push(setMonth(date2, month));
+      }
+    } else {
+      var date2 = startOfMonth(/* @__PURE__ */ new Date());
+      for (var month = 0; month <= 11; month++) {
+        dropdownMonths.push(setMonth(date2, month));
+      }
+    }
+    var handleChange = function(e) {
+      var selectedMonth = Number(e.target.value);
+      var newMonth = setMonth(startOfMonth(props.displayMonth), selectedMonth);
+      props.onChange(newMonth);
+    };
+    var DropdownComponent = (_a = components === null || components === void 0 ? void 0 : components.Dropdown) !== null && _a !== void 0 ? _a : Dropdown;
+    return (0, import_jsx_runtime13.jsx)(DropdownComponent, { name: "months", "aria-label": labelMonthDropdown2(), className: classNames.dropdown_month, style: styles.dropdown_month, onChange: handleChange, value: props.displayMonth.getMonth(), caption: formatMonthCaption2(props.displayMonth, { locale: locale3 }), children: dropdownMonths.map(function(m) {
+      return (0, import_jsx_runtime13.jsx)("option", { value: m.getMonth(), children: formatMonthCaption2(m, { locale: locale3 }) }, m.getMonth());
+    }) });
+  }
+  function YearsDropdown(props) {
+    var _a;
+    var displayMonth = props.displayMonth;
+    var _b = useDayPicker(), fromDate = _b.fromDate, toDate2 = _b.toDate, locale3 = _b.locale, styles = _b.styles, classNames = _b.classNames, components = _b.components, formatYearCaption2 = _b.formatters.formatYearCaption, labelYearDropdown2 = _b.labels.labelYearDropdown;
+    var years = [];
+    if (!fromDate)
+      return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, {});
+    if (!toDate2)
+      return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, {});
+    var fromYear = fromDate.getFullYear();
+    var toYear = toDate2.getFullYear();
+    for (var year = fromYear; year <= toYear; year++) {
+      years.push(setYear(startOfYear(/* @__PURE__ */ new Date()), year));
+    }
+    var handleChange = function(e) {
+      var newMonth = setYear(startOfMonth(displayMonth), Number(e.target.value));
+      props.onChange(newMonth);
+    };
+    var DropdownComponent = (_a = components === null || components === void 0 ? void 0 : components.Dropdown) !== null && _a !== void 0 ? _a : Dropdown;
+    return (0, import_jsx_runtime13.jsx)(DropdownComponent, { name: "years", "aria-label": labelYearDropdown2(), className: classNames.dropdown_year, style: styles.dropdown_year, onChange: handleChange, value: displayMonth.getFullYear(), caption: formatYearCaption2(displayMonth, { locale: locale3 }), children: years.map(function(year2) {
+      return (0, import_jsx_runtime13.jsx)("option", { value: year2.getFullYear(), children: formatYearCaption2(year2, { locale: locale3 }) }, year2.getFullYear());
+    }) });
+  }
+  function useControlledValue(defaultValue, controlledValue) {
+    var _a = (0, import_react25.useState)(defaultValue), uncontrolledValue = _a[0], setValue = _a[1];
+    var value = controlledValue === void 0 ? uncontrolledValue : controlledValue;
+    return [value, setValue];
+  }
+  function getInitialMonth(context) {
+    var month = context.month, defaultMonth = context.defaultMonth, today = context.today;
+    var initialMonth = month || defaultMonth || today || /* @__PURE__ */ new Date();
+    var toDate2 = context.toDate, fromDate = context.fromDate, _a = context.numberOfMonths, numberOfMonths = _a === void 0 ? 1 : _a;
+    if (toDate2 && differenceInCalendarMonths(toDate2, initialMonth) < 0) {
+      var offset = -1 * (numberOfMonths - 1);
+      initialMonth = addMonths(toDate2, offset);
+    }
+    if (fromDate && differenceInCalendarMonths(initialMonth, fromDate) < 0) {
+      initialMonth = fromDate;
+    }
+    return startOfMonth(initialMonth);
+  }
+  function useNavigationState() {
+    var context = useDayPicker();
+    var initialMonth = getInitialMonth(context);
+    var _a = useControlledValue(initialMonth, context.month), month = _a[0], setMonth2 = _a[1];
+    var goToMonth = function(date2) {
+      var _a2;
+      if (context.disableNavigation)
+        return;
+      var month2 = startOfMonth(date2);
+      setMonth2(month2);
+      (_a2 = context.onMonthChange) === null || _a2 === void 0 ? void 0 : _a2.call(context, month2);
+    };
+    return [month, goToMonth];
+  }
+  function getDisplayMonths(month, _a) {
+    var reverseMonths = _a.reverseMonths, numberOfMonths = _a.numberOfMonths;
+    var start = startOfMonth(month);
+    var end = startOfMonth(addMonths(start, numberOfMonths));
+    var monthsDiff = differenceInCalendarMonths(end, start);
+    var months = [];
+    for (var i = 0; i < monthsDiff; i++) {
+      var nextMonth = addMonths(start, i);
+      months.push(nextMonth);
+    }
+    if (reverseMonths)
+      months = months.reverse();
+    return months;
+  }
+  function getNextMonth(startingMonth, options) {
+    if (options.disableNavigation) {
+      return void 0;
+    }
+    var toDate2 = options.toDate, pagedNavigation = options.pagedNavigation, _a = options.numberOfMonths, numberOfMonths = _a === void 0 ? 1 : _a;
+    var offset = pagedNavigation ? numberOfMonths : 1;
+    var month = startOfMonth(startingMonth);
+    if (!toDate2) {
+      return addMonths(month, offset);
+    }
+    var monthsDiff = differenceInCalendarMonths(toDate2, startingMonth);
+    if (monthsDiff < numberOfMonths) {
+      return void 0;
+    }
+    return addMonths(month, offset);
+  }
+  function getPreviousMonth(startingMonth, options) {
+    if (options.disableNavigation) {
+      return void 0;
+    }
+    var fromDate = options.fromDate, pagedNavigation = options.pagedNavigation, _a = options.numberOfMonths, numberOfMonths = _a === void 0 ? 1 : _a;
+    var offset = pagedNavigation ? numberOfMonths : 1;
+    var month = startOfMonth(startingMonth);
+    if (!fromDate) {
+      return addMonths(month, -offset);
+    }
+    var monthsDiff = differenceInCalendarMonths(month, fromDate);
+    if (monthsDiff <= 0) {
+      return void 0;
+    }
+    return addMonths(month, -offset);
+  }
+  var NavigationContext2 = (0, import_react25.createContext)(void 0);
+  function NavigationProvider(props) {
+    var dayPicker = useDayPicker();
+    var _a = useNavigationState(), currentMonth = _a[0], goToMonth = _a[1];
+    var displayMonths = getDisplayMonths(currentMonth, dayPicker);
+    var nextMonth = getNextMonth(currentMonth, dayPicker);
+    var previousMonth = getPreviousMonth(currentMonth, dayPicker);
+    var isDateDisplayed = function(date2) {
+      return displayMonths.some(function(displayMonth) {
+        return isSameMonth(date2, displayMonth);
+      });
+    };
+    var goToDate = function(date2, refDate) {
+      if (isDateDisplayed(date2)) {
+        return;
+      }
+      if (refDate && isBefore(date2, refDate)) {
+        goToMonth(addMonths(date2, 1 + dayPicker.numberOfMonths * -1));
+      } else {
+        goToMonth(date2);
+      }
+    };
+    var value = {
+      currentMonth,
+      displayMonths,
+      goToMonth,
+      goToDate,
+      previousMonth,
+      nextMonth,
+      isDateDisplayed
+    };
+    return (0, import_jsx_runtime13.jsx)(NavigationContext2.Provider, { value, children: props.children });
+  }
+  function useNavigation2() {
+    var context = (0, import_react25.useContext)(NavigationContext2);
+    if (!context) {
+      throw new Error("useNavigation must be used within a NavigationProvider");
+    }
+    return context;
+  }
+  function CaptionDropdowns(props) {
+    var _a;
+    var _b = useDayPicker(), classNames = _b.classNames, styles = _b.styles, components = _b.components;
+    var goToMonth = useNavigation2().goToMonth;
+    var handleMonthChange = function(newMonth) {
+      goToMonth(addMonths(newMonth, props.displayIndex ? -props.displayIndex : 0));
+    };
+    var CaptionLabelComponent = (_a = components === null || components === void 0 ? void 0 : components.CaptionLabel) !== null && _a !== void 0 ? _a : CaptionLabel;
+    var captionLabel = (0, import_jsx_runtime13.jsx)(CaptionLabelComponent, { id: props.id, displayMonth: props.displayMonth });
+    return (0, import_jsx_runtime13.jsxs)("div", { className: classNames.caption_dropdowns, style: styles.caption_dropdowns, children: [(0, import_jsx_runtime13.jsx)("div", { className: classNames.vhidden, children: captionLabel }), (0, import_jsx_runtime13.jsx)(MonthsDropdown, { onChange: handleMonthChange, displayMonth: props.displayMonth }), (0, import_jsx_runtime13.jsx)(YearsDropdown, { onChange: handleMonthChange, displayMonth: props.displayMonth })] });
+  }
+  function IconLeft(props) {
+    return (0, import_jsx_runtime13.jsx)("svg", __assign({ width: "16px", height: "16px", viewBox: "0 0 120 120" }, props, { children: (0, import_jsx_runtime13.jsx)("path", { d: "M69.490332,3.34314575 C72.6145263,0.218951416 77.6798462,0.218951416 80.8040405,3.34314575 C83.8617626,6.40086786 83.9268205,11.3179931 80.9992143,14.4548388 L80.8040405,14.6568542 L35.461,60 L80.8040405,105.343146 C83.8617626,108.400868 83.9268205,113.317993 80.9992143,116.454839 L80.8040405,116.656854 C77.7463184,119.714576 72.8291931,119.779634 69.6923475,116.852028 L69.490332,116.656854 L18.490332,65.6568542 C15.4326099,62.5991321 15.367552,57.6820069 18.2951583,54.5451612 L18.490332,54.3431458 L69.490332,3.34314575 Z", fill: "currentColor", fillRule: "nonzero" }) }));
+  }
+  function IconRight(props) {
+    return (0, import_jsx_runtime13.jsx)("svg", __assign({ width: "16px", height: "16px", viewBox: "0 0 120 120" }, props, { children: (0, import_jsx_runtime13.jsx)("path", { d: "M49.8040405,3.34314575 C46.6798462,0.218951416 41.6145263,0.218951416 38.490332,3.34314575 C35.4326099,6.40086786 35.367552,11.3179931 38.2951583,14.4548388 L38.490332,14.6568542 L83.8333725,60 L38.490332,105.343146 C35.4326099,108.400868 35.367552,113.317993 38.2951583,116.454839 L38.490332,116.656854 C41.5480541,119.714576 46.4651794,119.779634 49.602025,116.852028 L49.8040405,116.656854 L100.804041,65.6568542 C103.861763,62.5991321 103.926821,57.6820069 100.999214,54.5451612 L100.804041,54.3431458 L49.8040405,3.34314575 Z", fill: "currentColor" }) }));
+  }
+  var Button2 = (0, import_react25.forwardRef)(function(props, ref) {
+    var _a = useDayPicker(), classNames = _a.classNames, styles = _a.styles;
+    var classNamesArr = [classNames.button_reset, classNames.button];
+    if (props.className) {
+      classNamesArr.push(props.className);
+    }
+    var className = classNamesArr.join(" ");
+    var style = __assign(__assign({}, styles.button_reset), styles.button);
+    if (props.style) {
+      Object.assign(style, props.style);
+    }
+    return (0, import_jsx_runtime13.jsx)("button", __assign({}, props, { ref, type: "button", className, style }));
+  });
+  function Navigation(props) {
+    var _a, _b;
+    var _c = useDayPicker(), dir = _c.dir, locale3 = _c.locale, classNames = _c.classNames, styles = _c.styles, _d = _c.labels, labelPrevious2 = _d.labelPrevious, labelNext2 = _d.labelNext, components = _c.components;
+    if (!props.nextMonth && !props.previousMonth) {
+      return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, {});
+    }
+    var previousLabel = labelPrevious2(props.previousMonth, { locale: locale3 });
+    var previousClassName = [
+      classNames.nav_button,
+      classNames.nav_button_previous
+    ].join(" ");
+    var nextLabel = labelNext2(props.nextMonth, { locale: locale3 });
+    var nextClassName = [
+      classNames.nav_button,
+      classNames.nav_button_next
+    ].join(" ");
+    var IconRightComponent = (_a = components === null || components === void 0 ? void 0 : components.IconRight) !== null && _a !== void 0 ? _a : IconRight;
+    var IconLeftComponent = (_b = components === null || components === void 0 ? void 0 : components.IconLeft) !== null && _b !== void 0 ? _b : IconLeft;
+    return (0, import_jsx_runtime13.jsxs)("div", { className: classNames.nav, style: styles.nav, children: [!props.hidePrevious && (0, import_jsx_runtime13.jsx)(Button2, { name: "previous-month", "aria-label": previousLabel, className: previousClassName, style: styles.nav_button_previous, disabled: !props.previousMonth, onClick: props.onPreviousClick, children: dir === "rtl" ? (0, import_jsx_runtime13.jsx)(IconRightComponent, { className: classNames.nav_icon, style: styles.nav_icon }) : (0, import_jsx_runtime13.jsx)(IconLeftComponent, { className: classNames.nav_icon, style: styles.nav_icon }) }), !props.hideNext && (0, import_jsx_runtime13.jsx)(Button2, { name: "next-month", "aria-label": nextLabel, className: nextClassName, style: styles.nav_button_next, disabled: !props.nextMonth, onClick: props.onNextClick, children: dir === "rtl" ? (0, import_jsx_runtime13.jsx)(IconLeftComponent, { className: classNames.nav_icon, style: styles.nav_icon }) : (0, import_jsx_runtime13.jsx)(IconRightComponent, { className: classNames.nav_icon, style: styles.nav_icon }) })] });
+  }
+  function CaptionNavigation(props) {
+    var numberOfMonths = useDayPicker().numberOfMonths;
+    var _a = useNavigation2(), previousMonth = _a.previousMonth, nextMonth = _a.nextMonth, goToMonth = _a.goToMonth, displayMonths = _a.displayMonths;
+    var displayIndex = displayMonths.findIndex(function(month) {
+      return isSameMonth(props.displayMonth, month);
+    });
+    var isFirst = displayIndex === 0;
+    var isLast = displayIndex === displayMonths.length - 1;
+    var hideNext = numberOfMonths > 1 && (isFirst || !isLast);
+    var hidePrevious = numberOfMonths > 1 && (isLast || !isFirst);
+    var handlePreviousClick = function() {
+      if (!previousMonth)
+        return;
+      goToMonth(previousMonth);
+    };
+    var handleNextClick = function() {
+      if (!nextMonth)
+        return;
+      goToMonth(nextMonth);
+    };
+    return (0, import_jsx_runtime13.jsx)(Navigation, { displayMonth: props.displayMonth, hideNext, hidePrevious, nextMonth, previousMonth, onPreviousClick: handlePreviousClick, onNextClick: handleNextClick });
+  }
+  function Caption(props) {
+    var _a;
+    var _b = useDayPicker(), classNames = _b.classNames, disableNavigation = _b.disableNavigation, styles = _b.styles, captionLayout = _b.captionLayout, components = _b.components;
+    var CaptionLabelComponent = (_a = components === null || components === void 0 ? void 0 : components.CaptionLabel) !== null && _a !== void 0 ? _a : CaptionLabel;
+    var caption;
+    if (disableNavigation) {
+      caption = (0, import_jsx_runtime13.jsx)(CaptionLabelComponent, { id: props.id, displayMonth: props.displayMonth });
+    } else if (captionLayout === "dropdown") {
+      caption = (0, import_jsx_runtime13.jsx)(CaptionDropdowns, { displayMonth: props.displayMonth, id: props.id });
+    } else if (captionLayout === "dropdown-buttons") {
+      caption = (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [(0, import_jsx_runtime13.jsx)(CaptionDropdowns, { displayMonth: props.displayMonth, displayIndex: props.displayIndex, id: props.id }), (0, import_jsx_runtime13.jsx)(CaptionNavigation, { displayMonth: props.displayMonth, displayIndex: props.displayIndex, id: props.id })] });
+    } else {
+      caption = (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [(0, import_jsx_runtime13.jsx)(CaptionLabelComponent, { id: props.id, displayMonth: props.displayMonth, displayIndex: props.displayIndex }), (0, import_jsx_runtime13.jsx)(CaptionNavigation, { displayMonth: props.displayMonth, id: props.id })] });
+    }
+    return (0, import_jsx_runtime13.jsx)("div", { className: classNames.caption, style: styles.caption, children: caption });
+  }
+  function Footer(props) {
+    var _a = useDayPicker(), footer = _a.footer, styles = _a.styles, tfoot = _a.classNames.tfoot;
+    if (!footer)
+      return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, {});
+    return (0, import_jsx_runtime13.jsx)("tfoot", { className: tfoot, style: styles.tfoot, children: (0, import_jsx_runtime13.jsx)("tr", { children: (0, import_jsx_runtime13.jsx)("td", { colSpan: 8, children: footer }) }) });
+  }
+  function getWeekdays(locale3, weekStartsOn, ISOWeek) {
+    var start = ISOWeek ? startOfISOWeek(/* @__PURE__ */ new Date()) : startOfWeek(/* @__PURE__ */ new Date(), { locale: locale3, weekStartsOn });
+    var days = [];
+    for (var i = 0; i < 7; i++) {
+      var day = addDays(start, i);
+      days.push(day);
+    }
+    return days;
+  }
+  function HeadRow() {
+    var _a = useDayPicker(), classNames = _a.classNames, styles = _a.styles, showWeekNumber = _a.showWeekNumber, locale3 = _a.locale, weekStartsOn = _a.weekStartsOn, ISOWeek = _a.ISOWeek, formatWeekdayName2 = _a.formatters.formatWeekdayName, labelWeekday2 = _a.labels.labelWeekday;
+    var weekdays = getWeekdays(locale3, weekStartsOn, ISOWeek);
+    return (0, import_jsx_runtime13.jsxs)("tr", { style: styles.head_row, className: classNames.head_row, children: [showWeekNumber && (0, import_jsx_runtime13.jsx)("td", { style: styles.head_cell, className: classNames.head_cell }), weekdays.map(function(weekday, i) {
+      return (0, import_jsx_runtime13.jsx)("th", { scope: "col", className: classNames.head_cell, style: styles.head_cell, "aria-label": labelWeekday2(weekday, { locale: locale3 }), children: formatWeekdayName2(weekday, { locale: locale3 }) }, i);
+    })] });
+  }
+  function Head() {
+    var _a;
+    var _b = useDayPicker(), classNames = _b.classNames, styles = _b.styles, components = _b.components;
+    var HeadRowComponent = (_a = components === null || components === void 0 ? void 0 : components.HeadRow) !== null && _a !== void 0 ? _a : HeadRow;
+    return (0, import_jsx_runtime13.jsx)("thead", { style: styles.head, className: classNames.head, children: (0, import_jsx_runtime13.jsx)(HeadRowComponent, {}) });
+  }
+  function DayContent(props) {
+    var _a = useDayPicker(), locale3 = _a.locale, formatDay2 = _a.formatters.formatDay;
+    return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, { children: formatDay2(props.date, { locale: locale3 }) });
+  }
+  var SelectMultipleContext = (0, import_react25.createContext)(void 0);
+  function SelectMultipleProvider(props) {
+    if (!isDayPickerMultiple(props.initialProps)) {
+      var emptyContextValue = {
+        selected: void 0,
+        modifiers: {
+          disabled: []
+        }
+      };
+      return (0, import_jsx_runtime13.jsx)(SelectMultipleContext.Provider, { value: emptyContextValue, children: props.children });
+    }
+    return (0, import_jsx_runtime13.jsx)(SelectMultipleProviderInternal, { initialProps: props.initialProps, children: props.children });
+  }
+  function SelectMultipleProviderInternal(_a) {
+    var initialProps = _a.initialProps, children = _a.children;
+    var selected = initialProps.selected, min3 = initialProps.min, max3 = initialProps.max;
+    var onDayClick = function(day, activeModifiers, e) {
+      var _a2, _b;
+      (_a2 = initialProps.onDayClick) === null || _a2 === void 0 ? void 0 : _a2.call(initialProps, day, activeModifiers, e);
+      var isMinSelected = Boolean(activeModifiers.selected && min3 && (selected === null || selected === void 0 ? void 0 : selected.length) === min3);
+      if (isMinSelected) {
+        return;
+      }
+      var isMaxSelected = Boolean(!activeModifiers.selected && max3 && (selected === null || selected === void 0 ? void 0 : selected.length) === max3);
+      if (isMaxSelected) {
+        return;
+      }
+      var selectedDays = selected ? __spreadArray([], selected, true) : [];
+      if (activeModifiers.selected) {
+        var index = selectedDays.findIndex(function(selectedDay) {
+          return isSameDay(day, selectedDay);
+        });
+        selectedDays.splice(index, 1);
+      } else {
+        selectedDays.push(day);
+      }
+      (_b = initialProps.onSelect) === null || _b === void 0 ? void 0 : _b.call(initialProps, selectedDays, day, activeModifiers, e);
+    };
+    var modifiers = {
+      disabled: []
+    };
+    if (selected) {
+      modifiers.disabled.push(function(day) {
+        var isMaxSelected = max3 && selected.length > max3 - 1;
+        var isSelected = selected.some(function(selectedDay) {
+          return isSameDay(selectedDay, day);
+        });
+        return Boolean(isMaxSelected && !isSelected);
+      });
+    }
+    var contextValue = {
+      selected,
+      onDayClick,
+      modifiers
+    };
+    return (0, import_jsx_runtime13.jsx)(SelectMultipleContext.Provider, { value: contextValue, children });
+  }
+  function useSelectMultiple() {
+    var context = (0, import_react25.useContext)(SelectMultipleContext);
+    if (!context) {
+      throw new Error("useSelectMultiple must be used within a SelectMultipleProvider");
+    }
+    return context;
+  }
+  function addToRange(day, range) {
+    var _a = range || {}, from = _a.from, to = _a.to;
+    if (from && to) {
+      if (isSameDay(to, day) && isSameDay(from, day)) {
+        return void 0;
+      }
+      if (isSameDay(to, day)) {
+        return { from: to, to: void 0 };
+      }
+      if (isSameDay(from, day)) {
+        return void 0;
+      }
+      if (isAfter(from, day)) {
+        return { from: day, to };
+      }
+      return { from, to: day };
+    }
+    if (to) {
+      if (isAfter(day, to)) {
+        return { from: to, to: day };
+      }
+      return { from: day, to };
+    }
+    if (from) {
+      if (isBefore(day, from)) {
+        return { from: day, to: from };
+      }
+      return { from, to: day };
+    }
+    return { from: day, to: void 0 };
+  }
+  var SelectRangeContext = (0, import_react25.createContext)(void 0);
+  function SelectRangeProvider(props) {
+    if (!isDayPickerRange(props.initialProps)) {
+      var emptyContextValue = {
+        selected: void 0,
+        modifiers: {
+          range_start: [],
+          range_end: [],
+          range_middle: [],
+          disabled: []
+        }
+      };
+      return (0, import_jsx_runtime13.jsx)(SelectRangeContext.Provider, { value: emptyContextValue, children: props.children });
+    }
+    return (0, import_jsx_runtime13.jsx)(SelectRangeProviderInternal, { initialProps: props.initialProps, children: props.children });
+  }
+  function SelectRangeProviderInternal(_a) {
+    var initialProps = _a.initialProps, children = _a.children;
+    var selected = initialProps.selected;
+    var _b = selected || {}, selectedFrom = _b.from, selectedTo = _b.to;
+    var min3 = initialProps.min;
+    var max3 = initialProps.max;
+    var onDayClick = function(day, activeModifiers, e) {
+      var _a2, _b2;
+      (_a2 = initialProps.onDayClick) === null || _a2 === void 0 ? void 0 : _a2.call(initialProps, day, activeModifiers, e);
+      var newRange = addToRange(day, selected);
+      (_b2 = initialProps.onSelect) === null || _b2 === void 0 ? void 0 : _b2.call(initialProps, newRange, day, activeModifiers, e);
+    };
+    var modifiers = {
+      range_start: [],
+      range_end: [],
+      range_middle: [],
+      disabled: []
+    };
+    if (selectedFrom) {
+      modifiers.range_start = [selectedFrom];
+      if (!selectedTo) {
+        modifiers.range_end = [selectedFrom];
+      } else {
+        modifiers.range_end = [selectedTo];
+        if (!isSameDay(selectedFrom, selectedTo)) {
+          modifiers.range_middle = [
+            {
+              after: selectedFrom,
+              before: selectedTo
+            }
+          ];
+        }
+      }
+    } else if (selectedTo) {
+      modifiers.range_start = [selectedTo];
+      modifiers.range_end = [selectedTo];
+    }
+    if (min3) {
+      if (selectedFrom && !selectedTo) {
+        modifiers.disabled.push({
+          after: subDays(selectedFrom, min3 - 1),
+          before: addDays(selectedFrom, min3 - 1)
+        });
+      }
+      if (selectedFrom && selectedTo) {
+        modifiers.disabled.push({
+          after: selectedFrom,
+          before: addDays(selectedFrom, min3 - 1)
+        });
+      }
+      if (!selectedFrom && selectedTo) {
+        modifiers.disabled.push({
+          after: subDays(selectedTo, min3 - 1),
+          before: addDays(selectedTo, min3 - 1)
+        });
+      }
+    }
+    if (max3) {
+      if (selectedFrom && !selectedTo) {
+        modifiers.disabled.push({
+          before: addDays(selectedFrom, -max3 + 1)
+        });
+        modifiers.disabled.push({
+          after: addDays(selectedFrom, max3 - 1)
+        });
+      }
+      if (selectedFrom && selectedTo) {
+        var selectedCount = differenceInCalendarDays(selectedTo, selectedFrom) + 1;
+        var offset = max3 - selectedCount;
+        modifiers.disabled.push({
+          before: subDays(selectedFrom, offset)
+        });
+        modifiers.disabled.push({
+          after: addDays(selectedTo, offset)
+        });
+      }
+      if (!selectedFrom && selectedTo) {
+        modifiers.disabled.push({
+          before: addDays(selectedTo, -max3 + 1)
+        });
+        modifiers.disabled.push({
+          after: addDays(selectedTo, max3 - 1)
+        });
+      }
+    }
+    return (0, import_jsx_runtime13.jsx)(SelectRangeContext.Provider, { value: { selected, onDayClick, modifiers }, children });
+  }
+  function useSelectRange() {
+    var context = (0, import_react25.useContext)(SelectRangeContext);
+    if (!context) {
+      throw new Error("useSelectRange must be used within a SelectRangeProvider");
+    }
+    return context;
+  }
+  function matcherToArray(matcher) {
+    if (Array.isArray(matcher)) {
+      return __spreadArray([], matcher, true);
+    } else if (matcher !== void 0) {
+      return [matcher];
+    } else {
+      return [];
+    }
+  }
+  function getCustomModifiers(dayModifiers) {
+    var customModifiers = {};
+    Object.entries(dayModifiers).forEach(function(_a) {
+      var modifier = _a[0], matcher = _a[1];
+      customModifiers[modifier] = matcherToArray(matcher);
+    });
+    return customModifiers;
+  }
+  var InternalModifier;
+  (function(InternalModifier2) {
+    InternalModifier2["Outside"] = "outside";
+    InternalModifier2["Disabled"] = "disabled";
+    InternalModifier2["Selected"] = "selected";
+    InternalModifier2["Hidden"] = "hidden";
+    InternalModifier2["Today"] = "today";
+    InternalModifier2["RangeStart"] = "range_start";
+    InternalModifier2["RangeEnd"] = "range_end";
+    InternalModifier2["RangeMiddle"] = "range_middle";
+  })(InternalModifier || (InternalModifier = {}));
+  var Selected = InternalModifier.Selected;
+  var Disabled = InternalModifier.Disabled;
+  var Hidden = InternalModifier.Hidden;
+  var Today = InternalModifier.Today;
+  var RangeEnd = InternalModifier.RangeEnd;
+  var RangeMiddle = InternalModifier.RangeMiddle;
+  var RangeStart = InternalModifier.RangeStart;
+  var Outside = InternalModifier.Outside;
+  function getInternalModifiers(dayPicker, selectMultiple, selectRange) {
+    var _a;
+    var internalModifiers = (_a = {}, _a[Selected] = matcherToArray(dayPicker.selected), _a[Disabled] = matcherToArray(dayPicker.disabled), _a[Hidden] = matcherToArray(dayPicker.hidden), _a[Today] = [dayPicker.today], _a[RangeEnd] = [], _a[RangeMiddle] = [], _a[RangeStart] = [], _a[Outside] = [], _a);
+    if (dayPicker.fromDate) {
+      internalModifiers[Disabled].push({ before: dayPicker.fromDate });
+    }
+    if (dayPicker.toDate) {
+      internalModifiers[Disabled].push({ after: dayPicker.toDate });
+    }
+    if (isDayPickerMultiple(dayPicker)) {
+      internalModifiers[Disabled] = internalModifiers[Disabled].concat(selectMultiple.modifiers[Disabled]);
+    } else if (isDayPickerRange(dayPicker)) {
+      internalModifiers[Disabled] = internalModifiers[Disabled].concat(selectRange.modifiers[Disabled]);
+      internalModifiers[RangeStart] = selectRange.modifiers[RangeStart];
+      internalModifiers[RangeMiddle] = selectRange.modifiers[RangeMiddle];
+      internalModifiers[RangeEnd] = selectRange.modifiers[RangeEnd];
+    }
+    return internalModifiers;
+  }
+  var ModifiersContext = (0, import_react25.createContext)(void 0);
+  function ModifiersProvider(props) {
+    var dayPicker = useDayPicker();
+    var selectMultiple = useSelectMultiple();
+    var selectRange = useSelectRange();
+    var internalModifiers = getInternalModifiers(dayPicker, selectMultiple, selectRange);
+    var customModifiers = getCustomModifiers(dayPicker.modifiers);
+    var modifiers = __assign(__assign({}, internalModifiers), customModifiers);
+    return (0, import_jsx_runtime13.jsx)(ModifiersContext.Provider, { value: modifiers, children: props.children });
+  }
+  function useModifiers() {
+    var context = (0, import_react25.useContext)(ModifiersContext);
+    if (!context) {
+      throw new Error("useModifiers must be used within a ModifiersProvider");
+    }
+    return context;
+  }
+  function isDateInterval(matcher) {
+    return Boolean(matcher && typeof matcher === "object" && "before" in matcher && "after" in matcher);
+  }
+  function isDateRange(value) {
+    return Boolean(value && typeof value === "object" && "from" in value);
+  }
+  function isDateAfterType(value) {
+    return Boolean(value && typeof value === "object" && "after" in value);
+  }
+  function isDateBeforeType(value) {
+    return Boolean(value && typeof value === "object" && "before" in value);
+  }
+  function isDayOfWeekType(value) {
+    return Boolean(value && typeof value === "object" && "dayOfWeek" in value);
+  }
+  function isDateInRange(date2, range) {
+    var _a;
+    var from = range.from, to = range.to;
+    if (from && to) {
+      var isRangeInverted = differenceInCalendarDays(to, from) < 0;
+      if (isRangeInverted) {
+        _a = [to, from], from = _a[0], to = _a[1];
+      }
+      var isInRange = differenceInCalendarDays(date2, from) >= 0 && differenceInCalendarDays(to, date2) >= 0;
+      return isInRange;
+    }
+    if (to) {
+      return isSameDay(to, date2);
+    }
+    if (from) {
+      return isSameDay(from, date2);
+    }
+    return false;
+  }
+  function isDateType(value) {
+    return isDate(value);
+  }
+  function isArrayOfDates(value) {
+    return Array.isArray(value) && value.every(isDate);
+  }
+  function isMatch(day, matchers) {
+    return matchers.some(function(matcher) {
+      if (typeof matcher === "boolean") {
+        return matcher;
+      }
+      if (isDateType(matcher)) {
+        return isSameDay(day, matcher);
+      }
+      if (isArrayOfDates(matcher)) {
+        return matcher.includes(day);
+      }
+      if (isDateRange(matcher)) {
+        return isDateInRange(day, matcher);
+      }
+      if (isDayOfWeekType(matcher)) {
+        return matcher.dayOfWeek.includes(day.getDay());
+      }
+      if (isDateInterval(matcher)) {
+        var diffBefore = differenceInCalendarDays(matcher.before, day);
+        var diffAfter = differenceInCalendarDays(matcher.after, day);
+        var isDayBefore = diffBefore > 0;
+        var isDayAfter = diffAfter < 0;
+        var isClosedInterval = isAfter(matcher.before, matcher.after);
+        if (isClosedInterval) {
+          return isDayAfter && isDayBefore;
+        } else {
+          return isDayBefore || isDayAfter;
+        }
+      }
+      if (isDateAfterType(matcher)) {
+        return differenceInCalendarDays(day, matcher.after) > 0;
+      }
+      if (isDateBeforeType(matcher)) {
+        return differenceInCalendarDays(matcher.before, day) > 0;
+      }
+      if (typeof matcher === "function") {
+        return matcher(day);
+      }
+      return false;
+    });
+  }
+  function getActiveModifiers(day, modifiers, displayMonth) {
+    var matchedModifiers = Object.keys(modifiers).reduce(function(result, key) {
+      var modifier = modifiers[key];
+      if (isMatch(day, modifier)) {
+        result.push(key);
+      }
+      return result;
+    }, []);
+    var activeModifiers = {};
+    matchedModifiers.forEach(function(modifier) {
+      return activeModifiers[modifier] = true;
+    });
+    if (displayMonth && !isSameMonth(day, displayMonth)) {
+      activeModifiers.outside = true;
+    }
+    return activeModifiers;
+  }
+  function getInitialFocusTarget(displayMonths, modifiers) {
+    var firstDayInMonth = startOfMonth(displayMonths[0]);
+    var lastDayInMonth = endOfMonth(displayMonths[displayMonths.length - 1]);
+    var firstFocusableDay;
+    var today;
+    var date2 = firstDayInMonth;
+    while (date2 <= lastDayInMonth) {
+      var activeModifiers = getActiveModifiers(date2, modifiers);
+      var isFocusable = !activeModifiers.disabled && !activeModifiers.hidden;
+      if (!isFocusable) {
+        date2 = addDays(date2, 1);
+        continue;
+      }
+      if (activeModifiers.selected) {
+        return date2;
+      }
+      if (activeModifiers.today && !today) {
+        today = date2;
+      }
+      if (!firstFocusableDay) {
+        firstFocusableDay = date2;
+      }
+      date2 = addDays(date2, 1);
+    }
+    if (today) {
+      return today;
+    } else {
+      return firstFocusableDay;
+    }
+  }
+  var MAX_RETRY = 365;
+  function getNextFocus(focusedDay, options) {
+    var moveBy = options.moveBy, direction = options.direction, context = options.context, modifiers = options.modifiers, _a = options.retry, retry = _a === void 0 ? { count: 0, lastFocused: focusedDay } : _a;
+    var weekStartsOn = context.weekStartsOn, fromDate = context.fromDate, toDate2 = context.toDate, locale3 = context.locale;
+    var moveFns = {
+      day: addDays,
+      week: addWeeks,
+      month: addMonths,
+      year: addYears,
+      startOfWeek: function(date2) {
+        return context.ISOWeek ? startOfISOWeek(date2) : startOfWeek(date2, { locale: locale3, weekStartsOn });
+      },
+      endOfWeek: function(date2) {
+        return context.ISOWeek ? endOfISOWeek(date2) : endOfWeek(date2, { locale: locale3, weekStartsOn });
+      }
+    };
+    var newFocusedDay = moveFns[moveBy](focusedDay, direction === "after" ? 1 : -1);
+    if (direction === "before" && fromDate) {
+      newFocusedDay = max2([fromDate, newFocusedDay]);
+    } else if (direction === "after" && toDate2) {
+      newFocusedDay = min2([toDate2, newFocusedDay]);
+    }
+    var isFocusable = true;
+    if (modifiers) {
+      var activeModifiers = getActiveModifiers(newFocusedDay, modifiers);
+      isFocusable = !activeModifiers.disabled && !activeModifiers.hidden;
+    }
+    if (isFocusable) {
+      return newFocusedDay;
+    } else {
+      if (retry.count > MAX_RETRY) {
+        return retry.lastFocused;
+      }
+      return getNextFocus(newFocusedDay, {
+        moveBy,
+        direction,
+        context,
+        modifiers,
+        retry: __assign(__assign({}, retry), { count: retry.count + 1 })
+      });
+    }
+  }
+  var FocusContext = (0, import_react25.createContext)(void 0);
+  function FocusProvider(props) {
+    var navigation = useNavigation2();
+    var modifiers = useModifiers();
+    var _a = (0, import_react25.useState)(), focusedDay = _a[0], setFocusedDay = _a[1];
+    var _b = (0, import_react25.useState)(), lastFocused = _b[0], setLastFocused = _b[1];
+    var initialFocusTarget = getInitialFocusTarget(navigation.displayMonths, modifiers);
+    var focusTarget = (focusedDay !== null && focusedDay !== void 0 ? focusedDay : lastFocused && navigation.isDateDisplayed(lastFocused)) ? lastFocused : initialFocusTarget;
+    var blur = function() {
+      setLastFocused(focusedDay);
+      setFocusedDay(void 0);
+    };
+    var focus = function(date2) {
+      setFocusedDay(date2);
+    };
+    var context = useDayPicker();
+    var moveFocus = function(moveBy, direction) {
+      if (!focusedDay)
+        return;
+      var nextFocused = getNextFocus(focusedDay, {
+        moveBy,
+        direction,
+        context,
+        modifiers
+      });
+      if (isSameDay(focusedDay, nextFocused))
+        return void 0;
+      navigation.goToDate(nextFocused, focusedDay);
+      focus(nextFocused);
+    };
+    var value = {
+      focusedDay,
+      focusTarget,
+      blur,
+      focus,
+      focusDayAfter: function() {
+        return moveFocus("day", "after");
+      },
+      focusDayBefore: function() {
+        return moveFocus("day", "before");
+      },
+      focusWeekAfter: function() {
+        return moveFocus("week", "after");
+      },
+      focusWeekBefore: function() {
+        return moveFocus("week", "before");
+      },
+      focusMonthBefore: function() {
+        return moveFocus("month", "before");
+      },
+      focusMonthAfter: function() {
+        return moveFocus("month", "after");
+      },
+      focusYearBefore: function() {
+        return moveFocus("year", "before");
+      },
+      focusYearAfter: function() {
+        return moveFocus("year", "after");
+      },
+      focusStartOfWeek: function() {
+        return moveFocus("startOfWeek", "before");
+      },
+      focusEndOfWeek: function() {
+        return moveFocus("endOfWeek", "after");
+      }
+    };
+    return (0, import_jsx_runtime13.jsx)(FocusContext.Provider, { value, children: props.children });
+  }
+  function useFocusContext() {
+    var context = (0, import_react25.useContext)(FocusContext);
+    if (!context) {
+      throw new Error("useFocusContext must be used within a FocusProvider");
+    }
+    return context;
+  }
+  function useActiveModifiers(day, displayMonth) {
+    var modifiers = useModifiers();
+    var activeModifiers = getActiveModifiers(day, modifiers, displayMonth);
+    return activeModifiers;
+  }
+  var SelectSingleContext = (0, import_react25.createContext)(void 0);
+  function SelectSingleProvider(props) {
+    if (!isDayPickerSingle(props.initialProps)) {
+      var emptyContextValue = {
+        selected: void 0
+      };
+      return (0, import_jsx_runtime13.jsx)(SelectSingleContext.Provider, { value: emptyContextValue, children: props.children });
+    }
+    return (0, import_jsx_runtime13.jsx)(SelectSingleProviderInternal, { initialProps: props.initialProps, children: props.children });
+  }
+  function SelectSingleProviderInternal(_a) {
+    var initialProps = _a.initialProps, children = _a.children;
+    var onDayClick = function(day, activeModifiers, e) {
+      var _a2, _b, _c;
+      (_a2 = initialProps.onDayClick) === null || _a2 === void 0 ? void 0 : _a2.call(initialProps, day, activeModifiers, e);
+      if (activeModifiers.selected && !initialProps.required) {
+        (_b = initialProps.onSelect) === null || _b === void 0 ? void 0 : _b.call(initialProps, void 0, day, activeModifiers, e);
+        return;
+      }
+      (_c = initialProps.onSelect) === null || _c === void 0 ? void 0 : _c.call(initialProps, day, day, activeModifiers, e);
+    };
+    var contextValue = {
+      selected: initialProps.selected,
+      onDayClick
+    };
+    return (0, import_jsx_runtime13.jsx)(SelectSingleContext.Provider, { value: contextValue, children });
+  }
+  function useSelectSingle() {
+    var context = (0, import_react25.useContext)(SelectSingleContext);
+    if (!context) {
+      throw new Error("useSelectSingle must be used within a SelectSingleProvider");
+    }
+    return context;
+  }
+  function useDayEventHandlers(date2, activeModifiers) {
+    var dayPicker = useDayPicker();
+    var single = useSelectSingle();
+    var multiple = useSelectMultiple();
+    var range = useSelectRange();
+    var _a = useFocusContext(), focusDayAfter = _a.focusDayAfter, focusDayBefore = _a.focusDayBefore, focusWeekAfter = _a.focusWeekAfter, focusWeekBefore = _a.focusWeekBefore, blur = _a.blur, focus = _a.focus, focusMonthBefore = _a.focusMonthBefore, focusMonthAfter = _a.focusMonthAfter, focusYearBefore = _a.focusYearBefore, focusYearAfter = _a.focusYearAfter, focusStartOfWeek = _a.focusStartOfWeek, focusEndOfWeek = _a.focusEndOfWeek;
+    var onClick = function(e) {
+      var _a2, _b, _c, _d;
+      if (isDayPickerSingle(dayPicker)) {
+        (_a2 = single.onDayClick) === null || _a2 === void 0 ? void 0 : _a2.call(single, date2, activeModifiers, e);
+      } else if (isDayPickerMultiple(dayPicker)) {
+        (_b = multiple.onDayClick) === null || _b === void 0 ? void 0 : _b.call(multiple, date2, activeModifiers, e);
+      } else if (isDayPickerRange(dayPicker)) {
+        (_c = range.onDayClick) === null || _c === void 0 ? void 0 : _c.call(range, date2, activeModifiers, e);
+      } else {
+        (_d = dayPicker.onDayClick) === null || _d === void 0 ? void 0 : _d.call(dayPicker, date2, activeModifiers, e);
+      }
+    };
+    var onFocus = function(e) {
+      var _a2;
+      focus(date2);
+      (_a2 = dayPicker.onDayFocus) === null || _a2 === void 0 ? void 0 : _a2.call(dayPicker, date2, activeModifiers, e);
+    };
+    var onBlur = function(e) {
+      var _a2;
+      blur();
+      (_a2 = dayPicker.onDayBlur) === null || _a2 === void 0 ? void 0 : _a2.call(dayPicker, date2, activeModifiers, e);
+    };
+    var onMouseEnter = function(e) {
+      var _a2;
+      (_a2 = dayPicker.onDayMouseEnter) === null || _a2 === void 0 ? void 0 : _a2.call(dayPicker, date2, activeModifiers, e);
+    };
+    var onMouseLeave = function(e) {
+      var _a2;
+      (_a2 = dayPicker.onDayMouseLeave) === null || _a2 === void 0 ? void 0 : _a2.call(dayPicker, date2, activeModifiers, e);
+    };
+    var onPointerEnter = function(e) {
+      var _a2;
+      (_a2 = dayPicker.onDayPointerEnter) === null || _a2 === void 0 ? void 0 : _a2.call(dayPicker, date2, activeModifiers, e);
+    };
+    var onPointerLeave = function(e) {
+      var _a2;
+      (_a2 = dayPicker.onDayPointerLeave) === null || _a2 === void 0 ? void 0 : _a2.call(dayPicker, date2, activeModifiers, e);
+    };
+    var onTouchCancel = function(e) {
+      var _a2;
+      (_a2 = dayPicker.onDayTouchCancel) === null || _a2 === void 0 ? void 0 : _a2.call(dayPicker, date2, activeModifiers, e);
+    };
+    var onTouchEnd = function(e) {
+      var _a2;
+      (_a2 = dayPicker.onDayTouchEnd) === null || _a2 === void 0 ? void 0 : _a2.call(dayPicker, date2, activeModifiers, e);
+    };
+    var onTouchMove = function(e) {
+      var _a2;
+      (_a2 = dayPicker.onDayTouchMove) === null || _a2 === void 0 ? void 0 : _a2.call(dayPicker, date2, activeModifiers, e);
+    };
+    var onTouchStart = function(e) {
+      var _a2;
+      (_a2 = dayPicker.onDayTouchStart) === null || _a2 === void 0 ? void 0 : _a2.call(dayPicker, date2, activeModifiers, e);
+    };
+    var onKeyUp = function(e) {
+      var _a2;
+      (_a2 = dayPicker.onDayKeyUp) === null || _a2 === void 0 ? void 0 : _a2.call(dayPicker, date2, activeModifiers, e);
+    };
+    var onKeyDown = function(e) {
+      var _a2;
+      switch (e.key) {
+        case "ArrowLeft":
+          e.preventDefault();
+          e.stopPropagation();
+          dayPicker.dir === "rtl" ? focusDayAfter() : focusDayBefore();
+          break;
+        case "ArrowRight":
+          e.preventDefault();
+          e.stopPropagation();
+          dayPicker.dir === "rtl" ? focusDayBefore() : focusDayAfter();
+          break;
+        case "ArrowDown":
+          e.preventDefault();
+          e.stopPropagation();
+          focusWeekAfter();
+          break;
+        case "ArrowUp":
+          e.preventDefault();
+          e.stopPropagation();
+          focusWeekBefore();
+          break;
+        case "PageUp":
+          e.preventDefault();
+          e.stopPropagation();
+          e.shiftKey ? focusYearBefore() : focusMonthBefore();
+          break;
+        case "PageDown":
+          e.preventDefault();
+          e.stopPropagation();
+          e.shiftKey ? focusYearAfter() : focusMonthAfter();
+          break;
+        case "Home":
+          e.preventDefault();
+          e.stopPropagation();
+          focusStartOfWeek();
+          break;
+        case "End":
+          e.preventDefault();
+          e.stopPropagation();
+          focusEndOfWeek();
+          break;
+      }
+      (_a2 = dayPicker.onDayKeyDown) === null || _a2 === void 0 ? void 0 : _a2.call(dayPicker, date2, activeModifiers, e);
+    };
+    var eventHandlers = {
+      onClick,
+      onFocus,
+      onBlur,
+      onKeyDown,
+      onKeyUp,
+      onMouseEnter,
+      onMouseLeave,
+      onPointerEnter,
+      onPointerLeave,
+      onTouchCancel,
+      onTouchEnd,
+      onTouchMove,
+      onTouchStart
+    };
+    return eventHandlers;
+  }
+  function useSelectedDays() {
+    var dayPicker = useDayPicker();
+    var single = useSelectSingle();
+    var multiple = useSelectMultiple();
+    var range = useSelectRange();
+    var selectedDays = isDayPickerSingle(dayPicker) ? single.selected : isDayPickerMultiple(dayPicker) ? multiple.selected : isDayPickerRange(dayPicker) ? range.selected : void 0;
+    return selectedDays;
+  }
+  function isInternalModifier(modifier) {
+    return Object.values(InternalModifier).includes(modifier);
+  }
+  function getDayClassNames(dayPicker, activeModifiers) {
+    var classNames = [dayPicker.classNames.day];
+    Object.keys(activeModifiers).forEach(function(modifier) {
+      var customClassName = dayPicker.modifiersClassNames[modifier];
+      if (customClassName) {
+        classNames.push(customClassName);
+      } else if (isInternalModifier(modifier)) {
+        var internalClassName = dayPicker.classNames["day_".concat(modifier)];
+        if (internalClassName) {
+          classNames.push(internalClassName);
+        }
+      }
+    });
+    return classNames;
+  }
+  function getDayStyle(dayPicker, activeModifiers) {
+    var style = __assign({}, dayPicker.styles.day);
+    Object.keys(activeModifiers).forEach(function(modifier) {
+      var _a;
+      style = __assign(__assign({}, style), (_a = dayPicker.modifiersStyles) === null || _a === void 0 ? void 0 : _a[modifier]);
+    });
+    return style;
+  }
+  function useDayRender(day, displayMonth, buttonRef) {
+    var _a;
+    var _b, _c;
+    var dayPicker = useDayPicker();
+    var focusContext = useFocusContext();
+    var activeModifiers = useActiveModifiers(day, displayMonth);
+    var eventHandlers = useDayEventHandlers(day, activeModifiers);
+    var selectedDays = useSelectedDays();
+    var isButton = Boolean(dayPicker.onDayClick || dayPicker.mode !== "default");
+    (0, import_react25.useEffect)(function() {
+      var _a2;
+      if (activeModifiers.outside)
+        return;
+      if (!focusContext.focusedDay)
+        return;
+      if (!isButton)
+        return;
+      if (isSameDay(focusContext.focusedDay, day)) {
+        (_a2 = buttonRef.current) === null || _a2 === void 0 ? void 0 : _a2.focus();
+      }
+    }, [
+      focusContext.focusedDay,
+      day,
+      buttonRef,
+      isButton,
+      activeModifiers.outside
+    ]);
+    var className = getDayClassNames(dayPicker, activeModifiers).join(" ");
+    var style = getDayStyle(dayPicker, activeModifiers);
+    var isHidden = Boolean(activeModifiers.outside && !dayPicker.showOutsideDays || activeModifiers.hidden);
+    var DayContentComponent = (_c = (_b = dayPicker.components) === null || _b === void 0 ? void 0 : _b.DayContent) !== null && _c !== void 0 ? _c : DayContent;
+    var children = (0, import_jsx_runtime13.jsx)(DayContentComponent, { date: day, displayMonth, activeModifiers });
+    var divProps = {
+      style,
+      className,
+      children,
+      role: "gridcell"
+    };
+    var isFocusTarget = focusContext.focusTarget && isSameDay(focusContext.focusTarget, day) && !activeModifiers.outside;
+    var isFocused = focusContext.focusedDay && isSameDay(focusContext.focusedDay, day);
+    var buttonProps = __assign(__assign(__assign({}, divProps), (_a = { disabled: activeModifiers.disabled, role: "gridcell" }, _a["aria-selected"] = activeModifiers.selected, _a.tabIndex = isFocused || isFocusTarget ? 0 : -1, _a)), eventHandlers);
+    var dayRender = {
+      isButton,
+      isHidden,
+      activeModifiers,
+      selectedDays,
+      buttonProps,
+      divProps
+    };
+    return dayRender;
+  }
+  function Day(props) {
+    var buttonRef = (0, import_react25.useRef)(null);
+    var dayRender = useDayRender(props.date, props.displayMonth, buttonRef);
+    if (dayRender.isHidden) {
+      return (0, import_jsx_runtime13.jsx)("div", { role: "gridcell" });
+    }
+    if (!dayRender.isButton) {
+      return (0, import_jsx_runtime13.jsx)("div", __assign({}, dayRender.divProps));
+    }
+    return (0, import_jsx_runtime13.jsx)(Button2, __assign({ name: "day", ref: buttonRef }, dayRender.buttonProps));
+  }
+  function WeekNumber(props) {
+    var weekNumber = props.number, dates = props.dates;
+    var _a = useDayPicker(), onWeekNumberClick = _a.onWeekNumberClick, styles = _a.styles, classNames = _a.classNames, locale3 = _a.locale, labelWeekNumber2 = _a.labels.labelWeekNumber, formatWeekNumber2 = _a.formatters.formatWeekNumber;
+    var content = formatWeekNumber2(Number(weekNumber), { locale: locale3 });
+    if (!onWeekNumberClick) {
+      return (0, import_jsx_runtime13.jsx)("span", { className: classNames.weeknumber, style: styles.weeknumber, children: content });
+    }
+    var label = labelWeekNumber2(Number(weekNumber), { locale: locale3 });
+    var handleClick = function(e) {
+      onWeekNumberClick(weekNumber, dates, e);
+    };
+    return (0, import_jsx_runtime13.jsx)(Button2, { name: "week-number", "aria-label": label, className: classNames.weeknumber, style: styles.weeknumber, onClick: handleClick, children: content });
+  }
+  function Row(props) {
+    var _a, _b;
+    var _c = useDayPicker(), styles = _c.styles, classNames = _c.classNames, showWeekNumber = _c.showWeekNumber, components = _c.components;
+    var DayComponent = (_a = components === null || components === void 0 ? void 0 : components.Day) !== null && _a !== void 0 ? _a : Day;
+    var WeeknumberComponent = (_b = components === null || components === void 0 ? void 0 : components.WeekNumber) !== null && _b !== void 0 ? _b : WeekNumber;
+    var weekNumberCell;
+    if (showWeekNumber) {
+      weekNumberCell = (0, import_jsx_runtime13.jsx)("td", { className: classNames.cell, style: styles.cell, children: (0, import_jsx_runtime13.jsx)(WeeknumberComponent, { number: props.weekNumber, dates: props.dates }) });
+    }
+    return (0, import_jsx_runtime13.jsxs)("tr", { className: classNames.row, style: styles.row, children: [weekNumberCell, props.dates.map(function(date2) {
+      return (0, import_jsx_runtime13.jsx)("td", { className: classNames.cell, style: styles.cell, role: "presentation", children: (0, import_jsx_runtime13.jsx)(DayComponent, { displayMonth: props.displayMonth, date: date2 }) }, getUnixTime(date2));
+    })] });
+  }
+  function daysToMonthWeeks(fromDate, toDate2, options) {
+    var toWeek = (options === null || options === void 0 ? void 0 : options.ISOWeek) ? endOfISOWeek(toDate2) : endOfWeek(toDate2, options);
+    var fromWeek = (options === null || options === void 0 ? void 0 : options.ISOWeek) ? startOfISOWeek(fromDate) : startOfWeek(fromDate, options);
+    var nOfDays = differenceInCalendarDays(toWeek, fromWeek);
+    var days = [];
+    for (var i = 0; i <= nOfDays; i++) {
+      days.push(addDays(fromWeek, i));
+    }
+    var weeksInMonth = days.reduce(function(result, date2) {
+      var weekNumber = (options === null || options === void 0 ? void 0 : options.ISOWeek) ? getISOWeek(date2) : getWeek(date2, options);
+      var existingWeek = result.find(function(value) {
+        return value.weekNumber === weekNumber;
+      });
+      if (existingWeek) {
+        existingWeek.dates.push(date2);
+        return result;
+      }
+      result.push({
+        weekNumber,
+        dates: [date2]
+      });
+      return result;
+    }, []);
+    return weeksInMonth;
+  }
+  function getMonthWeeks(month, options) {
+    var weeksInMonth = daysToMonthWeeks(startOfMonth(month), endOfMonth(month), options);
+    if (options === null || options === void 0 ? void 0 : options.useFixedWeeks) {
+      var nrOfMonthWeeks = getWeeksInMonth(month, options);
+      if (nrOfMonthWeeks < 6) {
+        var lastWeek = weeksInMonth[weeksInMonth.length - 1];
+        var lastDate = lastWeek.dates[lastWeek.dates.length - 1];
+        var toDate2 = addWeeks(lastDate, 6 - nrOfMonthWeeks);
+        var extraWeeks = daysToMonthWeeks(addWeeks(lastDate, 1), toDate2, options);
+        weeksInMonth.push.apply(weeksInMonth, extraWeeks);
+      }
+    }
+    return weeksInMonth;
+  }
+  function Table2(props) {
+    var _a, _b, _c;
+    var _d = useDayPicker(), locale3 = _d.locale, classNames = _d.classNames, styles = _d.styles, hideHead = _d.hideHead, fixedWeeks = _d.fixedWeeks, components = _d.components, weekStartsOn = _d.weekStartsOn, firstWeekContainsDate = _d.firstWeekContainsDate, ISOWeek = _d.ISOWeek;
+    var weeks = getMonthWeeks(props.displayMonth, {
+      useFixedWeeks: Boolean(fixedWeeks),
+      ISOWeek,
+      locale: locale3,
+      weekStartsOn,
+      firstWeekContainsDate
+    });
+    var HeadComponent = (_a = components === null || components === void 0 ? void 0 : components.Head) !== null && _a !== void 0 ? _a : Head;
+    var RowComponent = (_b = components === null || components === void 0 ? void 0 : components.Row) !== null && _b !== void 0 ? _b : Row;
+    var FooterComponent = (_c = components === null || components === void 0 ? void 0 : components.Footer) !== null && _c !== void 0 ? _c : Footer;
+    return (0, import_jsx_runtime13.jsxs)("table", { id: props.id, className: classNames.table, style: styles.table, role: "grid", "aria-labelledby": props["aria-labelledby"], children: [!hideHead && (0, import_jsx_runtime13.jsx)(HeadComponent, {}), (0, import_jsx_runtime13.jsx)("tbody", { className: classNames.tbody, style: styles.tbody, children: weeks.map(function(week) {
+      return (0, import_jsx_runtime13.jsx)(RowComponent, { displayMonth: props.displayMonth, dates: week.dates, weekNumber: week.weekNumber }, week.weekNumber);
+    }) }), (0, import_jsx_runtime13.jsx)(FooterComponent, { displayMonth: props.displayMonth })] });
+  }
+  function canUseDOM() {
+    return !!(typeof window !== "undefined" && window.document && window.document.createElement);
+  }
+  var useIsomorphicLayoutEffect2 = canUseDOM() ? import_react25.useLayoutEffect : import_react25.useEffect;
+  var serverHandoffComplete = false;
+  var id = 0;
+  function genId() {
+    return "react-day-picker-".concat(++id);
+  }
+  function useId(providedId) {
+    var _a;
+    var initialId = providedId !== null && providedId !== void 0 ? providedId : serverHandoffComplete ? genId() : null;
+    var _b = (0, import_react25.useState)(initialId), id2 = _b[0], setId = _b[1];
+    useIsomorphicLayoutEffect2(function() {
+      if (id2 === null) {
+        setId(genId());
+      }
+    }, []);
+    (0, import_react25.useEffect)(function() {
+      if (serverHandoffComplete === false) {
+        serverHandoffComplete = true;
+      }
+    }, []);
+    return (_a = providedId !== null && providedId !== void 0 ? providedId : id2) !== null && _a !== void 0 ? _a : void 0;
+  }
+  function Month(props) {
+    var _a;
+    var _b;
+    var dayPicker = useDayPicker();
+    var dir = dayPicker.dir, classNames = dayPicker.classNames, styles = dayPicker.styles, components = dayPicker.components;
+    var displayMonths = useNavigation2().displayMonths;
+    var captionId = useId(dayPicker.id ? "".concat(dayPicker.id, "-").concat(props.displayIndex) : void 0);
+    var tableId = dayPicker.id ? "".concat(dayPicker.id, "-grid-").concat(props.displayIndex) : void 0;
+    var className = [classNames.month];
+    var style = styles.month;
+    var isStart = props.displayIndex === 0;
+    var isEnd = props.displayIndex === displayMonths.length - 1;
+    var isCenter = !isStart && !isEnd;
+    if (dir === "rtl") {
+      _a = [isStart, isEnd], isEnd = _a[0], isStart = _a[1];
+    }
+    if (isStart) {
+      className.push(classNames.caption_start);
+      style = __assign(__assign({}, style), styles.caption_start);
+    }
+    if (isEnd) {
+      className.push(classNames.caption_end);
+      style = __assign(__assign({}, style), styles.caption_end);
+    }
+    if (isCenter) {
+      className.push(classNames.caption_between);
+      style = __assign(__assign({}, style), styles.caption_between);
+    }
+    var CaptionComponent = (_b = components === null || components === void 0 ? void 0 : components.Caption) !== null && _b !== void 0 ? _b : Caption;
+    return (0, import_jsx_runtime13.jsxs)("div", { className: className.join(" "), style, children: [(0, import_jsx_runtime13.jsx)(CaptionComponent, { id: captionId, displayMonth: props.displayMonth, displayIndex: props.displayIndex }), (0, import_jsx_runtime13.jsx)(Table2, { id: tableId, "aria-labelledby": captionId, displayMonth: props.displayMonth })] }, props.displayIndex);
+  }
+  function Months(props) {
+    var _a = useDayPicker(), classNames = _a.classNames, styles = _a.styles;
+    return (0, import_jsx_runtime13.jsx)("div", { className: classNames.months, style: styles.months, children: props.children });
+  }
+  function Root(_a) {
+    var _b, _c;
+    var initialProps = _a.initialProps;
+    var dayPicker = useDayPicker();
+    var focusContext = useFocusContext();
+    var navigation = useNavigation2();
+    var _d = (0, import_react25.useState)(false), hasInitialFocus = _d[0], setHasInitialFocus = _d[1];
+    (0, import_react25.useEffect)(function() {
+      if (!dayPicker.initialFocus)
+        return;
+      if (!focusContext.focusTarget)
+        return;
+      if (hasInitialFocus)
+        return;
+      focusContext.focus(focusContext.focusTarget);
+      setHasInitialFocus(true);
+    }, [
+      dayPicker.initialFocus,
+      hasInitialFocus,
+      focusContext.focus,
+      focusContext.focusTarget,
+      focusContext
+    ]);
+    var classNames = [dayPicker.classNames.root, dayPicker.className];
+    if (dayPicker.numberOfMonths > 1) {
+      classNames.push(dayPicker.classNames.multiple_months);
+    }
+    if (dayPicker.showWeekNumber) {
+      classNames.push(dayPicker.classNames.with_weeknumber);
+    }
+    var style = __assign(__assign({}, dayPicker.styles.root), dayPicker.style);
+    var dataAttributes = Object.keys(initialProps).filter(function(key) {
+      return key.startsWith("data-");
+    }).reduce(function(attrs, key) {
+      var _a2;
+      return __assign(__assign({}, attrs), (_a2 = {}, _a2[key] = initialProps[key], _a2));
+    }, {});
+    var MonthsComponent = (_c = (_b = initialProps.components) === null || _b === void 0 ? void 0 : _b.Months) !== null && _c !== void 0 ? _c : Months;
+    return (0, import_jsx_runtime13.jsx)("div", __assign({ className: classNames.join(" "), style, dir: dayPicker.dir, id: dayPicker.id, nonce: initialProps.nonce, title: initialProps.title, lang: initialProps.lang }, dataAttributes, { children: (0, import_jsx_runtime13.jsx)(MonthsComponent, { children: navigation.displayMonths.map(function(month, i) {
+      return (0, import_jsx_runtime13.jsx)(Month, { displayIndex: i, displayMonth: month }, i);
+    }) }) }));
+  }
+  function RootProvider(props) {
+    var children = props.children, initialProps = __rest(props, ["children"]);
+    return (0, import_jsx_runtime13.jsx)(DayPickerProvider, { initialProps, children: (0, import_jsx_runtime13.jsx)(NavigationProvider, { children: (0, import_jsx_runtime13.jsx)(SelectSingleProvider, { initialProps, children: (0, import_jsx_runtime13.jsx)(SelectMultipleProvider, { initialProps, children: (0, import_jsx_runtime13.jsx)(SelectRangeProvider, { initialProps, children: (0, import_jsx_runtime13.jsx)(ModifiersProvider, { children: (0, import_jsx_runtime13.jsx)(FocusProvider, { children }) }) }) }) }) }) });
+  }
+  function DayPicker(props) {
+    return (0, import_jsx_runtime13.jsx)(RootProvider, __assign({}, props, { children: (0, import_jsx_runtime13.jsx)(Root, { initialProps: props }) }));
+  }
+
+  // src/components/DatePicker.tsx
+  var import_jsx_runtime14 = __toESM(require_jsx_runtime());
+  function DatePicker({ selected, onSelect }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "my-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("label", { className: "block font-semibold", children: " Date Range " }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mt-2 py-2 bg-gray-50 flex gap-2", children: [
+        selected && selected.from && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "font-semibold", children: "From:" }),
+          " ",
+          selected.from.toLocaleDateString()
+        ] }),
+        selected && selected.to && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "font-semibold", children: "To:" }),
+          " ",
+          selected.to.toLocaleDateString()
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+        DayPicker,
+        {
+          mode: "range",
+          selected,
+          numberOfMonths: 2,
+          pagedNavigation: true,
+          onSelect: (val) => {
+            onSelect(val);
+          }
+        }
+      )
     ] });
   }
 
   // src/components/FormInput.tsx
-  var import_jsx_runtime12 = __toESM(require_jsx_runtime());
-  var FormInput = ({ label, ...props }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "my-3", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("label", { className: "block", children: label }),
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("input", { ...props })
+  var import_jsx_runtime15 = __toESM(require_jsx_runtime());
+  var FormInput = ({ label, className, ...props }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "my-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { className: "block font-semibold mb-2", children: label }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("input", { ...props, className: `px-4 py-2 w-full border rounded-md ${className}` })
     ] });
   };
 
-  // src/pages/setting/index.tsx
-  var import_jsx_runtime13 = __toESM(require_jsx_runtime());
-  function Settings() {
-    return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("section", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(PageTitle, { title: "Settings" }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("form", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FormInput, { label: "Title" }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FormInput, { label: "Email", type: "email" }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FormInput, { label: "Background Color", type: "color" }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FormInput, { label: "Active Date", type: "date" })
+  // src/components/BackgroundPicker.tsx
+  var import_jsx_runtime16 = __toESM(require_jsx_runtime());
+  function BackgroundPicker({ value, onChange }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("label", { className: "block font-semibold", htmlFor: "bg", children: [
+        "Background Color ",
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("small", { className: "font-light", children: "(pick color or input the hex code)" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-col lg:flex-row lg:items-center gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("input", { id: "bg", className: "px-4 py-2 border rounded-md", onChange: (e) => onChange(e.target.value), value }),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("input", { value, className: "w-full md:w-32 border px-4 py-2 rounded-md", onChange: (e) => {
+          onChange(e.target.value);
+        }, type: "color" })
       ] })
     ] });
   }
 
+  // src/pages/setting/index.tsx
+  var import_jsx_runtime17 = __toESM(require_jsx_runtime());
+  function Settings() {
+    const [dirty, setDirty] = (0, import_react26.useState)(false);
+    const [selected, setSelected] = (0, import_react26.useState)({ from: /* @__PURE__ */ new Date(), to: /* @__PURE__ */ new Date() });
+    const [background, setBackground] = (0, import_react26.useState)("#000");
+    const onSubmit = (e) => {
+      e.preventDefault();
+      const data = new FormData(e.currentTarget);
+      console.log(data);
+    };
+    const onSelect = (selected2) => {
+      setSelected(selected2);
+      setDirty(true);
+      console.log(selected2);
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("section", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(PageTitle, { title: "Settings" }),
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "p-8 rounded-md mx-auto w-full", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+        "form",
+        {
+          onInput: () => setDirty(true),
+          onSubmit: (e) => onSubmit(e),
+          className: "bg-gray-50 overflow-x-auto px-4",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(FormInput, { name: "title", label: "Title", placeholder: "Title" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(FormInput, { name: "email", label: "Email", type: "email", placeholder: "user@email.com" }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(BackgroundPicker, { value: background, onChange: (value) => setBackground(value) }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+              DatePicker,
+              {
+                selected,
+                onSelect
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Button, { disabled: !dirty, className: "bg-zinc-900 disabled:opacity-50 disabled:bg-white disabled:text-neutral-700 text-white hover:bg-zinc-900/80 transition duration-150", children: "Update" })
+          ]
+        }
+      ) })
+    ] });
+  }
+
   // src/configs/routes.tsx
-  var import_jsx_runtime14 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime18 = __toESM(require_jsx_runtime());
   var routes = [
     {
       path: "/",
-      element: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(HomeLayout, {}),
+      element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(HomeLayout, {}),
       name: "Home",
       hide: true,
       children: [
-        { path: "dashboard", name: "Dashboard", element: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Dashboard, {}), children: [
-          { path: "subscription", hide: true, name: "Subscriptions", element: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Subscription, {}) },
-          { path: "revenue", hide: true, name: "Revenue", element: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Revenue, {}) }
-        ] },
-        { path: "post-management", name: "Post Management", element: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(PostManagement, {}) },
-        { path: "settings", name: "Settings", element: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(Settings, {}) }
+        {
+          path: "dashboard",
+          name: "Dashboard",
+          element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Dashboard, {}),
+          children: [
+            { index: true, hide: true, name: "Subscriptions", element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Subscription, {}) },
+            { path: "subscription", hide: true, name: "Subscriptions", element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Subscription, {}) },
+            { path: "revenue", hide: true, name: "Revenue", element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Revenue, {}) }
+          ]
+        },
+        { path: "post-management", name: "Post Management", element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(PostManagement, {}) },
+        { path: "settings", name: "Settings", element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Settings, {}) }
       ]
     }
   ];
@@ -40232,22 +43894,23 @@
     return routes2.map((route) => ({
       path: route.path,
       element: route.element,
+      index: route.index,
       children: route.children ? getRoute(route.children) : void 0
     }));
   }
 
   // src/app.tsx
-  var import_jsx_runtime15 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime19 = __toESM(require_jsx_runtime());
   var router = createBrowserRouter(getRoute(routes_default));
   console.log(getRoute(routes_default));
   function App() {
-    return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(RouterProvider, { router });
+    return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(RouterProvider, { router });
   }
 
   // src/index.tsx
-  var import_jsx_runtime16 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime20 = __toESM(require_jsx_runtime());
   var root = (0, import_client.createRoot)(document.getElementById("root"));
-  root.render(/* @__PURE__ */ (0, import_jsx_runtime16.jsx)(App, {}));
+  root.render(/* @__PURE__ */ (0, import_jsx_runtime20.jsx)(App, {}));
 })();
 /*! Bundled license information:
 

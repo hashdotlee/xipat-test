@@ -6,11 +6,12 @@ import PostManagement from "../pages/post-management";
 import Settings from "../pages/setting";
 
 export type Route = {
-	path: string;
+	path?: string;
 	element: JSX.Element;
 	name?: string;
 	children?: Route[];
 	hide?: boolean;
+	index?: boolean;
 };
 
 const routes: Route[] = [
@@ -20,10 +21,13 @@ const routes: Route[] = [
 		name: "Home",
 		hide: true,
 		children: [
-			{ path: "dashboard", name: 'Dashboard', element: <Dashboard />, children: [
-				{ path: "subscription", hide: true, name: 'Subscriptions', element: <Subscription /> },
-				{ path: "revenue", hide: true, name: 'Revenue', element: <Revenue/> },
-			] },
+			{
+				path: "dashboard", name: 'Dashboard', element: <Dashboard />, children: [
+					{ index: true, hide: true, name: 'Subscriptions', element: <Subscription /> },
+					{ path: "subscription", hide: true, name: 'Subscriptions', element: <Subscription /> },
+					{ path: "revenue", hide: true, name: 'Revenue', element: <Revenue /> },
+				]
+			},
 			{ path: "post-management", name: 'Post Management', element: <PostManagement /> },
 			{ path: "settings", name: 'Settings', element: <Settings /> },
 		],

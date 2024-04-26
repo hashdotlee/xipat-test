@@ -31,13 +31,13 @@ export default function Table<T>({ data, columns }: TableProps<T>) {
 	});
 
 	return (
-		<div>
-			<table>
-				<thead>
+		<>
+			<table className="table-auto w-full">
+				<thead className="border bg-gray-100 rounded-tl-lg text-neutral-600 rounded-tr-lg">
 					{table.getHeaderGroups().map((headerGroup) => (
 						<tr key={headerGroup.id}>
 							{headerGroup.headers.map((header) => (
-								<th key={header.id}>
+								<th key={header.id} className="font-semibold p-4 text-left">
 									{header.isPlaceholder
 										? null
 										: flexRender(header.column.columnDef.header, header.getContext())}
@@ -47,15 +47,16 @@ export default function Table<T>({ data, columns }: TableProps<T>) {
 					))}
 				</thead>
 				<tbody>
+					{ data.length === 0 && <tr><td colSpan={columns.length} className="text-center p-4">No data</td></tr> }
 					{table.getRowModel().rows.map((row) => (
-						<tr key={row.id}>
+						<tr key={row.id} className="border-b border-x">
 							{row.getVisibleCells().map((cell) => (
-								<td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+								<td className="px-4 py-2" key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
 							))}
 						</tr>
 					))}
 				</tbody>
-				<tfoot>
+				<tfoot className="bg-gray-100">
 					{table.getFooterGroups().map((footerGroup) => (
 						<tr key={footerGroup.id}>
 							{footerGroup.headers.map((header) => (
@@ -69,66 +70,39 @@ export default function Table<T>({ data, columns }: TableProps<T>) {
 					))}
 				</tfoot>
 			</table>
-			<div className="flex items-center gap-2">
+			<div className="flex my-4 items-center w-full justify-center gap-2">
 				<button
-					className="border rounded p-1"
+					className="border rounded p-2 disabled:opacity-30 bg-gray-100"
 					onClick={() => table.firstPage()}
 					disabled={!table.getCanPreviousPage()}
 				>
-					{'<<'}
+					Start
 				</button>
 				<button
-					className="border rounded p-1"
+					className="border rounded p-2 disabled:opacity-30 bg-gray-100"
 					onClick={() => table.previousPage()}
 					disabled={!table.getCanPreviousPage()}
 				>
-					{'<'}
+					Previous
 				</button>
+				<span className="p-2 bg-gray-100 border rounded-md text-neutral-700">
+					<strong>{table.getState().pagination.pageIndex + 1}</strong> / {table.getPageCount()}
+				</span>
 				<button
-					className="border rounded p-1"
+					className="border rounded p-2 disabled:opacity-30 bg-gray-100"
 					onClick={() => table.nextPage()}
 					disabled={!table.getCanNextPage()}
 				>
-					{'>'}
+					Next
 				</button>
 				<button
-					className="border rounded p-1"
+					className="border rounded p-2 disabled:opacity-30 bg-gray-100"
 					onClick={() => table.lastPage()}
 					disabled={!table.getCanNextPage()}
 				>
-					{'>>'}
+					End
 				</button>
-				<span className="flex items-center gap-1">
-					<div>Page</div>
-					<strong>
-						{table.getState().pagination.pageIndex + 1} of {table.getPageCount().toLocaleString()}
-					</strong>
-				</span>
-				<span className="flex items-center gap-1">
-					| Go to page:
-					<input
-						type="number"
-						defaultValue={table.getState().pagination.pageIndex + 1}
-						onChange={(e) => {
-							const page = e.target.value ? Number(e.target.value) - 1 : 0;
-							table.setPageIndex(page);
-						}}
-						className="border p-1 rounded w-16"
-					/>
-				</span>
-				<select
-					value={table.getState().pagination.pageSize}
-					onChange={(e) => {
-						table.setPageSize(Number(e.target.value));
-					}}
-				>
-					{[10, 20, 30, 40, 50].map((pageSize) => (
-						<option key={pageSize} value={pageSize}>
-							Show {pageSize}
-						</option>
-					))}
-				</select>
 			</div>
-		</div>
+		</>
 	);
 }

@@ -3,9 +3,9 @@ interface PageTitleProps {
 }
 export default function PageTitle({ title }: PageTitleProps) {
 	return (
-		<header className="p-4 border-b">
+		<header className="py-4 px-8 border-b sticky top-0 bg-while backdrop-blur-sm">
 			<title>{title} - Xipat Admin</title>
-			<h1 className="text-3xl font-bold">{title}</h1>
+			<h1 className="text-2xl text-neutral-700 font-bold">{title}</h1>
 		</header>
 	)
 }

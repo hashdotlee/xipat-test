@@ -8,6 +8,7 @@ import { useCallback } from 'react';
 import { GridRows } from '@visx/grid';
 import { curveBasis } from '@visx/curve'
 import { Text } from '@visx/text';
+import { ScaleSVG } from '@visx/responsive';
 
 export type DateValue = {
 	date: Date;
@@ -52,7 +53,7 @@ export default function LineChart({ width = 400, title, height = 400, data }: Cu
 
 	return (
 		<div>
-			<svg width={width} height={height}>
+			<ScaleSVG width={width} height={height}>
 				<MarkerCircle id="marker-circle" fill="#333" size={2} refX={2} />
 				{width > 8 &&
 					<Group top={0} left={0}>
@@ -80,15 +81,13 @@ export default function LineChart({ width = 400, title, height = 400, data }: Cu
 									strokeOpacity={1}
 									shapeRendering="geometricPrecision"
 									markerMid="url(#marker-circle)"
-									markerStart="url(#marker-circle)"
-									markerEnd="url(#marker-circle)"
 								/>
 							))}
 						</Group>
 
 					</Group>
 				}
-			</svg>
+			</ScaleSVG>
 		</div>
 	);
 }
