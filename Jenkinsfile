@@ -6,9 +6,15 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'node --version'
+				sh 'pnpm install'
+				sh 'pnpm run build'
             }
         }
+		state('deploy') {
+			steps {
+				sh 'pm2 serve public 5678 --spa --name "xipat"'
+			}
+		}
     }
 }
 
