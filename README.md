@@ -9,6 +9,7 @@ It is a simple project that show the usage of the following technologies:
 - react-router-dom for the routing
 - react-table for the table
 - tailwindcss for the styling
+- Other: serve for serving the build files, esbuild for building the project, pnpm, and typescript
 
 # Installation
 
