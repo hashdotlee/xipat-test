@@ -1,6 +1,9 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
     agent { docker { image 'node:20.11.1-alpine3.19' } }
+	environment {
+                HOME = "${env.WORKSPACE}"
+    }
     stages {
         stage('build') {
             steps {
