@@ -4,9 +4,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-				sh 'corepack enable'
-				sh 'pnpm install'
-				sh 'pnpm run build'
+				sh 'npm install'
+				sh 'npm run build'
             }
         }
 		stage('deploy') {
