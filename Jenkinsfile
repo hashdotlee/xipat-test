@@ -4,6 +4,11 @@ pipeline {
     stages {
         stage('build') {
             steps {
+				sh 'mkdir /.npm'
+				sh 'chmod 777 /.npm'
+				sh 'npm config set cache /.npm --global'
+				sh 'npm config set unsafe-perm true'
+				sh 'npm install -g pm2'
 				sh 'npm install'
 				sh 'npm run build'
             }
