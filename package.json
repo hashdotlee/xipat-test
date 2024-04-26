@@ -9,7 +9,7 @@
     "watch": "esbuild src/index.tsx --bundle --outdir=public --watch=forever",
     "build:css": "npx tailwindcss -i src/global.css -o public/global.css --minify",
     "watch:css": "npx tailwindcss -i src/global.css -o public/global.css --watch",
-    "dev": "pnpm run watch & pnpm run watch:css"
+    "dev": "pnpm run watch & pnpm run watch:css & serve -p 3000 ./public -s"
   },
   "keywords": [],
   "author": "",
