@@ -7,7 +7,6 @@ pipeline {
     stages {
         stage('build') {
             steps {
-				sh 'npm config set unsafe-perm true'
 				sh 'npm install -g pm2'
 				sh 'npm install'
 				sh 'npm run build'
