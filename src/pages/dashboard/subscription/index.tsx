@@ -10,7 +10,6 @@ export default function Subscription() {
 		<div className="flex w-full justify-center py-4 max-w-full w-screen h-[600px]">
 			<ParentSize>
 				{({ width, height }) => {
-					console.log(width, height)
 					return <LineChart title={"Total Subscriptions"} data={subscriptions} width={width} height={height} />
 				}}
 			</ParentSize>

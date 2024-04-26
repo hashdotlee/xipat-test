@@ -1085,7 +1085,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState11(initialState) {
+          function useState12(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1097,7 +1097,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect8(create, deps) {
+          function useEffect10(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1879,7 +1879,7 @@
           exports.useContext = useContext4;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect8;
+          exports.useEffect = useEffect10;
           exports.useId = useId2;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
@@ -1887,7 +1887,7 @@
           exports.useMemo = useMemo7;
           exports.useReducer = useReducer;
           exports.useRef = useRef5;
-          exports.useState = useState11;
+          exports.useState = useState12;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -24376,11 +24376,11 @@
               return jsxWithValidation(type, props, key, false);
             }
           }
-          var jsx21 = jsxWithValidationDynamic;
-          var jsxs14 = jsxWithValidationStatic;
+          var jsx22 = jsxWithValidationDynamic;
+          var jsxs15 = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
-          exports.jsx = jsx21;
-          exports.jsxs = jsxs14;
+          exports.jsx = jsx22;
+          exports.jsxs = jsxs15;
         })();
       }
     }
@@ -33400,15 +33400,15 @@
   var import_jsx_runtime = __toESM(require_jsx_runtime());
   function HomeAside() {
     const menu = getMenu(routes_default);
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", { className: "py-2 w-sidebar hidden lg:block left-0 fixed top-0 flex-grow-1 flex-shrink-0 border-r min-h-screen bg-zinc-50", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { className: "space-y-2", children: menu.map((menu2) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MenuItem, { menu: menu2 }, menu2.path)) }) }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("aside", { className: "py-2 w-sidebar hidden lg:block left-0 fixed top-0 flex-grow-1 flex-shrink-0 border-r min-h-screen bg-zinc-50", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { className: "space-y-2", children: menu.map((menu2, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MenuItem, { menu: menu2 }, i)) }) }) });
   }
   var MenuItem = ({ menu }) => {
     if (menu.children) {
       if (menu?.hide)
-        return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { className: "space-y-2", children: menu.children.map((child) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MenuItem, { menu: child }, child.path)) });
+        return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { className: "space-y-2", children: menu.children.map((child, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MenuItem, { menu: child }, i)) });
       return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", { className: "w-full", children: [
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NavLink, { className: ({ isActive }) => `${isActive ? "border-l-4 border-zinc-600 text-zinc-900 bg-zinc-100" : "border-l-4 border-transparent text-zinc-600"} px-6 w-full py-2 inline-block font-semibold text-xl`, to: menu.path, children: menu.name }),
-        menu.children.filter((c) => c.hide).length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { className: "space-y-2", children: menu.children.map((child) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MenuItem, { menu: child }, child.path)) })
+        menu.children.filter((c) => c.hide).length > 0 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { className: "space-y-2", children: menu.children.map((child, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MenuItem, { menu: child }, i)) })
       ] }, menu.path);
     }
     if (menu?.hide)
@@ -33419,12 +33419,20 @@
   // src/layouts/home/components/footer.tsx
   var import_jsx_runtime2 = __toESM(require_jsx_runtime());
   function HomeFooter() {
-    return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("footer", { className: "p-4 border-t absolute bottom-0 w-full text-neutral-400 text-center", children: "This project is maintained by Le Viet Hoang" });
+    return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("footer", { className: "p-4 border-t absolute z-5 bottom-0 w-full text-neutral-400 text-center", children: "This project is maintained by Le Viet Hoang" });
   }
 
   // src/layouts/home/index.tsx
+  var import_react = __toESM(require_react());
   var import_jsx_runtime3 = __toESM(require_jsx_runtime());
   function HomeLayout() {
+    const location = useLocation();
+    const navigate = useNavigate();
+    (0, import_react.useEffect)(() => {
+      if (location.pathname === "/") {
+        navigate("/dashboard", { replace: true });
+      }
+    }, [location]);
     return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "flex lg:pl-sidebar min-h-screen", children: [
       /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(HomeAside, {}),
       /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("main", { className: "w-full min-h-screen pb-24 relative", children: [
@@ -33477,7 +33485,7 @@
   }
 
   // src/apis/useRevenue.ts
-  var import_react = __toESM(require_react());
+  var import_react2 = __toESM(require_react());
 
   // src/pages/dashboard/_mock.ts
   var getSubscriptions = async () => {
@@ -33569,9 +33577,9 @@
 
   // src/apis/useRevenue.ts
   function useRevenue() {
-    const [revenue, setRevenue] = (0, import_react.useState)();
-    const [isLoading, setIsLoading] = (0, import_react.useState)(true);
-    (0, import_react.useEffect)(() => {
+    const [revenue, setRevenue] = (0, import_react2.useState)();
+    const [isLoading, setIsLoading] = (0, import_react2.useState)(true);
+    (0, import_react2.useEffect)(() => {
       const fetchData = async () => {
         const response = await getRevenue();
         setRevenue(response);
@@ -33584,12 +33592,12 @@
   var useRevenue_default = useRevenue;
 
   // node_modules/.pnpm/@visx+axis@3.10.1_react@18.2.0/node_modules/@visx/axis/esm/axis/Axis.js
-  var import_react10 = __toESM(require_react());
+  var import_react11 = __toESM(require_react());
   var import_classnames7 = __toESM(require_classnames());
 
   // node_modules/.pnpm/@visx+group@3.3.0_react@18.2.0/node_modules/@visx/group/esm/Group.js
   var import_prop_types = __toESM(require_prop_types());
-  var import_react2 = __toESM(require_react());
+  var import_react3 = __toESM(require_react());
   var import_classnames = __toESM(require_classnames());
   var _excluded4 = ["top", "left", "transform", "className", "children", "innerRef"];
   function _extends4() {
@@ -33622,7 +33630,7 @@
   }
   function Group(_ref) {
     var _ref$top = _ref.top, top = _ref$top === void 0 ? 0 : _ref$top, _ref$left = _ref.left, left = _ref$left === void 0 ? 0 : _ref$left, transform = _ref.transform, className = _ref.className, children = _ref.children, innerRef = _ref.innerRef, restProps = _objectWithoutPropertiesLoose2(_ref, _excluded4);
-    return /* @__PURE__ */ import_react2.default.createElement("g", _extends4({
+    return /* @__PURE__ */ import_react3.default.createElement("g", _extends4({
       ref: innerRef,
       className: (0, import_classnames.default)("visx-group", className),
       transform: transform || "translate(" + left + ", " + top + ")"
@@ -36333,7 +36341,7 @@
   }
 
   // node_modules/.pnpm/@visx+axis@3.10.1_react@18.2.0/node_modules/@visx/axis/esm/axis/AxisRenderer.js
-  var import_react9 = __toESM(require_react());
+  var import_react10 = __toESM(require_react());
   var import_classnames6 = __toESM(require_classnames());
 
   // node_modules/.pnpm/@visx+shape@3.5.0_react@18.2.0/node_modules/@visx/shape/esm/util/D3ShapeFactories.js
@@ -36363,7 +36371,7 @@
   }
 
   // node_modules/.pnpm/@visx+shape@3.5.0_react@18.2.0/node_modules/@visx/shape/esm/shapes/Line.js
-  var import_react3 = __toESM(require_react());
+  var import_react4 = __toESM(require_react());
   var import_classnames2 = __toESM(require_classnames());
   var _excluded5 = ["from", "to", "fill", "className", "innerRef"];
   function _extends5() {
@@ -36403,7 +36411,7 @@
       y: 1
     } : _ref$to, _ref$fill = _ref.fill, fill = _ref$fill === void 0 ? "transparent" : _ref$fill, className = _ref.className, innerRef = _ref.innerRef, restProps = _objectWithoutPropertiesLoose3(_ref, _excluded5);
     var isRectilinear = from.x === to.x || from.y === to.y;
-    return /* @__PURE__ */ import_react3.default.createElement("line", _extends5({
+    return /* @__PURE__ */ import_react4.default.createElement("line", _extends5({
       ref: innerRef,
       className: (0, import_classnames2.default)("visx-line", className),
       x1: from.x,
@@ -36416,7 +36424,7 @@
   }
 
   // node_modules/.pnpm/@visx+shape@3.5.0_react@18.2.0/node_modules/@visx/shape/esm/shapes/LinePath.js
-  var import_react4 = __toESM(require_react());
+  var import_react5 = __toESM(require_react());
   var import_classnames3 = __toESM(require_classnames());
   var _excluded6 = ["children", "data", "x", "y", "fill", "className", "curve", "innerRef", "defined"];
   function _extends6() {
@@ -36458,10 +36466,10 @@
       curve
     });
     if (children)
-      return /* @__PURE__ */ import_react4.default.createElement(import_react4.default.Fragment, null, children({
+      return /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, children({
         path
       }));
-    return /* @__PURE__ */ import_react4.default.createElement("path", _extends6({
+    return /* @__PURE__ */ import_react5.default.createElement("path", _extends6({
       ref: innerRef,
       className: (0, import_classnames3.default)("visx-linepath", className),
       d: path(data) || "",
@@ -36471,7 +36479,7 @@
   }
 
   // node_modules/.pnpm/@visx+shape@3.5.0_react@18.2.0/node_modules/@visx/shape/esm/shapes/Bar.js
-  var import_react5 = __toESM(require_react());
+  var import_react6 = __toESM(require_react());
   var import_classnames4 = __toESM(require_classnames());
   var _excluded7 = ["className", "innerRef"];
   function _extends7() {
@@ -36504,17 +36512,17 @@
   }
   function Bar(_ref) {
     var className = _ref.className, innerRef = _ref.innerRef, restProps = _objectWithoutPropertiesLoose5(_ref, _excluded7);
-    return /* @__PURE__ */ import_react5.default.createElement("rect", _extends7({
+    return /* @__PURE__ */ import_react6.default.createElement("rect", _extends7({
       ref: innerRef,
       className: (0, import_classnames4.default)("visx-bar", className)
     }, restProps));
   }
 
   // node_modules/.pnpm/@visx+text@3.3.0_react@18.2.0/node_modules/@visx/text/esm/Text.js
-  var import_react7 = __toESM(require_react());
+  var import_react8 = __toESM(require_react());
 
   // node_modules/.pnpm/@visx+text@3.3.0_react@18.2.0/node_modules/@visx/text/esm/hooks/useText.js
-  var import_react6 = __toESM(require_react());
+  var import_react7 = __toESM(require_react());
   var import_reduce_css_calc = __toESM(require_reduce_css_calc());
 
   // node_modules/.pnpm/@visx+text@3.3.0_react@18.2.0/node_modules/@visx/text/esm/util/getStringWidth.js
@@ -36577,7 +36585,7 @@
     var _props$verticalAnchor = props.verticalAnchor, verticalAnchor = _props$verticalAnchor === void 0 ? "end" : _props$verticalAnchor, _props$scaleToFit = props.scaleToFit, scaleToFit = _props$scaleToFit === void 0 ? false : _props$scaleToFit, angle = props.angle, width = props.width, _props$lineHeight = props.lineHeight, lineHeight = _props$lineHeight === void 0 ? "1em" : _props$lineHeight, _props$capHeight = props.capHeight, capHeight = _props$capHeight === void 0 ? "0.71em" : _props$capHeight, children = props.children, style = props.style, textProps = _objectWithoutPropertiesLoose6(props, _excluded8);
     var _textProps$x = textProps.x, x = _textProps$x === void 0 ? 0 : _textProps$x, _textProps$y = textProps.y, y = _textProps$y === void 0 ? 0 : _textProps$y;
     var isXOrYNotValid = !isXOrYInValid(x) || !isXOrYInValid(y);
-    var _useMemo = (0, import_react6.useMemo)(function() {
+    var _useMemo = (0, import_react7.useMemo)(function() {
       var words = children == null ? [] : children.toString().split(/(?:(?!\u00A0+)\s+)/);
       return {
         wordsWithWidth: words.map(function(word) {
@@ -36589,7 +36597,7 @@
         spaceWidth: getStringWidth_default("\xA0", style) || 0
       };
     }, [children, style]), wordsWithWidth = _useMemo.wordsWithWidth, spaceWidth = _useMemo.spaceWidth;
-    var wordsByLines = (0, import_react6.useMemo)(function() {
+    var wordsByLines = (0, import_react7.useMemo)(function() {
       if (isXOrYNotValid) {
         return [];
       }
@@ -36615,11 +36623,11 @@
         words: children == null ? [] : children.toString().split(/(?:(?!\u00A0+)\s+)/)
       }];
     }, [isXOrYNotValid, width, scaleToFit, children, wordsWithWidth, spaceWidth]);
-    var startDy = (0, import_react6.useMemo)(function() {
+    var startDy = (0, import_react7.useMemo)(function() {
       var startDyStr = isXOrYNotValid ? "" : verticalAnchor === "start" ? (0, import_reduce_css_calc.default)("calc(" + capHeight + ")") : verticalAnchor === "middle" ? (0, import_reduce_css_calc.default)("calc(" + (wordsByLines.length - 1) / 2 + " * -" + lineHeight + " + (" + capHeight + " / 2))") : (0, import_reduce_css_calc.default)("calc(" + (wordsByLines.length - 1) + " * -" + lineHeight + ")");
       return startDyStr;
     }, [isXOrYNotValid, verticalAnchor, capHeight, wordsByLines.length, lineHeight]);
-    var transform = (0, import_react6.useMemo)(function() {
+    var transform = (0, import_react7.useMemo)(function() {
       var transforms = [];
       if (isXOrYNotValid) {
         return "";
@@ -36681,19 +36689,19 @@
     var _props$dx = props.dx, dx = _props$dx === void 0 ? 0 : _props$dx, _props$dy = props.dy, dy = _props$dy === void 0 ? 0 : _props$dy, _props$textAnchor = props.textAnchor, textAnchor = _props$textAnchor === void 0 ? "start" : _props$textAnchor, innerRef = props.innerRef, innerTextRef = props.innerTextRef, verticalAnchor = props.verticalAnchor, angle = props.angle, _props$lineHeight = props.lineHeight, lineHeight = _props$lineHeight === void 0 ? "1em" : _props$lineHeight, _props$scaleToFit = props.scaleToFit, scaleToFit = _props$scaleToFit === void 0 ? false : _props$scaleToFit, capHeight = props.capHeight, width = props.width, textProps = _objectWithoutPropertiesLoose7(props, _excluded9);
     var _textProps$x = textProps.x, x = _textProps$x === void 0 ? 0 : _textProps$x, fontSize = textProps.fontSize;
     var _useText = useText(props), wordsByLines = _useText.wordsByLines, startDy = _useText.startDy, transform = _useText.transform;
-    return /* @__PURE__ */ import_react7.default.createElement("svg", {
+    return /* @__PURE__ */ import_react8.default.createElement("svg", {
       ref: innerRef,
       x: dx,
       y: dy,
       fontSize,
       style: SVG_STYLE
-    }, wordsByLines.length > 0 ? /* @__PURE__ */ import_react7.default.createElement("text", _extends8({
+    }, wordsByLines.length > 0 ? /* @__PURE__ */ import_react8.default.createElement("text", _extends8({
       ref: innerTextRef,
       transform
     }, textProps, {
       textAnchor
     }), wordsByLines.map(function(line2, index) {
-      return /* @__PURE__ */ import_react7.default.createElement("tspan", {
+      return /* @__PURE__ */ import_react8.default.createElement("tspan", {
         key: index,
         x,
         dy: index === 0 ? startDy : lineHeight
@@ -36734,7 +36742,7 @@
   }
 
   // node_modules/.pnpm/@visx+axis@3.10.1_react@18.2.0/node_modules/@visx/axis/esm/axis/Ticks.js
-  var import_react8 = __toESM(require_react());
+  var import_react9 = __toESM(require_react());
   var import_classnames5 = __toESM(require_classnames());
   function _extends9() {
     _extends9 = Object.assign ? Object.assign.bind() : function(target) {
@@ -36758,11 +36766,11 @@
       var tickLabelProps = (_allTickLabelProps$in = allTickLabelProps[index]) != null ? _allTickLabelProps$in : {};
       var tickLabelFontSize = Math.max(10, typeof tickLabelProps.fontSize === "number" && tickLabelProps.fontSize || 0);
       var tickYCoord = to.y + (horizontal && orientation !== orientation_default.top ? tickLabelFontSize : 0);
-      return /* @__PURE__ */ import_react8.default.createElement(Group, {
+      return /* @__PURE__ */ import_react9.default.createElement(Group, {
         key: "visx-tick-" + value + "-" + index,
         className: (0, import_classnames5.default)("visx-axis-tick", tickClassName),
         transform: tickTransform
-      }, !hideTicks && /* @__PURE__ */ import_react8.default.createElement(Line, _extends9({
+      }, !hideTicks && /* @__PURE__ */ import_react9.default.createElement(Line, _extends9({
         from,
         to,
         stroke: tickStroke,
@@ -36772,7 +36780,7 @@
         x: to.x,
         y: tickYCoord,
         formattedValue
-      })) : /* @__PURE__ */ import_react8.default.createElement(Text, _extends9({
+      })) : /* @__PURE__ */ import_react9.default.createElement(Text, _extends9({
         x: to.x,
         y: tickYCoord
       }, tickLabelProps), formattedValue));
@@ -36811,7 +36819,7 @@
     var maxTickLabelFontSize = Math.max.apply(Math, [10].concat(allTickLabelProps.map(function(props) {
       return typeof props.fontSize === "number" ? props.fontSize : 0;
     })));
-    return /* @__PURE__ */ import_react9.default.createElement(import_react9.default.Fragment, null, ticksComponent({
+    return /* @__PURE__ */ import_react10.default.createElement(import_react10.default.Fragment, null, ticksComponent({
       hideTicks,
       horizontal,
       orientation,
@@ -36824,14 +36832,14 @@
       ticks: ticks2,
       strokeWidth,
       tickLineProps
-    }), !hideAxisLine && /* @__PURE__ */ import_react9.default.createElement(Line, {
+    }), !hideAxisLine && /* @__PURE__ */ import_react10.default.createElement(Line, {
       className: (0, import_classnames6.default)("visx-axis-line", axisLineClassName),
       from: axisFromPoint,
       to: axisToPoint,
       stroke,
       strokeWidth,
       strokeDasharray
-    }), label && /* @__PURE__ */ import_react9.default.createElement(Text, _extends10({
+    }), label && /* @__PURE__ */ import_react10.default.createElement(Text, _extends10({
       className: (0, import_classnames6.default)("visx-axis-label", labelClassName)
     }, getLabelTransform({
       labelOffset,
@@ -37008,7 +37016,7 @@
         formattedValue: format3(value, index, filteredTickValues)
       };
     });
-    return /* @__PURE__ */ import_react10.default.createElement(Group, {
+    return /* @__PURE__ */ import_react11.default.createElement(Group, {
       className: (0, import_classnames7.default)("visx-axis", axisClassName),
       innerRef,
       top,
@@ -37033,7 +37041,7 @@
   }
 
   // node_modules/.pnpm/@visx+axis@3.10.1_react@18.2.0/node_modules/@visx/axis/esm/axis/AxisLeft.js
-  var import_react11 = __toESM(require_react());
+  var import_react12 = __toESM(require_react());
   var import_classnames8 = __toESM(require_classnames());
   var _excluded11 = ["axisClassName", "labelOffset", "tickLength", "tickLabelProps"];
   function _extends13() {
@@ -37075,7 +37083,7 @@
   function AxisLeft(_ref) {
     var axisClassName = _ref.axisClassName, _ref$labelOffset = _ref.labelOffset, labelOffset = _ref$labelOffset === void 0 ? 36 : _ref$labelOffset, _ref$tickLength = _ref.tickLength, tickLength = _ref$tickLength === void 0 ? 8 : _ref$tickLength, tickLabelProps = _ref.tickLabelProps, restProps = _objectWithoutPropertiesLoose9(_ref, _excluded11);
     var tickLabelPropsFinal = typeof tickLabelProps === "function" ? tickLabelProps : _extends13({}, leftTickLabelProps, tickLabelProps);
-    return /* @__PURE__ */ import_react11.default.createElement(Axis, _extends13({
+    return /* @__PURE__ */ import_react12.default.createElement(Axis, _extends13({
       axisClassName: (0, import_classnames8.default)("visx-axis-left", axisClassName),
       labelOffset,
       orientation: orientation_default.left,
@@ -37085,7 +37093,7 @@
   }
 
   // node_modules/.pnpm/@visx+axis@3.10.1_react@18.2.0/node_modules/@visx/axis/esm/axis/AxisBottom.js
-  var import_react12 = __toESM(require_react());
+  var import_react13 = __toESM(require_react());
   var import_classnames9 = __toESM(require_classnames());
   var _excluded12 = ["axisClassName", "labelOffset", "tickLength", "tickLabelProps"];
   function _extends14() {
@@ -37126,7 +37134,7 @@
   function AxisBottom(_ref) {
     var axisClassName = _ref.axisClassName, _ref$labelOffset = _ref.labelOffset, labelOffset = _ref$labelOffset === void 0 ? 8 : _ref$labelOffset, _ref$tickLength = _ref.tickLength, tickLength = _ref$tickLength === void 0 ? 8 : _ref$tickLength, tickLabelProps = _ref.tickLabelProps, restProps = _objectWithoutPropertiesLoose10(_ref, _excluded12);
     var tickLabelPropsFinal = typeof tickLabelProps === "function" ? tickLabelProps : _extends14({}, bottomTickLabelProps, tickLabelProps);
-    return /* @__PURE__ */ import_react12.default.createElement(Axis, _extends14({
+    return /* @__PURE__ */ import_react13.default.createElement(Axis, _extends14({
       axisClassName: (0, import_classnames9.default)("visx-axis-bottom", axisClassName),
       labelOffset,
       orientation: orientation_default.bottom,
@@ -37137,7 +37145,7 @@
 
   // node_modules/.pnpm/@visx+grid@3.5.0_react@18.2.0/node_modules/@visx/grid/esm/grids/GridRows.js
   var import_prop_types2 = __toESM(require_prop_types());
-  var import_react13 = __toESM(require_react());
+  var import_react14 = __toESM(require_react());
   var import_classnames10 = __toESM(require_classnames());
   var import_Line2 = __toESM(require_Line());
 
@@ -37195,7 +37203,7 @@
         })
       };
     });
-    return /* @__PURE__ */ import_react13.default.createElement(Group, {
+    return /* @__PURE__ */ import_react14.default.createElement(Group, {
       className: (0, import_classnames10.default)("visx-rows", className),
       top,
       left
@@ -37203,7 +37211,7 @@
       lines: tickLines
     }) : tickLines.map(function(_ref2) {
       var from = _ref2.from, to = _ref2.to, index = _ref2.index;
-      return /* @__PURE__ */ import_react13.default.createElement(import_Line2.default, _extends15({
+      return /* @__PURE__ */ import_react14.default.createElement(import_Line2.default, _extends15({
         key: "row-line-" + index,
         from,
         to,
@@ -37220,7 +37228,7 @@
   };
 
   // src/components/BarChart.tsx
-  var import_react14 = __toESM(require_react());
+  var import_react15 = __toESM(require_react());
   var import_jsx_runtime6 = __toESM(require_jsx_runtime());
   function BarChart({ width = 400, height = 400, data, title }) {
     const getX = (d) => d.date;
@@ -37228,12 +37236,12 @@
     const margin = 60;
     const xMax = width - margin * 2;
     const yMax = height - margin * 2;
-    const xScale = (0, import_react14.useMemo)(() => createTimeScale({
+    const xScale = (0, import_react15.useMemo)(() => createTimeScale({
       range: [0, xMax],
       round: true,
       domain: [/* @__PURE__ */ new Date("2012-12-1"), /* @__PURE__ */ new Date("2014-1-1")]
     }), [xMax]);
-    const yScale = (0, import_react14.useMemo)(() => createLinearScale({
+    const yScale = (0, import_react15.useMemo)(() => createLinearScale({
       range: [yMax, 0],
       round: true,
       domain: [0, 220]
@@ -37279,11 +37287,11 @@
 
   // node_modules/.pnpm/@visx+responsive@3.10.2_react@18.2.0/node_modules/@visx/responsive/esm/components/ParentSize.js
   var import_prop_types3 = __toESM(require_prop_types());
-  var import_react16 = __toESM(require_react());
+  var import_react17 = __toESM(require_react());
 
   // node_modules/.pnpm/@visx+responsive@3.10.2_react@18.2.0/node_modules/@visx/responsive/esm/hooks/useParentSize.js
   var import_debounce = __toESM(require_debounce());
-  var import_react15 = __toESM(require_react());
+  var import_react16 = __toESM(require_react());
   function _extends16() {
     _extends16 = Object.assign ? Object.assign.bind() : function(target) {
       for (var i = 1; i < arguments.length; i++) {
@@ -37307,10 +37315,10 @@
   };
   function useParentSize(_temp) {
     var _ref = _temp === void 0 ? {} : _temp, _ref$initialSize = _ref.initialSize, initialSize = _ref$initialSize === void 0 ? defaultInitialSize : _ref$initialSize, _ref$debounceTime = _ref.debounceTime, debounceTime = _ref$debounceTime === void 0 ? 300 : _ref$debounceTime, _ref$ignoreDimensions = _ref.ignoreDimensions, ignoreDimensions = _ref$ignoreDimensions === void 0 ? defaultIgnoreDimensions : _ref$ignoreDimensions, _ref$enableDebounceLe = _ref.enableDebounceLeadingCall, enableDebounceLeadingCall = _ref$enableDebounceLe === void 0 ? true : _ref$enableDebounceLe, resizeObserverPolyfill = _ref.resizeObserverPolyfill;
-    var parentRef = (0, import_react15.useRef)(null);
-    var animationFrameID = (0, import_react15.useRef)(0);
-    var _useState = (0, import_react15.useState)(_extends16({}, defaultInitialSize, initialSize)), state = _useState[0], setState = _useState[1];
-    var resize = (0, import_react15.useMemo)(function() {
+    var parentRef = (0, import_react16.useRef)(null);
+    var animationFrameID = (0, import_react16.useRef)(0);
+    var _useState = (0, import_react16.useState)(_extends16({}, defaultInitialSize, initialSize)), state = _useState[0], setState = _useState[1];
+    var resize = (0, import_react16.useMemo)(function() {
       var normalized = Array.isArray(ignoreDimensions) ? ignoreDimensions : [ignoreDimensions];
       return (0, import_debounce.default)(function(incoming) {
         setState(function(existing) {
@@ -37327,7 +37335,7 @@
         leading: enableDebounceLeadingCall
       });
     }, [debounceTime, enableDebounceLeadingCall, ignoreDimensions]);
-    (0, import_react15.useEffect)(function() {
+    (0, import_react16.useEffect)(function() {
       var LocalResizeObserver = resizeObserverPolyfill || window.ResizeObserver;
       var observer = new LocalResizeObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -37401,7 +37409,7 @@
       enableDebounceLeadingCall,
       resizeObserverPolyfill
     }), parentRef = _useParentSize.parentRef, resize = _useParentSize.resize, dimensions = _objectWithoutPropertiesLoose12(_useParentSize, _excluded22);
-    return /* @__PURE__ */ import_react16.default.createElement("div", _extends17({
+    return /* @__PURE__ */ import_react17.default.createElement("div", _extends17({
       style: parentSizeStyles,
       ref: parentRef,
       className
@@ -37417,10 +37425,10 @@
 
   // node_modules/.pnpm/@visx+responsive@3.10.2_react@18.2.0/node_modules/@visx/responsive/esm/components/ScaleSVG.js
   var import_prop_types4 = __toESM(require_prop_types());
-  var import_react17 = __toESM(require_react());
+  var import_react18 = __toESM(require_react());
   function ScaleSVG(_ref) {
     var children = _ref.children, width = _ref.width, height = _ref.height, _ref$xOrigin = _ref.xOrigin, xOrigin = _ref$xOrigin === void 0 ? 0 : _ref$xOrigin, _ref$yOrigin = _ref.yOrigin, yOrigin = _ref$yOrigin === void 0 ? 0 : _ref$yOrigin, _ref$preserveAspectRa = _ref.preserveAspectRatio, preserveAspectRatio = _ref$preserveAspectRa === void 0 ? "xMinYMin meet" : _ref$preserveAspectRa, innerRef = _ref.innerRef;
-    return /* @__PURE__ */ import_react17.default.createElement("div", {
+    return /* @__PURE__ */ import_react18.default.createElement("div", {
       style: {
         display: "inline-block",
         position: "relative",
@@ -37428,7 +37436,7 @@
         verticalAlign: "top",
         overflow: "hidden"
       }
-    }, /* @__PURE__ */ import_react17.default.createElement("svg", {
+    }, /* @__PURE__ */ import_react18.default.createElement("svg", {
       preserveAspectRatio,
       viewBox: xOrigin + " " + yOrigin + " " + width + " " + height,
       ref: innerRef
@@ -37454,11 +37462,11 @@
   }
 
   // src/apis/useSubscriptions.ts
-  var import_react18 = __toESM(require_react());
+  var import_react19 = __toESM(require_react());
   function useSubscriptions() {
-    const [subscriptions, setSubscriptions] = (0, import_react18.useState)();
-    const [loading, setLoading] = (0, import_react18.useState)(false);
-    (0, import_react18.useEffect)(() => {
+    const [subscriptions, setSubscriptions] = (0, import_react19.useState)();
+    const [loading, setLoading] = (0, import_react19.useState)(false);
+    (0, import_react19.useEffect)(() => {
       const fetchData = async () => {
         setLoading(true);
         const response = await getSubscriptions();
@@ -37473,7 +37481,7 @@
 
   // node_modules/.pnpm/@visx+marker@3.5.0_react@18.2.0/node_modules/@visx/marker/esm/markers/Marker.js
   var import_prop_types5 = __toESM(require_prop_types());
-  var import_react19 = __toESM(require_react());
+  var import_react20 = __toESM(require_react());
   var _excluded15 = ["id", "markerWidth", "markerHeight", "markerUnits", "children"];
   function _extends18() {
     _extends18 = Object.assign ? Object.assign.bind() : function(target) {
@@ -37505,7 +37513,7 @@
   }
   function Marker(_ref) {
     var id2 = _ref.id, _ref$markerWidth = _ref.markerWidth, markerWidth = _ref$markerWidth === void 0 ? 3 : _ref$markerWidth, _ref$markerHeight = _ref.markerHeight, markerHeight = _ref$markerHeight === void 0 ? 3 : _ref$markerHeight, _ref$markerUnits = _ref.markerUnits, markerUnits = _ref$markerUnits === void 0 ? "userSpaceOnUse" : _ref$markerUnits, children = _ref.children, restProps = _objectWithoutPropertiesLoose13(_ref, _excluded15);
-    return /* @__PURE__ */ import_react19.default.createElement("defs", null, /* @__PURE__ */ import_react19.default.createElement("marker", _extends18({
+    return /* @__PURE__ */ import_react20.default.createElement("defs", null, /* @__PURE__ */ import_react20.default.createElement("marker", _extends18({
       id: id2,
       markerWidth,
       markerHeight,
@@ -37525,7 +37533,7 @@
   };
 
   // node_modules/.pnpm/@visx+marker@3.5.0_react@18.2.0/node_modules/@visx/marker/esm/markers/Circle.js
-  var import_react20 = __toESM(require_react());
+  var import_react21 = __toESM(require_react());
   var _excluded16 = ["id", "size", "strokeWidth"];
   function _extends19() {
     _extends19 = Object.assign ? Object.assign.bind() : function(target) {
@@ -37560,7 +37568,7 @@
     var diameter = size * 2;
     var bounds = diameter + strokeWidth;
     var mid = bounds / 2;
-    return /* @__PURE__ */ import_react20.default.createElement(Marker, _extends19({
+    return /* @__PURE__ */ import_react21.default.createElement(Marker, _extends19({
       id: id2,
       markerWidth: bounds,
       markerHeight: bounds,
@@ -37569,7 +37577,7 @@
       orient: "auto-start-reverse",
       markerUnits: "strokeWidth",
       strokeWidth
-    }, restProps), /* @__PURE__ */ import_react20.default.createElement("circle", {
+    }, restProps), /* @__PURE__ */ import_react21.default.createElement("circle", {
       r: size,
       cx: mid,
       cy: mid
@@ -37577,7 +37585,7 @@
   }
 
   // src/components/LineChart.tsx
-  var import_react21 = __toESM(require_react());
+  var import_react22 = __toESM(require_react());
 
   // node_modules/.pnpm/@visx+curve@3.3.0/node_modules/@visx/curve/esm/index.js
   var import_d3_shape2 = __toESM(require_d3_shape());
@@ -37585,13 +37593,13 @@
   // src/components/LineChart.tsx
   var import_jsx_runtime8 = __toESM(require_jsx_runtime());
   function LineChart({ width = 400, title, height = 400, data }) {
-    const getX = (0, import_react21.useCallback)((d) => d.date, []);
-    const getY = (0, import_react21.useCallback)((d) => d.value, []);
+    const getX = (0, import_react22.useCallback)((d) => d.date, []);
+    const getY = (0, import_react22.useCallback)((d) => d.value, []);
     const allData = data.flat();
-    const xScale = (0, import_react21.useCallback)(() => createTimeScale({
+    const xScale = (0, import_react22.useCallback)(() => createTimeScale({
       domain: extent(allData, getX)
     }), [allData, getX])();
-    const yScale = (0, import_react21.useCallback)(() => createLinearScale({
+    const yScale = (0, import_react22.useCallback)(() => createLinearScale({
       domain: extent(allData, getY)
     }), [])();
     const margin = 60;
@@ -37641,20 +37649,19 @@
     if (loading || !subscriptions.length)
       return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "w-[1200px] h-[600px] flex items-center justify-center", children: "Loading..." });
     return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "flex w-full justify-center py-4 max-w-full w-screen h-[600px]", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(ParentSize, { children: ({ width, height }) => {
-      console.log(width, height);
       return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(LineChart, { title: "Total Subscriptions", data: subscriptions, width, height });
     } }) });
   }
 
   // src/pages/post-management/index.tsx
-  var import_react24 = __toESM(require_react());
+  var import_react25 = __toESM(require_react());
 
   // src/apis/usePosts.ts
-  var import_react22 = __toESM(require_react());
+  var import_react23 = __toESM(require_react());
   function usePosts() {
-    const [posts, setPosts] = (0, import_react22.useState)([]);
-    const [loading, setLoading] = (0, import_react22.useState)(true);
-    (0, import_react22.useEffect)(() => {
+    const [posts, setPosts] = (0, import_react23.useState)([]);
+    const [loading, setLoading] = (0, import_react23.useState)(true);
+    (0, import_react23.useEffect)(() => {
       (async () => {
         const posts2 = await fetch("https://jsonplaceholder.typicode.com/posts");
         const postsData = await posts2.json();
@@ -37662,9 +37669,26 @@
         setLoading(false);
       })();
     }, []);
-    return { posts, loading };
+    return { posts, loading, setPosts };
   }
   var usePosts_default = usePosts;
+
+  // src/components/Dialog.tsx
+  var import_jsx_runtime10 = __toESM(require_jsx_runtime());
+  function Dialog({ children, title, open, setOpen, sizes }) {
+    return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
+      "div",
+      {
+        className: "relative",
+        children: [
+          open && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "fixed inset-0 bg-black/50 z-40", onClick: () => setOpen(false) }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("dialog", { className: `fixed top-1/2 left-1/2 bg-white rounded-md duration-150 shadow-lg p-4 z-50 translate-x-[-50%] translate-y-[-75%] scale-0
+		${open ? "scale-100" : "scale-0"} w-screen lg:max-w-screen-lg max-w-[calc(100vw-2rem)] md:max-w-screen-md sm:max-w-screen-sm transition-transform transform origin-center
+			`, open, children })
+        ]
+      }
+    );
+  }
 
   // node_modules/.pnpm/@tanstack+react-table@8.16.0_react-dom@18.2.0_react@18.2.0/node_modules/@tanstack/react-table/build/lib/index.mjs
   var React18 = __toESM(require_react(), 1);
@@ -40409,10 +40433,10 @@
   }
 
   // src/components/Table.tsx
-  var import_react23 = __toESM(require_react());
-  var import_jsx_runtime10 = __toESM(require_jsx_runtime());
+  var import_react24 = __toESM(require_react());
+  var import_jsx_runtime11 = __toESM(require_jsx_runtime());
   function Table({ data, columns }) {
-    const [pagination, setPagination] = (0, import_react23.useState)({
+    const [pagination, setPagination] = (0, import_react24.useState)({
       pageSize: 10,
       pageIndex: 0
     });
@@ -40426,17 +40450,17 @@
         pagination
       }
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(import_jsx_runtime10.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("table", { className: "table-auto w-full", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("thead", { className: "border bg-gray-100 rounded-tl-lg text-neutral-600 rounded-tr-lg", children: table.getHeaderGroups().map((headerGroup) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tr", { children: headerGroup.headers.map((header) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("th", { className: "font-semibold p-4 text-left", children: header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext()) }, header.id)) }, headerGroup.id)) }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("tbody", { children: [
-          data.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tr", { children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("td", { colSpan: columns.length, className: "text-center p-4", children: "No data" }) }),
-          table.getRowModel().rows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tr", { className: "border-b border-x", children: row.getVisibleCells().map((cell) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("td", { className: "px-4 py-2", children: flexRender(cell.column.columnDef.cell, cell.getContext()) }, cell.id)) }, row.id))
+    return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(import_jsx_runtime11.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("table", { className: "table-auto w-full", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("thead", { className: "border bg-gray-100 rounded-tl-lg text-neutral-600 rounded-tr-lg", children: table.getHeaderGroups().map((headerGroup) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("tr", { children: headerGroup.headers.map((header) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("th", { className: "font-semibold p-4 text-left", children: header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext()) }, header.id)) }, headerGroup.id)) }),
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("tbody", { children: [
+          data.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("tr", { children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("td", { colSpan: columns.length, className: "text-center p-4", children: "No data" }) }),
+          table.getRowModel().rows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("tr", { className: "border-b border-x", children: row.getVisibleCells().map((cell) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("td", { className: "px-4 py-2", children: flexRender(cell.column.columnDef.cell, cell.getContext()) }, cell.id)) }, row.id))
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tfoot", { className: "bg-gray-100", children: table.getFooterGroups().map((footerGroup) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("tr", { children: footerGroup.headers.map((header) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("th", { children: header.isPlaceholder ? null : flexRender(header.column.columnDef.footer, header.getContext()) }, header.id)) }, footerGroup.id)) })
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("tfoot", { className: "bg-gray-100", children: table.getFooterGroups().map((footerGroup) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("tr", { children: footerGroup.headers.map((header) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("th", { children: header.isPlaceholder ? null : flexRender(header.column.columnDef.footer, header.getContext()) }, header.id)) }, footerGroup.id)) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex my-4 items-center w-full justify-center gap-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex my-4 items-center w-full justify-center gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
           "button",
           {
             className: "border rounded p-2 disabled:opacity-30 bg-gray-100",
@@ -40445,7 +40469,7 @@
             children: "Start"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
           "button",
           {
             className: "border rounded p-2 disabled:opacity-30 bg-gray-100",
@@ -40454,12 +40478,12 @@
             children: "Previous"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { className: "p-2 bg-gray-100 border rounded-md text-neutral-700", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("strong", { children: table.getState().pagination.pageIndex + 1 }),
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("span", { className: "p-2 bg-gray-100 border rounded-md text-neutral-700", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("strong", { children: table.getState().pagination.pageIndex + 1 }),
           " / ",
           table.getPageCount()
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
           "button",
           {
             className: "border rounded p-2 disabled:opacity-30 bg-gray-100",
@@ -40468,7 +40492,7 @@
             children: "Next"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
           "button",
           {
             className: "border rounded p-2 disabled:opacity-30 bg-gray-100",
@@ -40482,10 +40506,13 @@
   }
 
   // src/pages/post-management/index.tsx
-  var import_jsx_runtime11 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime12 = __toESM(require_jsx_runtime());
   function PostManagement() {
-    const { posts = [] } = usePosts_default();
-    const columns = (0, import_react24.useMemo)(
+    const { posts = [], setPosts } = usePosts_default();
+    const [filteredPosts, setFilteredPosts] = (0, import_react25.useState)([]);
+    const [open, setOpen] = (0, import_react25.useState)(false);
+    const [selectedPost, setSelectedPost] = (0, import_react25.useState)(null);
+    const columns = (0, import_react25.useMemo)(
       () => [
         {
           accessorKey: "id",
@@ -40501,51 +40528,128 @@
         },
         {
           id: "actions",
-          header: () => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "text-center inline-block w-full", children: "Actions" }),
-          cell: () => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "text-center block mx-auto", "aria-label": "view detail", title: "View Detail", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Eye, {}) })
+          header: () => /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "text-center inline-block w-full", children: "Actions" }),
+          cell: (props) => /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+            "button",
+            {
+              onClick: () => {
+                setSelectedPost(props.row.original);
+                setOpen(true);
+              },
+              className: "text-center block mx-auto",
+              "aria-label": "view detail",
+              title: "View Detail",
+              children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Eye, {})
+            }
+          )
         }
       ],
       []
     );
-    return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("section", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(PageTitle, { title: "Post Management" }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "p-8 flex flex-col items-center w-full", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "w-full", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Filter, {}),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Table, { data: posts, columns })
-      ] }) })
+    (0, import_react25.useEffect)(() => {
+      if (posts.length) {
+        setFilteredPosts(posts);
+      }
+    }, [posts]);
+    const onFilter = (0, import_react25.useMemo)(() => (filter) => {
+      const filtered = posts.filter((post) => {
+        return String(post.id).includes(filter) || String(post.title).includes(filter);
+      });
+      setFilteredPosts(filtered);
+    }, [posts]);
+    return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("section", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(PageTitle, { title: "Post Management" }),
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "p-8 flex flex-col items-center w-full", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "w-full", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Filter, { onFilter }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Table, { data: filteredPosts, columns })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+        Dialog,
+        {
+          open,
+          setOpen,
+          title: "Post Detail",
+          sizes: "lg",
+          children: selectedPost && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(DetailedPost, { post: selectedPost })
+        }
+      )
     ] });
   }
-  var Filter = () => {
-    return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex gap-2 mb-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("input", { type: "text", placeholder: "Search by user id or title", className: "px-4 py-2 w-full border border-gray-300 rounded-md" }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("button", { className: "p-2 px-4 bg-zinc-900 hover:bg-zinc-900/80 transition duration-150 text-white rounded-md flex items-center gap-2", children: [
-        " Search ",
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Search, {})
+  var Filter = ({ onFilter }) => {
+    const [filter, setFilter] = (0, import_react25.useState)("");
+    const onSearch = () => {
+      onFilter(filter);
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "flex gap-2 mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+        "input",
+        {
+          onKeyDown: (e) => {
+            if (e.key === "Enter") {
+              onFilter(filter);
+            }
+          },
+          type: "text",
+          onChange: (e) => setFilter(e.target.value),
+          placeholder: "Search by user id or title",
+          className: "px-4 py-2 w-full border border-gray-300 rounded-md"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(
+        "button",
+        {
+          onClick: () => onSearch,
+          className: "p-2 px-4 bg-zinc-900 hover:bg-zinc-900/80 transition duration-150 text-white rounded-md flex items-center gap-2",
+          children: [
+            " Search ",
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Search, {})
+          ]
+        }
+      )
+    ] });
+  };
+  var DetailedPost = ({ post }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "prose border rounded-md", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "text-2xl rounded-md p-4 bg-gray-100 font-semibold text-neutral-600", children: post?.title }),
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "p-4 space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "flex items-center gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("small", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("strong", { children: "Post ID:" }),
+            " ",
+            post?.id
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("small", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("strong", { children: "User ID:" }),
+            " ",
+            post?.userId
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "text-lg font-light", children: post?.body })
       ] })
     ] });
   };
   var Eye = () => {
-    return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", "stroke-width": "1.5", stroke: "currentColor", className: "w-4 h-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("path", { "stroke-linecap": "round", "stroke-linejoin": "round", d: "M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("path", { "stroke-linecap": "round", "stroke-linejoin": "round", d: "M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" })
+    return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: "1.5", stroke: "currentColor", className: "w-4 h-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" }),
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" })
     ] });
   };
   var Search = () => {
-    return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", "stroke-width": "1.5", stroke: "currentColor", className: "w-4 h-4", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("path", { "stroke-linecap": "round", "stroke-linejoin": "round", d: "m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: "1.5", stroke: "currentColor", className: "w-4 h-4", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" }) });
   };
 
   // src/pages/setting/index.tsx
-  var import_react26 = __toESM(require_react());
+  var import_react27 = __toESM(require_react());
 
   // src/components/Button.tsx
-  var import_jsx_runtime12 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime13 = __toESM(require_jsx_runtime());
   function Button({ children, className, ...props }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { ...props, className: `px-4 shadow-sm rounded-md py-2 border ${className}`, children });
+    return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { ...props, className: `px-4 shadow-sm rounded-md py-2 border ${className}`, children });
   }
 
   // node_modules/.pnpm/react-day-picker@8.10.1_date-fns@3.6.0_react@18.2.0/node_modules/react-day-picker/dist/index.esm.js
-  var import_jsx_runtime13 = __toESM(require_jsx_runtime());
-  var import_react25 = __toESM(require_react());
+  var import_jsx_runtime14 = __toESM(require_jsx_runtime());
+  var import_react26 = __toESM(require_react());
 
   // node_modules/.pnpm/date-fns@3.6.0/node_modules/date-fns/toDate.mjs
   function toDate(argument) {
@@ -42459,7 +42563,7 @@
       toDate: toDate2 ? startOfDay(toDate2) : void 0
     };
   }
-  var DayPickerContext = (0, import_react25.createContext)(void 0);
+  var DayPickerContext = (0, import_react26.createContext)(void 0);
   function DayPickerProvider(props) {
     var _a;
     var initialProps = props.initialProps;
@@ -42474,10 +42578,10 @@
       onSelect = initialProps.onSelect;
     }
     var value = __assign(__assign(__assign({}, defaultContextValues), initialProps), { captionLayout, classNames: __assign(__assign({}, defaultContextValues.classNames), initialProps.classNames), components: __assign({}, initialProps.components), formatters: __assign(__assign({}, defaultContextValues.formatters), initialProps.formatters), fromDate, labels: __assign(__assign({}, defaultContextValues.labels), initialProps.labels), mode: initialProps.mode || defaultContextValues.mode, modifiers: __assign(__assign({}, defaultContextValues.modifiers), initialProps.modifiers), modifiersClassNames: __assign(__assign({}, defaultContextValues.modifiersClassNames), initialProps.modifiersClassNames), onSelect, styles: __assign(__assign({}, defaultContextValues.styles), initialProps.styles), toDate: toDate2 });
-    return (0, import_jsx_runtime13.jsx)(DayPickerContext.Provider, { value, children: props.children });
+    return (0, import_jsx_runtime14.jsx)(DayPickerContext.Provider, { value, children: props.children });
   }
   function useDayPicker() {
-    var context = (0, import_react25.useContext)(DayPickerContext);
+    var context = (0, import_react26.useContext)(DayPickerContext);
     if (!context) {
       throw new Error("useDayPicker must be used within a DayPickerProvider.");
     }
@@ -42485,25 +42589,25 @@
   }
   function CaptionLabel(props) {
     var _a = useDayPicker(), locale3 = _a.locale, classNames = _a.classNames, styles = _a.styles, formatCaption2 = _a.formatters.formatCaption;
-    return (0, import_jsx_runtime13.jsx)("div", { className: classNames.caption_label, style: styles.caption_label, "aria-live": "polite", role: "presentation", id: props.id, children: formatCaption2(props.displayMonth, { locale: locale3 }) });
+    return (0, import_jsx_runtime14.jsx)("div", { className: classNames.caption_label, style: styles.caption_label, "aria-live": "polite", role: "presentation", id: props.id, children: formatCaption2(props.displayMonth, { locale: locale3 }) });
   }
   function IconDropdown(props) {
-    return (0, import_jsx_runtime13.jsx)("svg", __assign({ width: "8px", height: "8px", viewBox: "0 0 120 120", "data-testid": "iconDropdown" }, props, { children: (0, import_jsx_runtime13.jsx)("path", { d: "M4.22182541,48.2218254 C8.44222828,44.0014225 15.2388494,43.9273804 19.5496459,47.9996989 L19.7781746,48.2218254 L60,88.443 L100.221825,48.2218254 C104.442228,44.0014225 111.238849,43.9273804 115.549646,47.9996989 L115.778175,48.2218254 C119.998577,52.4422283 120.07262,59.2388494 116.000301,63.5496459 L115.778175,63.7781746 L67.7781746,111.778175 C63.5577717,115.998577 56.7611506,116.07262 52.4503541,112.000301 L52.2218254,111.778175 L4.22182541,63.7781746 C-0.0739418023,59.4824074 -0.0739418023,52.5175926 4.22182541,48.2218254 Z", fill: "currentColor", fillRule: "nonzero" }) }));
+    return (0, import_jsx_runtime14.jsx)("svg", __assign({ width: "8px", height: "8px", viewBox: "0 0 120 120", "data-testid": "iconDropdown" }, props, { children: (0, import_jsx_runtime14.jsx)("path", { d: "M4.22182541,48.2218254 C8.44222828,44.0014225 15.2388494,43.9273804 19.5496459,47.9996989 L19.7781746,48.2218254 L60,88.443 L100.221825,48.2218254 C104.442228,44.0014225 111.238849,43.9273804 115.549646,47.9996989 L115.778175,48.2218254 C119.998577,52.4422283 120.07262,59.2388494 116.000301,63.5496459 L115.778175,63.7781746 L67.7781746,111.778175 C63.5577717,115.998577 56.7611506,116.07262 52.4503541,112.000301 L52.2218254,111.778175 L4.22182541,63.7781746 C-0.0739418023,59.4824074 -0.0739418023,52.5175926 4.22182541,48.2218254 Z", fill: "currentColor", fillRule: "nonzero" }) }));
   }
   function Dropdown(props) {
     var _a, _b;
     var onChange = props.onChange, value = props.value, children = props.children, caption = props.caption, className = props.className, style = props.style;
     var dayPicker = useDayPicker();
     var IconDropdownComponent = (_b = (_a = dayPicker.components) === null || _a === void 0 ? void 0 : _a.IconDropdown) !== null && _b !== void 0 ? _b : IconDropdown;
-    return (0, import_jsx_runtime13.jsxs)("div", { className, style, children: [(0, import_jsx_runtime13.jsx)("span", { className: dayPicker.classNames.vhidden, children: props["aria-label"] }), (0, import_jsx_runtime13.jsx)("select", { name: props.name, "aria-label": props["aria-label"], className: dayPicker.classNames.dropdown, style: dayPicker.styles.dropdown, value, onChange, children }), (0, import_jsx_runtime13.jsxs)("div", { className: dayPicker.classNames.caption_label, style: dayPicker.styles.caption_label, "aria-hidden": "true", children: [caption, (0, import_jsx_runtime13.jsx)(IconDropdownComponent, { className: dayPicker.classNames.dropdown_icon, style: dayPicker.styles.dropdown_icon })] })] });
+    return (0, import_jsx_runtime14.jsxs)("div", { className, style, children: [(0, import_jsx_runtime14.jsx)("span", { className: dayPicker.classNames.vhidden, children: props["aria-label"] }), (0, import_jsx_runtime14.jsx)("select", { name: props.name, "aria-label": props["aria-label"], className: dayPicker.classNames.dropdown, style: dayPicker.styles.dropdown, value, onChange, children }), (0, import_jsx_runtime14.jsxs)("div", { className: dayPicker.classNames.caption_label, style: dayPicker.styles.caption_label, "aria-hidden": "true", children: [caption, (0, import_jsx_runtime14.jsx)(IconDropdownComponent, { className: dayPicker.classNames.dropdown_icon, style: dayPicker.styles.dropdown_icon })] })] });
   }
   function MonthsDropdown(props) {
     var _a;
     var _b = useDayPicker(), fromDate = _b.fromDate, toDate2 = _b.toDate, styles = _b.styles, locale3 = _b.locale, formatMonthCaption2 = _b.formatters.formatMonthCaption, classNames = _b.classNames, components = _b.components, labelMonthDropdown2 = _b.labels.labelMonthDropdown;
     if (!fromDate)
-      return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, {});
+      return (0, import_jsx_runtime14.jsx)(import_jsx_runtime14.Fragment, {});
     if (!toDate2)
-      return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, {});
+      return (0, import_jsx_runtime14.jsx)(import_jsx_runtime14.Fragment, {});
     var dropdownMonths = [];
     if (isSameYear(fromDate, toDate2)) {
       var date2 = startOfMonth(fromDate);
@@ -42522,8 +42626,8 @@
       props.onChange(newMonth);
     };
     var DropdownComponent = (_a = components === null || components === void 0 ? void 0 : components.Dropdown) !== null && _a !== void 0 ? _a : Dropdown;
-    return (0, import_jsx_runtime13.jsx)(DropdownComponent, { name: "months", "aria-label": labelMonthDropdown2(), className: classNames.dropdown_month, style: styles.dropdown_month, onChange: handleChange, value: props.displayMonth.getMonth(), caption: formatMonthCaption2(props.displayMonth, { locale: locale3 }), children: dropdownMonths.map(function(m) {
-      return (0, import_jsx_runtime13.jsx)("option", { value: m.getMonth(), children: formatMonthCaption2(m, { locale: locale3 }) }, m.getMonth());
+    return (0, import_jsx_runtime14.jsx)(DropdownComponent, { name: "months", "aria-label": labelMonthDropdown2(), className: classNames.dropdown_month, style: styles.dropdown_month, onChange: handleChange, value: props.displayMonth.getMonth(), caption: formatMonthCaption2(props.displayMonth, { locale: locale3 }), children: dropdownMonths.map(function(m) {
+      return (0, import_jsx_runtime14.jsx)("option", { value: m.getMonth(), children: formatMonthCaption2(m, { locale: locale3 }) }, m.getMonth());
     }) });
   }
   function YearsDropdown(props) {
@@ -42532,9 +42636,9 @@
     var _b = useDayPicker(), fromDate = _b.fromDate, toDate2 = _b.toDate, locale3 = _b.locale, styles = _b.styles, classNames = _b.classNames, components = _b.components, formatYearCaption2 = _b.formatters.formatYearCaption, labelYearDropdown2 = _b.labels.labelYearDropdown;
     var years = [];
     if (!fromDate)
-      return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, {});
+      return (0, import_jsx_runtime14.jsx)(import_jsx_runtime14.Fragment, {});
     if (!toDate2)
-      return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, {});
+      return (0, import_jsx_runtime14.jsx)(import_jsx_runtime14.Fragment, {});
     var fromYear = fromDate.getFullYear();
     var toYear = toDate2.getFullYear();
     for (var year = fromYear; year <= toYear; year++) {
@@ -42545,12 +42649,12 @@
       props.onChange(newMonth);
     };
     var DropdownComponent = (_a = components === null || components === void 0 ? void 0 : components.Dropdown) !== null && _a !== void 0 ? _a : Dropdown;
-    return (0, import_jsx_runtime13.jsx)(DropdownComponent, { name: "years", "aria-label": labelYearDropdown2(), className: classNames.dropdown_year, style: styles.dropdown_year, onChange: handleChange, value: displayMonth.getFullYear(), caption: formatYearCaption2(displayMonth, { locale: locale3 }), children: years.map(function(year2) {
-      return (0, import_jsx_runtime13.jsx)("option", { value: year2.getFullYear(), children: formatYearCaption2(year2, { locale: locale3 }) }, year2.getFullYear());
+    return (0, import_jsx_runtime14.jsx)(DropdownComponent, { name: "years", "aria-label": labelYearDropdown2(), className: classNames.dropdown_year, style: styles.dropdown_year, onChange: handleChange, value: displayMonth.getFullYear(), caption: formatYearCaption2(displayMonth, { locale: locale3 }), children: years.map(function(year2) {
+      return (0, import_jsx_runtime14.jsx)("option", { value: year2.getFullYear(), children: formatYearCaption2(year2, { locale: locale3 }) }, year2.getFullYear());
     }) });
   }
   function useControlledValue(defaultValue, controlledValue) {
-    var _a = (0, import_react25.useState)(defaultValue), uncontrolledValue = _a[0], setValue = _a[1];
+    var _a = (0, import_react26.useState)(defaultValue), uncontrolledValue = _a[0], setValue = _a[1];
     var value = controlledValue === void 0 ? uncontrolledValue : controlledValue;
     return [value, setValue];
   }
@@ -42627,7 +42731,7 @@
     }
     return addMonths(month, -offset);
   }
-  var NavigationContext2 = (0, import_react25.createContext)(void 0);
+  var NavigationContext2 = (0, import_react26.createContext)(void 0);
   function NavigationProvider(props) {
     var dayPicker = useDayPicker();
     var _a = useNavigationState(), currentMonth = _a[0], goToMonth = _a[1];
@@ -42658,10 +42762,10 @@
       nextMonth,
       isDateDisplayed
     };
-    return (0, import_jsx_runtime13.jsx)(NavigationContext2.Provider, { value, children: props.children });
+    return (0, import_jsx_runtime14.jsx)(NavigationContext2.Provider, { value, children: props.children });
   }
   function useNavigation2() {
-    var context = (0, import_react25.useContext)(NavigationContext2);
+    var context = (0, import_react26.useContext)(NavigationContext2);
     if (!context) {
       throw new Error("useNavigation must be used within a NavigationProvider");
     }
@@ -42675,16 +42779,16 @@
       goToMonth(addMonths(newMonth, props.displayIndex ? -props.displayIndex : 0));
     };
     var CaptionLabelComponent = (_a = components === null || components === void 0 ? void 0 : components.CaptionLabel) !== null && _a !== void 0 ? _a : CaptionLabel;
-    var captionLabel = (0, import_jsx_runtime13.jsx)(CaptionLabelComponent, { id: props.id, displayMonth: props.displayMonth });
-    return (0, import_jsx_runtime13.jsxs)("div", { className: classNames.caption_dropdowns, style: styles.caption_dropdowns, children: [(0, import_jsx_runtime13.jsx)("div", { className: classNames.vhidden, children: captionLabel }), (0, import_jsx_runtime13.jsx)(MonthsDropdown, { onChange: handleMonthChange, displayMonth: props.displayMonth }), (0, import_jsx_runtime13.jsx)(YearsDropdown, { onChange: handleMonthChange, displayMonth: props.displayMonth })] });
+    var captionLabel = (0, import_jsx_runtime14.jsx)(CaptionLabelComponent, { id: props.id, displayMonth: props.displayMonth });
+    return (0, import_jsx_runtime14.jsxs)("div", { className: classNames.caption_dropdowns, style: styles.caption_dropdowns, children: [(0, import_jsx_runtime14.jsx)("div", { className: classNames.vhidden, children: captionLabel }), (0, import_jsx_runtime14.jsx)(MonthsDropdown, { onChange: handleMonthChange, displayMonth: props.displayMonth }), (0, import_jsx_runtime14.jsx)(YearsDropdown, { onChange: handleMonthChange, displayMonth: props.displayMonth })] });
   }
   function IconLeft(props) {
-    return (0, import_jsx_runtime13.jsx)("svg", __assign({ width: "16px", height: "16px", viewBox: "0 0 120 120" }, props, { children: (0, import_jsx_runtime13.jsx)("path", { d: "M69.490332,3.34314575 C72.6145263,0.218951416 77.6798462,0.218951416 80.8040405,3.34314575 C83.8617626,6.40086786 83.9268205,11.3179931 80.9992143,14.4548388 L80.8040405,14.6568542 L35.461,60 L80.8040405,105.343146 C83.8617626,108.400868 83.9268205,113.317993 80.9992143,116.454839 L80.8040405,116.656854 C77.7463184,119.714576 72.8291931,119.779634 69.6923475,116.852028 L69.490332,116.656854 L18.490332,65.6568542 C15.4326099,62.5991321 15.367552,57.6820069 18.2951583,54.5451612 L18.490332,54.3431458 L69.490332,3.34314575 Z", fill: "currentColor", fillRule: "nonzero" }) }));
+    return (0, import_jsx_runtime14.jsx)("svg", __assign({ width: "16px", height: "16px", viewBox: "0 0 120 120" }, props, { children: (0, import_jsx_runtime14.jsx)("path", { d: "M69.490332,3.34314575 C72.6145263,0.218951416 77.6798462,0.218951416 80.8040405,3.34314575 C83.8617626,6.40086786 83.9268205,11.3179931 80.9992143,14.4548388 L80.8040405,14.6568542 L35.461,60 L80.8040405,105.343146 C83.8617626,108.400868 83.9268205,113.317993 80.9992143,116.454839 L80.8040405,116.656854 C77.7463184,119.714576 72.8291931,119.779634 69.6923475,116.852028 L69.490332,116.656854 L18.490332,65.6568542 C15.4326099,62.5991321 15.367552,57.6820069 18.2951583,54.5451612 L18.490332,54.3431458 L69.490332,3.34314575 Z", fill: "currentColor", fillRule: "nonzero" }) }));
   }
   function IconRight(props) {
-    return (0, import_jsx_runtime13.jsx)("svg", __assign({ width: "16px", height: "16px", viewBox: "0 0 120 120" }, props, { children: (0, import_jsx_runtime13.jsx)("path", { d: "M49.8040405,3.34314575 C46.6798462,0.218951416 41.6145263,0.218951416 38.490332,3.34314575 C35.4326099,6.40086786 35.367552,11.3179931 38.2951583,14.4548388 L38.490332,14.6568542 L83.8333725,60 L38.490332,105.343146 C35.4326099,108.400868 35.367552,113.317993 38.2951583,116.454839 L38.490332,116.656854 C41.5480541,119.714576 46.4651794,119.779634 49.602025,116.852028 L49.8040405,116.656854 L100.804041,65.6568542 C103.861763,62.5991321 103.926821,57.6820069 100.999214,54.5451612 L100.804041,54.3431458 L49.8040405,3.34314575 Z", fill: "currentColor" }) }));
+    return (0, import_jsx_runtime14.jsx)("svg", __assign({ width: "16px", height: "16px", viewBox: "0 0 120 120" }, props, { children: (0, import_jsx_runtime14.jsx)("path", { d: "M49.8040405,3.34314575 C46.6798462,0.218951416 41.6145263,0.218951416 38.490332,3.34314575 C35.4326099,6.40086786 35.367552,11.3179931 38.2951583,14.4548388 L38.490332,14.6568542 L83.8333725,60 L38.490332,105.343146 C35.4326099,108.400868 35.367552,113.317993 38.2951583,116.454839 L38.490332,116.656854 C41.5480541,119.714576 46.4651794,119.779634 49.602025,116.852028 L49.8040405,116.656854 L100.804041,65.6568542 C103.861763,62.5991321 103.926821,57.6820069 100.999214,54.5451612 L100.804041,54.3431458 L49.8040405,3.34314575 Z", fill: "currentColor" }) }));
   }
-  var Button2 = (0, import_react25.forwardRef)(function(props, ref) {
+  var Button2 = (0, import_react26.forwardRef)(function(props, ref) {
     var _a = useDayPicker(), classNames = _a.classNames, styles = _a.styles;
     var classNamesArr = [classNames.button_reset, classNames.button];
     if (props.className) {
@@ -42695,13 +42799,13 @@
     if (props.style) {
       Object.assign(style, props.style);
     }
-    return (0, import_jsx_runtime13.jsx)("button", __assign({}, props, { ref, type: "button", className, style }));
+    return (0, import_jsx_runtime14.jsx)("button", __assign({}, props, { ref, type: "button", className, style }));
   });
   function Navigation(props) {
     var _a, _b;
     var _c = useDayPicker(), dir = _c.dir, locale3 = _c.locale, classNames = _c.classNames, styles = _c.styles, _d = _c.labels, labelPrevious2 = _d.labelPrevious, labelNext2 = _d.labelNext, components = _c.components;
     if (!props.nextMonth && !props.previousMonth) {
-      return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, {});
+      return (0, import_jsx_runtime14.jsx)(import_jsx_runtime14.Fragment, {});
     }
     var previousLabel = labelPrevious2(props.previousMonth, { locale: locale3 });
     var previousClassName = [
@@ -42715,7 +42819,7 @@
     ].join(" ");
     var IconRightComponent = (_a = components === null || components === void 0 ? void 0 : components.IconRight) !== null && _a !== void 0 ? _a : IconRight;
     var IconLeftComponent = (_b = components === null || components === void 0 ? void 0 : components.IconLeft) !== null && _b !== void 0 ? _b : IconLeft;
-    return (0, import_jsx_runtime13.jsxs)("div", { className: classNames.nav, style: styles.nav, children: [!props.hidePrevious && (0, import_jsx_runtime13.jsx)(Button2, { name: "previous-month", "aria-label": previousLabel, className: previousClassName, style: styles.nav_button_previous, disabled: !props.previousMonth, onClick: props.onPreviousClick, children: dir === "rtl" ? (0, import_jsx_runtime13.jsx)(IconRightComponent, { className: classNames.nav_icon, style: styles.nav_icon }) : (0, import_jsx_runtime13.jsx)(IconLeftComponent, { className: classNames.nav_icon, style: styles.nav_icon }) }), !props.hideNext && (0, import_jsx_runtime13.jsx)(Button2, { name: "next-month", "aria-label": nextLabel, className: nextClassName, style: styles.nav_button_next, disabled: !props.nextMonth, onClick: props.onNextClick, children: dir === "rtl" ? (0, import_jsx_runtime13.jsx)(IconLeftComponent, { className: classNames.nav_icon, style: styles.nav_icon }) : (0, import_jsx_runtime13.jsx)(IconRightComponent, { className: classNames.nav_icon, style: styles.nav_icon }) })] });
+    return (0, import_jsx_runtime14.jsxs)("div", { className: classNames.nav, style: styles.nav, children: [!props.hidePrevious && (0, import_jsx_runtime14.jsx)(Button2, { name: "previous-month", "aria-label": previousLabel, className: previousClassName, style: styles.nav_button_previous, disabled: !props.previousMonth, onClick: props.onPreviousClick, children: dir === "rtl" ? (0, import_jsx_runtime14.jsx)(IconRightComponent, { className: classNames.nav_icon, style: styles.nav_icon }) : (0, import_jsx_runtime14.jsx)(IconLeftComponent, { className: classNames.nav_icon, style: styles.nav_icon }) }), !props.hideNext && (0, import_jsx_runtime14.jsx)(Button2, { name: "next-month", "aria-label": nextLabel, className: nextClassName, style: styles.nav_button_next, disabled: !props.nextMonth, onClick: props.onNextClick, children: dir === "rtl" ? (0, import_jsx_runtime14.jsx)(IconLeftComponent, { className: classNames.nav_icon, style: styles.nav_icon }) : (0, import_jsx_runtime14.jsx)(IconRightComponent, { className: classNames.nav_icon, style: styles.nav_icon }) })] });
   }
   function CaptionNavigation(props) {
     var numberOfMonths = useDayPicker().numberOfMonths;
@@ -42737,7 +42841,7 @@
         return;
       goToMonth(nextMonth);
     };
-    return (0, import_jsx_runtime13.jsx)(Navigation, { displayMonth: props.displayMonth, hideNext, hidePrevious, nextMonth, previousMonth, onPreviousClick: handlePreviousClick, onNextClick: handleNextClick });
+    return (0, import_jsx_runtime14.jsx)(Navigation, { displayMonth: props.displayMonth, hideNext, hidePrevious, nextMonth, previousMonth, onPreviousClick: handlePreviousClick, onNextClick: handleNextClick });
   }
   function Caption(props) {
     var _a;
@@ -42745,21 +42849,21 @@
     var CaptionLabelComponent = (_a = components === null || components === void 0 ? void 0 : components.CaptionLabel) !== null && _a !== void 0 ? _a : CaptionLabel;
     var caption;
     if (disableNavigation) {
-      caption = (0, import_jsx_runtime13.jsx)(CaptionLabelComponent, { id: props.id, displayMonth: props.displayMonth });
+      caption = (0, import_jsx_runtime14.jsx)(CaptionLabelComponent, { id: props.id, displayMonth: props.displayMonth });
     } else if (captionLayout === "dropdown") {
-      caption = (0, import_jsx_runtime13.jsx)(CaptionDropdowns, { displayMonth: props.displayMonth, id: props.id });
+      caption = (0, import_jsx_runtime14.jsx)(CaptionDropdowns, { displayMonth: props.displayMonth, id: props.id });
     } else if (captionLayout === "dropdown-buttons") {
-      caption = (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [(0, import_jsx_runtime13.jsx)(CaptionDropdowns, { displayMonth: props.displayMonth, displayIndex: props.displayIndex, id: props.id }), (0, import_jsx_runtime13.jsx)(CaptionNavigation, { displayMonth: props.displayMonth, displayIndex: props.displayIndex, id: props.id })] });
+      caption = (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [(0, import_jsx_runtime14.jsx)(CaptionDropdowns, { displayMonth: props.displayMonth, displayIndex: props.displayIndex, id: props.id }), (0, import_jsx_runtime14.jsx)(CaptionNavigation, { displayMonth: props.displayMonth, displayIndex: props.displayIndex, id: props.id })] });
     } else {
-      caption = (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [(0, import_jsx_runtime13.jsx)(CaptionLabelComponent, { id: props.id, displayMonth: props.displayMonth, displayIndex: props.displayIndex }), (0, import_jsx_runtime13.jsx)(CaptionNavigation, { displayMonth: props.displayMonth, id: props.id })] });
+      caption = (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [(0, import_jsx_runtime14.jsx)(CaptionLabelComponent, { id: props.id, displayMonth: props.displayMonth, displayIndex: props.displayIndex }), (0, import_jsx_runtime14.jsx)(CaptionNavigation, { displayMonth: props.displayMonth, id: props.id })] });
     }
-    return (0, import_jsx_runtime13.jsx)("div", { className: classNames.caption, style: styles.caption, children: caption });
+    return (0, import_jsx_runtime14.jsx)("div", { className: classNames.caption, style: styles.caption, children: caption });
   }
   function Footer(props) {
     var _a = useDayPicker(), footer = _a.footer, styles = _a.styles, tfoot = _a.classNames.tfoot;
     if (!footer)
-      return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, {});
-    return (0, import_jsx_runtime13.jsx)("tfoot", { className: tfoot, style: styles.tfoot, children: (0, import_jsx_runtime13.jsx)("tr", { children: (0, import_jsx_runtime13.jsx)("td", { colSpan: 8, children: footer }) }) });
+      return (0, import_jsx_runtime14.jsx)(import_jsx_runtime14.Fragment, {});
+    return (0, import_jsx_runtime14.jsx)("tfoot", { className: tfoot, style: styles.tfoot, children: (0, import_jsx_runtime14.jsx)("tr", { children: (0, import_jsx_runtime14.jsx)("td", { colSpan: 8, children: footer }) }) });
   }
   function getWeekdays(locale3, weekStartsOn, ISOWeek) {
     var start = ISOWeek ? startOfISOWeek(/* @__PURE__ */ new Date()) : startOfWeek(/* @__PURE__ */ new Date(), { locale: locale3, weekStartsOn });
@@ -42773,21 +42877,21 @@
   function HeadRow() {
     var _a = useDayPicker(), classNames = _a.classNames, styles = _a.styles, showWeekNumber = _a.showWeekNumber, locale3 = _a.locale, weekStartsOn = _a.weekStartsOn, ISOWeek = _a.ISOWeek, formatWeekdayName2 = _a.formatters.formatWeekdayName, labelWeekday2 = _a.labels.labelWeekday;
     var weekdays = getWeekdays(locale3, weekStartsOn, ISOWeek);
-    return (0, import_jsx_runtime13.jsxs)("tr", { style: styles.head_row, className: classNames.head_row, children: [showWeekNumber && (0, import_jsx_runtime13.jsx)("td", { style: styles.head_cell, className: classNames.head_cell }), weekdays.map(function(weekday, i) {
-      return (0, import_jsx_runtime13.jsx)("th", { scope: "col", className: classNames.head_cell, style: styles.head_cell, "aria-label": labelWeekday2(weekday, { locale: locale3 }), children: formatWeekdayName2(weekday, { locale: locale3 }) }, i);
+    return (0, import_jsx_runtime14.jsxs)("tr", { style: styles.head_row, className: classNames.head_row, children: [showWeekNumber && (0, import_jsx_runtime14.jsx)("td", { style: styles.head_cell, className: classNames.head_cell }), weekdays.map(function(weekday, i) {
+      return (0, import_jsx_runtime14.jsx)("th", { scope: "col", className: classNames.head_cell, style: styles.head_cell, "aria-label": labelWeekday2(weekday, { locale: locale3 }), children: formatWeekdayName2(weekday, { locale: locale3 }) }, i);
     })] });
   }
   function Head() {
     var _a;
     var _b = useDayPicker(), classNames = _b.classNames, styles = _b.styles, components = _b.components;
     var HeadRowComponent = (_a = components === null || components === void 0 ? void 0 : components.HeadRow) !== null && _a !== void 0 ? _a : HeadRow;
-    return (0, import_jsx_runtime13.jsx)("thead", { style: styles.head, className: classNames.head, children: (0, import_jsx_runtime13.jsx)(HeadRowComponent, {}) });
+    return (0, import_jsx_runtime14.jsx)("thead", { style: styles.head, className: classNames.head, children: (0, import_jsx_runtime14.jsx)(HeadRowComponent, {}) });
   }
   function DayContent(props) {
     var _a = useDayPicker(), locale3 = _a.locale, formatDay2 = _a.formatters.formatDay;
-    return (0, import_jsx_runtime13.jsx)(import_jsx_runtime13.Fragment, { children: formatDay2(props.date, { locale: locale3 }) });
+    return (0, import_jsx_runtime14.jsx)(import_jsx_runtime14.Fragment, { children: formatDay2(props.date, { locale: locale3 }) });
   }
-  var SelectMultipleContext = (0, import_react25.createContext)(void 0);
+  var SelectMultipleContext = (0, import_react26.createContext)(void 0);
   function SelectMultipleProvider(props) {
     if (!isDayPickerMultiple(props.initialProps)) {
       var emptyContextValue = {
@@ -42796,9 +42900,9 @@
           disabled: []
         }
       };
-      return (0, import_jsx_runtime13.jsx)(SelectMultipleContext.Provider, { value: emptyContextValue, children: props.children });
+      return (0, import_jsx_runtime14.jsx)(SelectMultipleContext.Provider, { value: emptyContextValue, children: props.children });
     }
-    return (0, import_jsx_runtime13.jsx)(SelectMultipleProviderInternal, { initialProps: props.initialProps, children: props.children });
+    return (0, import_jsx_runtime14.jsx)(SelectMultipleProviderInternal, { initialProps: props.initialProps, children: props.children });
   }
   function SelectMultipleProviderInternal(_a) {
     var initialProps = _a.initialProps, children = _a.children;
@@ -42842,10 +42946,10 @@
       onDayClick,
       modifiers
     };
-    return (0, import_jsx_runtime13.jsx)(SelectMultipleContext.Provider, { value: contextValue, children });
+    return (0, import_jsx_runtime14.jsx)(SelectMultipleContext.Provider, { value: contextValue, children });
   }
   function useSelectMultiple() {
-    var context = (0, import_react25.useContext)(SelectMultipleContext);
+    var context = (0, import_react26.useContext)(SelectMultipleContext);
     if (!context) {
       throw new Error("useSelectMultiple must be used within a SelectMultipleProvider");
     }
@@ -42882,7 +42986,7 @@
     }
     return { from: day, to: void 0 };
   }
-  var SelectRangeContext = (0, import_react25.createContext)(void 0);
+  var SelectRangeContext = (0, import_react26.createContext)(void 0);
   function SelectRangeProvider(props) {
     if (!isDayPickerRange(props.initialProps)) {
       var emptyContextValue = {
@@ -42894,9 +42998,9 @@
           disabled: []
         }
       };
-      return (0, import_jsx_runtime13.jsx)(SelectRangeContext.Provider, { value: emptyContextValue, children: props.children });
+      return (0, import_jsx_runtime14.jsx)(SelectRangeContext.Provider, { value: emptyContextValue, children: props.children });
     }
-    return (0, import_jsx_runtime13.jsx)(SelectRangeProviderInternal, { initialProps: props.initialProps, children: props.children });
+    return (0, import_jsx_runtime14.jsx)(SelectRangeProviderInternal, { initialProps: props.initialProps, children: props.children });
   }
   function SelectRangeProviderInternal(_a) {
     var initialProps = _a.initialProps, children = _a.children;
@@ -42983,10 +43087,10 @@
         });
       }
     }
-    return (0, import_jsx_runtime13.jsx)(SelectRangeContext.Provider, { value: { selected, onDayClick, modifiers }, children });
+    return (0, import_jsx_runtime14.jsx)(SelectRangeContext.Provider, { value: { selected, onDayClick, modifiers }, children });
   }
   function useSelectRange() {
-    var context = (0, import_react25.useContext)(SelectRangeContext);
+    var context = (0, import_react26.useContext)(SelectRangeContext);
     if (!context) {
       throw new Error("useSelectRange must be used within a SelectRangeProvider");
     }
@@ -43047,7 +43151,7 @@
     }
     return internalModifiers;
   }
-  var ModifiersContext = (0, import_react25.createContext)(void 0);
+  var ModifiersContext = (0, import_react26.createContext)(void 0);
   function ModifiersProvider(props) {
     var dayPicker = useDayPicker();
     var selectMultiple = useSelectMultiple();
@@ -43055,10 +43159,10 @@
     var internalModifiers = getInternalModifiers(dayPicker, selectMultiple, selectRange);
     var customModifiers = getCustomModifiers(dayPicker.modifiers);
     var modifiers = __assign(__assign({}, internalModifiers), customModifiers);
-    return (0, import_jsx_runtime13.jsx)(ModifiersContext.Provider, { value: modifiers, children: props.children });
+    return (0, import_jsx_runtime14.jsx)(ModifiersContext.Provider, { value: modifiers, children: props.children });
   }
   function useModifiers() {
-    var context = (0, import_react25.useContext)(ModifiersContext);
+    var context = (0, import_react26.useContext)(ModifiersContext);
     if (!context) {
       throw new Error("useModifiers must be used within a ModifiersProvider");
     }
@@ -43234,12 +43338,12 @@
       });
     }
   }
-  var FocusContext = (0, import_react25.createContext)(void 0);
+  var FocusContext = (0, import_react26.createContext)(void 0);
   function FocusProvider(props) {
     var navigation = useNavigation2();
     var modifiers = useModifiers();
-    var _a = (0, import_react25.useState)(), focusedDay = _a[0], setFocusedDay = _a[1];
-    var _b = (0, import_react25.useState)(), lastFocused = _b[0], setLastFocused = _b[1];
+    var _a = (0, import_react26.useState)(), focusedDay = _a[0], setFocusedDay = _a[1];
+    var _b = (0, import_react26.useState)(), lastFocused = _b[0], setLastFocused = _b[1];
     var initialFocusTarget = getInitialFocusTarget(navigation.displayMonths, modifiers);
     var focusTarget = (focusedDay !== null && focusedDay !== void 0 ? focusedDay : lastFocused && navigation.isDateDisplayed(lastFocused)) ? lastFocused : initialFocusTarget;
     var blur = function() {
@@ -43300,10 +43404,10 @@
         return moveFocus("endOfWeek", "after");
       }
     };
-    return (0, import_jsx_runtime13.jsx)(FocusContext.Provider, { value, children: props.children });
+    return (0, import_jsx_runtime14.jsx)(FocusContext.Provider, { value, children: props.children });
   }
   function useFocusContext() {
-    var context = (0, import_react25.useContext)(FocusContext);
+    var context = (0, import_react26.useContext)(FocusContext);
     if (!context) {
       throw new Error("useFocusContext must be used within a FocusProvider");
     }
@@ -43314,15 +43418,15 @@
     var activeModifiers = getActiveModifiers(day, modifiers, displayMonth);
     return activeModifiers;
   }
-  var SelectSingleContext = (0, import_react25.createContext)(void 0);
+  var SelectSingleContext = (0, import_react26.createContext)(void 0);
   function SelectSingleProvider(props) {
     if (!isDayPickerSingle(props.initialProps)) {
       var emptyContextValue = {
         selected: void 0
       };
-      return (0, import_jsx_runtime13.jsx)(SelectSingleContext.Provider, { value: emptyContextValue, children: props.children });
+      return (0, import_jsx_runtime14.jsx)(SelectSingleContext.Provider, { value: emptyContextValue, children: props.children });
     }
-    return (0, import_jsx_runtime13.jsx)(SelectSingleProviderInternal, { initialProps: props.initialProps, children: props.children });
+    return (0, import_jsx_runtime14.jsx)(SelectSingleProviderInternal, { initialProps: props.initialProps, children: props.children });
   }
   function SelectSingleProviderInternal(_a) {
     var initialProps = _a.initialProps, children = _a.children;
@@ -43339,10 +43443,10 @@
       selected: initialProps.selected,
       onDayClick
     };
-    return (0, import_jsx_runtime13.jsx)(SelectSingleContext.Provider, { value: contextValue, children });
+    return (0, import_jsx_runtime14.jsx)(SelectSingleContext.Provider, { value: contextValue, children });
   }
   function useSelectSingle() {
-    var context = (0, import_react25.useContext)(SelectSingleContext);
+    var context = (0, import_react26.useContext)(SelectSingleContext);
     if (!context) {
       throw new Error("useSelectSingle must be used within a SelectSingleProvider");
     }
@@ -43518,7 +43622,7 @@
     var eventHandlers = useDayEventHandlers(day, activeModifiers);
     var selectedDays = useSelectedDays();
     var isButton = Boolean(dayPicker.onDayClick || dayPicker.mode !== "default");
-    (0, import_react25.useEffect)(function() {
+    (0, import_react26.useEffect)(function() {
       var _a2;
       if (activeModifiers.outside)
         return;
@@ -43540,7 +43644,7 @@
     var style = getDayStyle(dayPicker, activeModifiers);
     var isHidden = Boolean(activeModifiers.outside && !dayPicker.showOutsideDays || activeModifiers.hidden);
     var DayContentComponent = (_c = (_b = dayPicker.components) === null || _b === void 0 ? void 0 : _b.DayContent) !== null && _c !== void 0 ? _c : DayContent;
-    var children = (0, import_jsx_runtime13.jsx)(DayContentComponent, { date: day, displayMonth, activeModifiers });
+    var children = (0, import_jsx_runtime14.jsx)(DayContentComponent, { date: day, displayMonth, activeModifiers });
     var divProps = {
       style,
       className,
@@ -43561,28 +43665,28 @@
     return dayRender;
   }
   function Day(props) {
-    var buttonRef = (0, import_react25.useRef)(null);
+    var buttonRef = (0, import_react26.useRef)(null);
     var dayRender = useDayRender(props.date, props.displayMonth, buttonRef);
     if (dayRender.isHidden) {
-      return (0, import_jsx_runtime13.jsx)("div", { role: "gridcell" });
+      return (0, import_jsx_runtime14.jsx)("div", { role: "gridcell" });
     }
     if (!dayRender.isButton) {
-      return (0, import_jsx_runtime13.jsx)("div", __assign({}, dayRender.divProps));
+      return (0, import_jsx_runtime14.jsx)("div", __assign({}, dayRender.divProps));
     }
-    return (0, import_jsx_runtime13.jsx)(Button2, __assign({ name: "day", ref: buttonRef }, dayRender.buttonProps));
+    return (0, import_jsx_runtime14.jsx)(Button2, __assign({ name: "day", ref: buttonRef }, dayRender.buttonProps));
   }
   function WeekNumber(props) {
     var weekNumber = props.number, dates = props.dates;
     var _a = useDayPicker(), onWeekNumberClick = _a.onWeekNumberClick, styles = _a.styles, classNames = _a.classNames, locale3 = _a.locale, labelWeekNumber2 = _a.labels.labelWeekNumber, formatWeekNumber2 = _a.formatters.formatWeekNumber;
     var content = formatWeekNumber2(Number(weekNumber), { locale: locale3 });
     if (!onWeekNumberClick) {
-      return (0, import_jsx_runtime13.jsx)("span", { className: classNames.weeknumber, style: styles.weeknumber, children: content });
+      return (0, import_jsx_runtime14.jsx)("span", { className: classNames.weeknumber, style: styles.weeknumber, children: content });
     }
     var label = labelWeekNumber2(Number(weekNumber), { locale: locale3 });
     var handleClick = function(e) {
       onWeekNumberClick(weekNumber, dates, e);
     };
-    return (0, import_jsx_runtime13.jsx)(Button2, { name: "week-number", "aria-label": label, className: classNames.weeknumber, style: styles.weeknumber, onClick: handleClick, children: content });
+    return (0, import_jsx_runtime14.jsx)(Button2, { name: "week-number", "aria-label": label, className: classNames.weeknumber, style: styles.weeknumber, onClick: handleClick, children: content });
   }
   function Row(props) {
     var _a, _b;
@@ -43591,10 +43695,10 @@
     var WeeknumberComponent = (_b = components === null || components === void 0 ? void 0 : components.WeekNumber) !== null && _b !== void 0 ? _b : WeekNumber;
     var weekNumberCell;
     if (showWeekNumber) {
-      weekNumberCell = (0, import_jsx_runtime13.jsx)("td", { className: classNames.cell, style: styles.cell, children: (0, import_jsx_runtime13.jsx)(WeeknumberComponent, { number: props.weekNumber, dates: props.dates }) });
+      weekNumberCell = (0, import_jsx_runtime14.jsx)("td", { className: classNames.cell, style: styles.cell, children: (0, import_jsx_runtime14.jsx)(WeeknumberComponent, { number: props.weekNumber, dates: props.dates }) });
     }
-    return (0, import_jsx_runtime13.jsxs)("tr", { className: classNames.row, style: styles.row, children: [weekNumberCell, props.dates.map(function(date2) {
-      return (0, import_jsx_runtime13.jsx)("td", { className: classNames.cell, style: styles.cell, role: "presentation", children: (0, import_jsx_runtime13.jsx)(DayComponent, { displayMonth: props.displayMonth, date: date2 }) }, getUnixTime(date2));
+    return (0, import_jsx_runtime14.jsxs)("tr", { className: classNames.row, style: styles.row, children: [weekNumberCell, props.dates.map(function(date2) {
+      return (0, import_jsx_runtime14.jsx)("td", { className: classNames.cell, style: styles.cell, role: "presentation", children: (0, import_jsx_runtime14.jsx)(DayComponent, { displayMonth: props.displayMonth, date: date2 }) }, getUnixTime(date2));
     })] });
   }
   function daysToMonthWeeks(fromDate, toDate2, options) {
@@ -43649,14 +43753,14 @@
     var HeadComponent = (_a = components === null || components === void 0 ? void 0 : components.Head) !== null && _a !== void 0 ? _a : Head;
     var RowComponent = (_b = components === null || components === void 0 ? void 0 : components.Row) !== null && _b !== void 0 ? _b : Row;
     var FooterComponent = (_c = components === null || components === void 0 ? void 0 : components.Footer) !== null && _c !== void 0 ? _c : Footer;
-    return (0, import_jsx_runtime13.jsxs)("table", { id: props.id, className: classNames.table, style: styles.table, role: "grid", "aria-labelledby": props["aria-labelledby"], children: [!hideHead && (0, import_jsx_runtime13.jsx)(HeadComponent, {}), (0, import_jsx_runtime13.jsx)("tbody", { className: classNames.tbody, style: styles.tbody, children: weeks.map(function(week) {
-      return (0, import_jsx_runtime13.jsx)(RowComponent, { displayMonth: props.displayMonth, dates: week.dates, weekNumber: week.weekNumber }, week.weekNumber);
-    }) }), (0, import_jsx_runtime13.jsx)(FooterComponent, { displayMonth: props.displayMonth })] });
+    return (0, import_jsx_runtime14.jsxs)("table", { id: props.id, className: classNames.table, style: styles.table, role: "grid", "aria-labelledby": props["aria-labelledby"], children: [!hideHead && (0, import_jsx_runtime14.jsx)(HeadComponent, {}), (0, import_jsx_runtime14.jsx)("tbody", { className: classNames.tbody, style: styles.tbody, children: weeks.map(function(week) {
+      return (0, import_jsx_runtime14.jsx)(RowComponent, { displayMonth: props.displayMonth, dates: week.dates, weekNumber: week.weekNumber }, week.weekNumber);
+    }) }), (0, import_jsx_runtime14.jsx)(FooterComponent, { displayMonth: props.displayMonth })] });
   }
   function canUseDOM() {
     return !!(typeof window !== "undefined" && window.document && window.document.createElement);
   }
-  var useIsomorphicLayoutEffect2 = canUseDOM() ? import_react25.useLayoutEffect : import_react25.useEffect;
+  var useIsomorphicLayoutEffect2 = canUseDOM() ? import_react26.useLayoutEffect : import_react26.useEffect;
   var serverHandoffComplete = false;
   var id = 0;
   function genId() {
@@ -43665,13 +43769,13 @@
   function useId(providedId) {
     var _a;
     var initialId = providedId !== null && providedId !== void 0 ? providedId : serverHandoffComplete ? genId() : null;
-    var _b = (0, import_react25.useState)(initialId), id2 = _b[0], setId = _b[1];
+    var _b = (0, import_react26.useState)(initialId), id2 = _b[0], setId = _b[1];
     useIsomorphicLayoutEffect2(function() {
       if (id2 === null) {
         setId(genId());
       }
     }, []);
-    (0, import_react25.useEffect)(function() {
+    (0, import_react26.useEffect)(function() {
       if (serverHandoffComplete === false) {
         serverHandoffComplete = true;
       }
@@ -43707,11 +43811,11 @@
       style = __assign(__assign({}, style), styles.caption_between);
     }
     var CaptionComponent = (_b = components === null || components === void 0 ? void 0 : components.Caption) !== null && _b !== void 0 ? _b : Caption;
-    return (0, import_jsx_runtime13.jsxs)("div", { className: className.join(" "), style, children: [(0, import_jsx_runtime13.jsx)(CaptionComponent, { id: captionId, displayMonth: props.displayMonth, displayIndex: props.displayIndex }), (0, import_jsx_runtime13.jsx)(Table2, { id: tableId, "aria-labelledby": captionId, displayMonth: props.displayMonth })] }, props.displayIndex);
+    return (0, import_jsx_runtime14.jsxs)("div", { className: className.join(" "), style, children: [(0, import_jsx_runtime14.jsx)(CaptionComponent, { id: captionId, displayMonth: props.displayMonth, displayIndex: props.displayIndex }), (0, import_jsx_runtime14.jsx)(Table2, { id: tableId, "aria-labelledby": captionId, displayMonth: props.displayMonth })] }, props.displayIndex);
   }
   function Months(props) {
     var _a = useDayPicker(), classNames = _a.classNames, styles = _a.styles;
-    return (0, import_jsx_runtime13.jsx)("div", { className: classNames.months, style: styles.months, children: props.children });
+    return (0, import_jsx_runtime14.jsx)("div", { className: classNames.months, style: styles.months, children: props.children });
   }
   function Root(_a) {
     var _b, _c;
@@ -43719,8 +43823,8 @@
     var dayPicker = useDayPicker();
     var focusContext = useFocusContext();
     var navigation = useNavigation2();
-    var _d = (0, import_react25.useState)(false), hasInitialFocus = _d[0], setHasInitialFocus = _d[1];
-    (0, import_react25.useEffect)(function() {
+    var _d = (0, import_react26.useState)(false), hasInitialFocus = _d[0], setHasInitialFocus = _d[1];
+    (0, import_react26.useEffect)(function() {
       if (!dayPicker.initialFocus)
         return;
       if (!focusContext.focusTarget)
@@ -43751,36 +43855,36 @@
       return __assign(__assign({}, attrs), (_a2 = {}, _a2[key] = initialProps[key], _a2));
     }, {});
     var MonthsComponent = (_c = (_b = initialProps.components) === null || _b === void 0 ? void 0 : _b.Months) !== null && _c !== void 0 ? _c : Months;
-    return (0, import_jsx_runtime13.jsx)("div", __assign({ className: classNames.join(" "), style, dir: dayPicker.dir, id: dayPicker.id, nonce: initialProps.nonce, title: initialProps.title, lang: initialProps.lang }, dataAttributes, { children: (0, import_jsx_runtime13.jsx)(MonthsComponent, { children: navigation.displayMonths.map(function(month, i) {
-      return (0, import_jsx_runtime13.jsx)(Month, { displayIndex: i, displayMonth: month }, i);
+    return (0, import_jsx_runtime14.jsx)("div", __assign({ className: classNames.join(" "), style, dir: dayPicker.dir, id: dayPicker.id, nonce: initialProps.nonce, title: initialProps.title, lang: initialProps.lang }, dataAttributes, { children: (0, import_jsx_runtime14.jsx)(MonthsComponent, { children: navigation.displayMonths.map(function(month, i) {
+      return (0, import_jsx_runtime14.jsx)(Month, { displayIndex: i, displayMonth: month }, i);
     }) }) }));
   }
   function RootProvider(props) {
     var children = props.children, initialProps = __rest(props, ["children"]);
-    return (0, import_jsx_runtime13.jsx)(DayPickerProvider, { initialProps, children: (0, import_jsx_runtime13.jsx)(NavigationProvider, { children: (0, import_jsx_runtime13.jsx)(SelectSingleProvider, { initialProps, children: (0, import_jsx_runtime13.jsx)(SelectMultipleProvider, { initialProps, children: (0, import_jsx_runtime13.jsx)(SelectRangeProvider, { initialProps, children: (0, import_jsx_runtime13.jsx)(ModifiersProvider, { children: (0, import_jsx_runtime13.jsx)(FocusProvider, { children }) }) }) }) }) }) });
+    return (0, import_jsx_runtime14.jsx)(DayPickerProvider, { initialProps, children: (0, import_jsx_runtime14.jsx)(NavigationProvider, { children: (0, import_jsx_runtime14.jsx)(SelectSingleProvider, { initialProps, children: (0, import_jsx_runtime14.jsx)(SelectMultipleProvider, { initialProps, children: (0, import_jsx_runtime14.jsx)(SelectRangeProvider, { initialProps, children: (0, import_jsx_runtime14.jsx)(ModifiersProvider, { children: (0, import_jsx_runtime14.jsx)(FocusProvider, { children }) }) }) }) }) }) });
   }
   function DayPicker(props) {
-    return (0, import_jsx_runtime13.jsx)(RootProvider, __assign({}, props, { children: (0, import_jsx_runtime13.jsx)(Root, { initialProps: props }) }));
+    return (0, import_jsx_runtime14.jsx)(RootProvider, __assign({}, props, { children: (0, import_jsx_runtime14.jsx)(Root, { initialProps: props }) }));
   }
 
   // src/components/DatePicker.tsx
-  var import_jsx_runtime14 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime15 = __toESM(require_jsx_runtime());
   function DatePicker({ selected, onSelect }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "my-3", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("label", { className: "block font-semibold", children: " Date Range " }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mt-2 py-2 bg-gray-50 flex gap-2", children: [
-        selected && selected.from && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "font-semibold", children: "From:" }),
+    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "my-3 space-y-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { className: "block font-semibold", children: " Date Range " }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mt-2 p-4 border rounded-md bg-white flex gap-2", children: [
+        selected && selected.from && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "font-semibold", children: "From:" }),
           " ",
           selected.from.toLocaleDateString()
         ] }),
-        selected && selected.to && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "font-semibold", children: "To:" }),
+        selected && selected.to && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "font-semibold", children: "To:" }),
           " ",
           selected.to.toLocaleDateString()
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "bg-white rounded-md p-4 border", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
         DayPicker,
         {
           mode: "range",
@@ -43791,30 +43895,30 @@
             onSelect(val);
           }
         }
-      )
+      ) })
     ] });
   }
 
   // src/components/FormInput.tsx
-  var import_jsx_runtime15 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime16 = __toESM(require_jsx_runtime());
   var FormInput = ({ label, className, ...props }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "my-3", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { className: "block font-semibold mb-2", children: label }),
-      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("input", { ...props, className: `px-4 py-2 w-full border rounded-md ${className}` })
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "my-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("label", { className: "block font-semibold mb-2", children: label }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("input", { ...props, className: `px-4 py-2 w-full border rounded-md ${className}` })
     ] });
   };
 
   // src/components/BackgroundPicker.tsx
-  var import_jsx_runtime16 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime17 = __toESM(require_jsx_runtime());
   function BackgroundPicker({ value, onChange }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("label", { className: "block font-semibold", htmlFor: "bg", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("label", { className: "block font-semibold", htmlFor: "bg", children: [
         "Background Color ",
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("small", { className: "font-light", children: "(pick color or input the hex code)" })
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("small", { className: "font-light", children: "(pick color or input the hex code)" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-col lg:flex-row lg:items-center gap-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("input", { id: "bg", className: "px-4 py-2 border rounded-md", onChange: (e) => onChange(e.target.value), value }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("input", { value, className: "w-full md:w-32 border px-4 py-2 rounded-md", onChange: (e) => {
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-col lg:flex-row lg:items-center gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("input", { id: "bg", className: "px-4 py-2 border rounded-md", onChange: (e) => onChange(e.target.value), value }),
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("input", { value, className: "w-full md:w-32 border px-4 py-2 rounded-md", onChange: (e) => {
           onChange(e.target.value);
         }, type: "color" })
       ] })
@@ -43822,41 +43926,43 @@
   }
 
   // src/pages/setting/index.tsx
-  var import_jsx_runtime17 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime18 = __toESM(require_jsx_runtime());
   function Settings() {
-    const [dirty, setDirty] = (0, import_react26.useState)(false);
-    const [selected, setSelected] = (0, import_react26.useState)({ from: /* @__PURE__ */ new Date(), to: /* @__PURE__ */ new Date() });
-    const [background, setBackground] = (0, import_react26.useState)("#000");
+    const [dirty, setDirty] = (0, import_react27.useState)(false);
+    const [selected, setSelected] = (0, import_react27.useState)({ from: /* @__PURE__ */ new Date(), to: /* @__PURE__ */ new Date() });
+    const [background, setBackground] = (0, import_react27.useState)("#000");
     const onSubmit = (e) => {
       e.preventDefault();
       const data = new FormData(e.currentTarget);
+      data.append("background", background);
+      data.append("date_range", JSON.stringify(selected));
+      setDirty(false);
       console.log(data);
     };
     const onSelect = (selected2) => {
       setSelected(selected2);
       setDirty(true);
-      console.log(selected2);
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("section", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(PageTitle, { title: "Settings" }),
-      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "p-8 rounded-md mx-auto w-full", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("section", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(PageTitle, { title: "Settings" }),
+      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "p-8 rounded-md mx-auto w-full", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
         "form",
         {
           onInput: () => setDirty(true),
           onSubmit: (e) => onSubmit(e),
-          className: "bg-gray-50 overflow-x-auto px-4",
+          className: "bg-gray-50 border rounded-md overflow-x-auto px-4",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(FormInput, { name: "title", label: "Title", placeholder: "Title" }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(FormInput, { name: "email", label: "Email", type: "email", placeholder: "user@email.com" }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(BackgroundPicker, { value: background, onChange: (value) => setBackground(value) }),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(FormInput, { name: "title", label: "Title", placeholder: "Title" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(FormInput, { name: "email", label: "Email", type: "email", placeholder: "user@email.com" }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(BackgroundPicker, { value: background, onChange: (value) => setBackground(value) }),
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
               DatePicker,
               {
                 selected,
                 onSelect
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Button, { disabled: !dirty, className: "bg-zinc-900 disabled:opacity-50 disabled:bg-white disabled:text-neutral-700 text-white hover:bg-zinc-900/80 transition duration-150", children: "Update" })
+            /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Button, { disabled: !dirty, className: "bg-zinc-900 disabled:opacity-50 disabled:bg-white disabled:text-neutral-700 text-white hover:bg-zinc-900/80 transition duration-150 my-3", children: "Update" })
           ]
         }
       ) })
@@ -43864,26 +43970,26 @@
   }
 
   // src/configs/routes.tsx
-  var import_jsx_runtime18 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime19 = __toESM(require_jsx_runtime());
   var routes = [
     {
       path: "/",
-      element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(HomeLayout, {}),
+      element: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(HomeLayout, {}),
       name: "Home",
       hide: true,
       children: [
         {
           path: "dashboard",
           name: "Dashboard",
-          element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Dashboard, {}),
+          element: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Dashboard, {}),
           children: [
-            { index: true, hide: true, name: "Subscriptions", element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Subscription, {}) },
-            { path: "subscription", hide: true, name: "Subscriptions", element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Subscription, {}) },
-            { path: "revenue", hide: true, name: "Revenue", element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Revenue, {}) }
+            { index: true, hide: true, name: "Subscriptions", element: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Subscription, {}) },
+            { path: "subscription", hide: true, name: "Subscriptions", element: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Subscription, {}) },
+            { path: "revenue", hide: true, name: "Revenue", element: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Revenue, {}) }
           ]
         },
-        { path: "post-management", name: "Post Management", element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(PostManagement, {}) },
-        { path: "settings", name: "Settings", element: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Settings, {}) }
+        { path: "post-management", name: "Post Management", element: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(PostManagement, {}) },
+        { path: "settings", name: "Settings", element: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Settings, {}) }
       ]
     }
   ];
@@ -43900,17 +44006,16 @@
   }
 
   // src/app.tsx
-  var import_jsx_runtime19 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime20 = __toESM(require_jsx_runtime());
   var router = createBrowserRouter(getRoute(routes_default));
-  console.log(getRoute(routes_default));
   function App() {
-    return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(RouterProvider, { router });
+    return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(RouterProvider, { router });
   }
 
   // src/index.tsx
-  var import_jsx_runtime20 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime21 = __toESM(require_jsx_runtime());
   var root = (0, import_client.createRoot)(document.getElementById("root"));
-  root.render(/* @__PURE__ */ (0, import_jsx_runtime20.jsx)(App, {}));
+  root.render(/* @__PURE__ */ (0, import_jsx_runtime21.jsx)(App, {}));
 })();
 /*! Bundled license information:
 

@@ -8,7 +8,7 @@ export default function HomeAside() {
 	return <aside className="py-2 w-sidebar hidden lg:block left-0 fixed top-0 flex-grow-1 flex-shrink-0 border-r min-h-screen bg-zinc-50">
 		<nav>
 			<ul className="space-y-2">
-				{menu.map(menu => <MenuItem key={menu.path} menu={menu} />)}
+				{menu.map((menu,i) => <MenuItem key={i} menu={menu} />)}
 			</ul>
 		</nav>
 	</aside>
@@ -17,12 +17,12 @@ export default function HomeAside() {
 const MenuItem = ({ menu }: { menu: MenuItemType }) => {
 	if (menu.children) {
 		if (menu?.hide) return <ul className="space-y-2">
-			{menu.children.map(child => <MenuItem key={child.path} menu={child} />)}
+			{menu.children.map((child,i) => <MenuItem key={i} menu={child} />)}
 		</ul>
 		return <li key={menu.path} className="w-full">
 			<NavLink className={({ isActive }) => `${isActive ? "border-l-4 border-zinc-600 text-zinc-900 bg-zinc-100" : "border-l-4 border-transparent text-zinc-600"} px-6 w-full py-2 inline-block font-semibold text-xl`} to={menu.path}>{menu.name}</NavLink>
 			{menu.children.filter(c => c.hide).length > 0 && <ul className="space-y-2">
-				{menu.children.map(child => <MenuItem key={child.path} menu={child} />)}
+				{menu.children.map((child,i) => <MenuItem key={i} menu={child} />)}
 			</ul>}
 		</li>
 	}

@@ -14,7 +14,7 @@ function usePosts() {
 		})();
 	}, []);
 
-	return { posts, loading };
+	return { posts, loading, setPosts };
 }
 
 export default usePosts;

@@ -1,8 +1,16 @@
-import { Outlet } from "react-router";
+import { Outlet, useLocation, useNavigate } from "react-router";
 import HomeAside from "./components/aside";
 import HomeFooter from "./components/footer";
+import { useEffect } from "react";
 
 export default function HomeLayout() {
+	const location = useLocation();
+	const navigate = useNavigate();
+	useEffect(() => {
+		if (location.pathname === "/") {
+			navigate("/dashboard", { replace: true });
+		}
+	}, [location]);
 	return (
 		<div className="flex lg:pl-sidebar min-h-screen">
 			<HomeAside />
